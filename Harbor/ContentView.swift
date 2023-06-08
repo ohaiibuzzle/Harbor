@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isGPKInstalled = GPKUtils.shared.checkGPKInstallStatus() == .installed
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        if !isGPKInstalled {
+            // GPK is not installed
+            SetupView(isGPKInstalled: $isGPKInstalled)
+        } else {
+            BottleManagementView()
         }
-        .padding()
     }
 }
 

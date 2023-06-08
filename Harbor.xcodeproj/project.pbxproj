@@ -7,19 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB3BE5EE2A32248D00358BBC /* LaunchExtDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */; };
 		AB5CC6C02A308BBB00AEBB2B /* HarborApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6BF2A308BBB00AEBB2B /* HarborApp.swift */; };
 		AB5CC6C22A308BBB00AEBB2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6C12A308BBB00AEBB2B /* ContentView.swift */; };
 		AB5CC6C42A308BBC00AEBB2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5CC6C32A308BBC00AEBB2B /* Assets.xcassets */; };
 		AB5CC6C72A308BBC00AEBB2B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5CC6C62A308BBC00AEBB2B /* Preview Assets.xcassets */; };
+		AB5CC6D32A308D3700AEBB2B /* GPKDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6D22A308D3700AEBB2B /* GPKDownloadView.swift */; };
+		AB5CC6D62A30910300AEBB2B /* GPKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6D52A30910300AEBB2B /* GPKUtils.swift */; };
+		AB5CC6D82A30938A00AEBB2B /* BrewInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6D72A30938A00AEBB2B /* BrewInstallView.swift */; };
+		AB6A967F2A31045A003A019E /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6A967E2A31045A003A019E /* SetupView.swift */; };
+		AB7A81002A30CC7100AA71A6 /* BrewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */; };
+		AB7A81022A30D2FE00AA71A6 /* HarborUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A81012A30D2FE00AA71A6 /* HarborUtils.swift */; };
+		ABC0BFCE2A31627400382A42 /* BottleManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFCD2A31627400382A42 /* BottleManagementView.swift */; };
+		ABC0BFD12A31629300382A42 /* BottleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFD02A31629300382A42 /* BottleModel.swift */; };
+		ABC0BFD42A31691500382A42 /* BottleOpsDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFD32A31691500382A42 /* BottleOpsDropdown.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchExtDropdown.swift; sourceTree = "<group>"; };
+		AB4707BF2A30C2C60019DC5F /* Harbor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Harbor.entitlements; sourceTree = "<group>"; };
 		AB5CC6BC2A308BBB00AEBB2B /* Harbor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Harbor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5CC6BF2A308BBB00AEBB2B /* HarborApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborApp.swift; sourceTree = "<group>"; };
 		AB5CC6C12A308BBB00AEBB2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AB5CC6C32A308BBC00AEBB2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB5CC6C62A308BBC00AEBB2B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		AB5CC6C82A308BBC00AEBB2B /* Harbor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Harbor.entitlements; sourceTree = "<group>"; };
+		AB5CC6D22A308D3700AEBB2B /* GPKDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPKDownloadView.swift; sourceTree = "<group>"; };
+		AB5CC6D52A30910300AEBB2B /* GPKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPKUtils.swift; sourceTree = "<group>"; };
+		AB5CC6D72A30938A00AEBB2B /* BrewInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewInstallView.swift; sourceTree = "<group>"; };
+		AB6A967E2A31045A003A019E /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewUtils.swift; sourceTree = "<group>"; };
+		AB7A81012A30D2FE00AA71A6 /* HarborUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborUtils.swift; sourceTree = "<group>"; };
+		ABC0BFCD2A31627400382A42 /* BottleManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleManagementView.swift; sourceTree = "<group>"; };
+		ABC0BFD02A31629300382A42 /* BottleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleModel.swift; sourceTree = "<group>"; };
+		ABC0BFD32A31691500382A42 /* BottleOpsDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleOpsDropdown.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +56,7 @@
 		AB5CC6B32A308BBB00AEBB2B = {
 			isa = PBXGroup;
 			children = (
+				AB4707BF2A30C2C60019DC5F /* Harbor.entitlements */,
 				AB5CC6BE2A308BBB00AEBB2B /* Harbor */,
 				AB5CC6BD2A308BBB00AEBB2B /* Products */,
 			);
@@ -52,10 +73,13 @@
 		AB5CC6BE2A308BBB00AEBB2B /* Harbor */ = {
 			isa = PBXGroup;
 			children = (
+				ABC0BFCF2A31628600382A42 /* Models */,
+				AB6A967D2A310443003A019E /* Views */,
+				AB5CC6D42A3090E800AEBB2B /* Utils */,
+				AB5CC6CE2A308CE200AEBB2B /* Dialogs */,
 				AB5CC6BF2A308BBB00AEBB2B /* HarborApp.swift */,
 				AB5CC6C12A308BBB00AEBB2B /* ContentView.swift */,
 				AB5CC6C32A308BBC00AEBB2B /* Assets.xcassets */,
-				AB5CC6C82A308BBC00AEBB2B /* Harbor.entitlements */,
 				AB5CC6C52A308BBC00AEBB2B /* Preview Content */,
 			);
 			path = Harbor;
@@ -67,6 +91,60 @@
 				AB5CC6C62A308BBC00AEBB2B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AB5CC6CE2A308CE200AEBB2B /* Dialogs */ = {
+			isa = PBXGroup;
+			children = (
+				ABC0BFD22A31690500382A42 /* BottleManagement */,
+				AB5CC6CF2A308CFF00AEBB2B /* GPKDownload */,
+			);
+			path = Dialogs;
+			sourceTree = "<group>";
+		};
+		AB5CC6CF2A308CFF00AEBB2B /* GPKDownload */ = {
+			isa = PBXGroup;
+			children = (
+				AB5CC6D22A308D3700AEBB2B /* GPKDownloadView.swift */,
+				AB5CC6D72A30938A00AEBB2B /* BrewInstallView.swift */,
+			);
+			path = GPKDownload;
+			sourceTree = "<group>";
+		};
+		AB5CC6D42A3090E800AEBB2B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AB5CC6D52A30910300AEBB2B /* GPKUtils.swift */,
+				AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */,
+				AB7A81012A30D2FE00AA71A6 /* HarborUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AB6A967D2A310443003A019E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB6A967E2A31045A003A019E /* SetupView.swift */,
+				ABC0BFCD2A31627400382A42 /* BottleManagementView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ABC0BFCF2A31628600382A42 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ABC0BFD02A31629300382A42 /* BottleModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ABC0BFD22A31690500382A42 /* BottleManagement */ = {
+			isa = PBXGroup;
+			children = (
+				ABC0BFD32A31691500382A42 /* BottleOpsDropdown.swift */,
+				AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */,
+			);
+			path = BottleManagement;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +217,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB5CC6D82A30938A00AEBB2B /* BrewInstallView.swift in Sources */,
+				AB7A81002A30CC7100AA71A6 /* BrewUtils.swift in Sources */,
+				AB5CC6D62A30910300AEBB2B /* GPKUtils.swift in Sources */,
+				AB3BE5EE2A32248D00358BBC /* LaunchExtDropdown.swift in Sources */,
 				AB5CC6C22A308BBB00AEBB2B /* ContentView.swift in Sources */,
 				AB5CC6C02A308BBB00AEBB2B /* HarborApp.swift in Sources */,
+				AB7A81022A30D2FE00AA71A6 /* HarborUtils.swift in Sources */,
+				AB6A967F2A31045A003A019E /* SetupView.swift in Sources */,
+				ABC0BFD12A31629300382A42 /* BottleModel.swift in Sources */,
+				ABC0BFCE2A31627400382A42 /* BottleManagementView.swift in Sources */,
+				AB5CC6D32A308D3700AEBB2B /* GPKDownloadView.swift in Sources */,
+				ABC0BFD42A31691500382A42 /* BottleOpsDropdown.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +354,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Harbor/Harbor.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -274,11 +363,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "$(PRODUCT_NAME) needs your permission to run terminal commands";
+				INFOPLIST_KEY_NSDownloadsFolderUsageDescription = "Harbor needs to access your Documents folder to look for the GPK";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.ohaiibuzzle.Harbor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -293,6 +385,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Harbor/Harbor.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -301,11 +394,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "$(PRODUCT_NAME) needs your permission to run terminal commands";
+				INFOPLIST_KEY_NSDownloadsFolderUsageDescription = "Harbor needs to access your Documents folder to look for the GPK";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.ohaiibuzzle.Harbor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
