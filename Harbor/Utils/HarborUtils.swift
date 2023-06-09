@@ -28,9 +28,15 @@ struct HarborUtils {
 
     func dropNukeOnWine() {
         // SIGKILL any `wineserver` processes
-        let task = Process()
+        var task = Process()
         task.launchPath = "/usr/bin/killall"
         task.arguments = ["-9", "wineserver"]
+        task.launch()
+        task.waitUntilExit()
+        
+        task = Process()
+        task.launchPath = "/usr/bin/killall"
+        task.arguments = ["-9", "wine64-preloader"]
         task.launch()
         task.waitUntilExit()
     }

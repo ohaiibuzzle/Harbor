@@ -37,7 +37,7 @@ struct LaunchExtDropdown: View {
                             dialog.canCreateDirectories = false
                             dialog.allowsMultipleSelection = false
                             dialog.allowedFileTypes = ["exe", "msi"]
-                            dialog.directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                            dialog.directoryURL = bottle.path
                             if dialog.runModal() == NSApplication.ModalResponse.OK {
                                 let result = dialog.url
                                 if result != nil {

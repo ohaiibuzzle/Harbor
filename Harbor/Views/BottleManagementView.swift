@@ -35,7 +35,7 @@ struct BottleManagementView: View {
         }
         .padding()
         .frame(minWidth: 500, minHeight: 200)
-        .onChange(of: sortOrder) { newOrder in
+        .onChange(of: sortOrder) { oldOrder, newOrder in
             bottles.sort(using: newOrder)
         }
         .toolbar {
@@ -91,7 +91,7 @@ struct BottleManagementView: View {
         }
         
         .sheet(isPresented: $showNewBottleSheet) {
-            NewBottleDropdown(isPresented: $showNewBottleSheet, bottle: BottleModel(id: UUID(), name: "", path: URL(fileURLWithPath: "")))
+            NewBottleDropdown(isPresented: $showNewBottleSheet, bottle: BottleModel(id: UUID(), path: URL(fileURLWithPath: "")))
         }
         .sheet(isPresented: $showEditBottleSheet) {
             EditBottleView(isPresented: $showEditBottleSheet, bottle: bottles.first(where: { $0.id == selectedBottle })!)

@@ -9,7 +9,7 @@ import Foundation
 
 struct BottleModel: Identifiable, Equatable {
     var id: UUID
-    var name: String
+    var name: String = "New Bottle"
     var path: URL
     var primaryApplicationPath: String = ""
     var primaryApplicationArgument: String = ""

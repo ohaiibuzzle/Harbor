@@ -12,7 +12,6 @@ struct NewBottleDropdown: View {
     var editingMode: Bool = false
 
     @State var bottle: BottleModel
-    @State var bottleName = ""
     @State var bottlePath = ""
     @State var isWorking = false
     
@@ -29,6 +28,14 @@ struct NewBottleDropdown: View {
                     Text("Name: ")
                     Spacer()
                     TextField("My Bottle", text: $bottle.name)
+                        .onChange(of: bottle.name) { oldValue, newValue in
+                            // Prevent it from being empty
+                            if newValue == "" {
+                                bottle.name = oldValue
+                            } else {
+                                bottle.name = newValue
+                            }
+                        }
                 }
                 
                 // Browsable file picker for new bottle folder
@@ -58,9 +65,9 @@ struct NewBottleDropdown: View {
                             }
                         }
                     }
-                    .onChange(of: bottlePath, perform: { value in
+                    .onChange(of: bottlePath) { _, value in
                         bottle.path = URL(fileURLWithPath: value)
-                    })
+                    }
                 }
                 .disabled(editingMode)
             }
@@ -82,7 +89,7 @@ struct NewBottleDropdown: View {
                                 dialog.canChooseFiles = true
                                 dialog.canCreateDirectories = false
                                 dialog.allowsMultipleSelection = false
-                                dialog.directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                                dialog.directoryURL = bottle.path
                                 if dialog.runModal() == NSApplication.ModalResponse.OK {
                                     let result = dialog.url
                                     if result != nil {
@@ -101,11 +108,6 @@ struct NewBottleDropdown: View {
                         TextField("", text: $bottle.primaryApplicationArgument)
                     }
                 }
-            }
-
-            HStack {
-                Toggle("Enable HUD", isOn: $bottle.enableHUD)
-                Toggle("Enable ESync", isOn: $bottle.enableESync)
             }
             
             if isWorking {
@@ -146,6 +148,7 @@ struct NewBottleDropdown: View {
                         }
                     }
                 }
+                .disabled(bottle.name == "" || bottle.path.absoluteString == "file:///")
             }
             .padding()
         }
@@ -159,7 +162,7 @@ struct EditBottleView: View {
     var bottle: BottleModel
     var body: some View {
         // Basically reuse New in editing mode
-        NewBottleDropdown(isPresented: $isPresented, editingMode: true, bottle: bottle, bottleName: bottle.name, bottlePath: bottle.path.absoluteString)
+        NewBottleDropdown(isPresented: $isPresented, editingMode: true, bottle: bottle, bottlePath: bottle.path.absoluteString)
     }
 
 }
