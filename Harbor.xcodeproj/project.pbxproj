@@ -12,9 +12,13 @@
 		AB5CC6C22A308BBB00AEBB2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6C12A308BBB00AEBB2B /* ContentView.swift */; };
 		AB5CC6C42A308BBC00AEBB2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5CC6C32A308BBC00AEBB2B /* Assets.xcassets */; };
 		AB5CC6C72A308BBC00AEBB2B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5CC6C62A308BBC00AEBB2B /* Preview Assets.xcassets */; };
-		AB5CC6D32A308D3700AEBB2B /* GPKDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6D22A308D3700AEBB2B /* GPKDownloadView.swift */; };
+		AB5CC6D32A308D3700AEBB2B /* GPKInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6D22A308D3700AEBB2B /* GPKInstallView.swift */; };
 		AB5CC6D62A30910300AEBB2B /* GPKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6D52A30910300AEBB2B /* GPKUtils.swift */; };
 		AB5CC6D82A30938A00AEBB2B /* BrewInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6D72A30938A00AEBB2B /* BrewInstallView.swift */; };
+		AB6652C22A33342B00F3FC5D /* XCLIInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6652C12A33342B00F3FC5D /* XCLIInstallView.swift */; };
+		AB6652C42A3334E600F3FC5D /* XCLIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6652C32A3334E600F3FC5D /* XCLIUtils.swift */; };
+		AB6652C92A3349A400F3FC5D /* HarborMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6652C82A3349A400F3FC5D /* HarborMenu.swift */; };
+		AB6652CD2A3350EC00F3FC5D /* BottleConfigDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6652CC2A3350EC00F3FC5D /* BottleConfigDropdown.swift */; };
 		AB6A967F2A31045A003A019E /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6A967E2A31045A003A019E /* SetupView.swift */; };
 		AB7A81002A30CC7100AA71A6 /* BrewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */; };
 		AB7A81022A30D2FE00AA71A6 /* HarborUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A81012A30D2FE00AA71A6 /* HarborUtils.swift */; };
@@ -31,9 +35,13 @@
 		AB5CC6C12A308BBB00AEBB2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AB5CC6C32A308BBC00AEBB2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB5CC6C62A308BBC00AEBB2B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		AB5CC6D22A308D3700AEBB2B /* GPKDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPKDownloadView.swift; sourceTree = "<group>"; };
+		AB5CC6D22A308D3700AEBB2B /* GPKInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPKInstallView.swift; sourceTree = "<group>"; };
 		AB5CC6D52A30910300AEBB2B /* GPKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPKUtils.swift; sourceTree = "<group>"; };
 		AB5CC6D72A30938A00AEBB2B /* BrewInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewInstallView.swift; sourceTree = "<group>"; };
+		AB6652C12A33342B00F3FC5D /* XCLIInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCLIInstallView.swift; sourceTree = "<group>"; };
+		AB6652C32A3334E600F3FC5D /* XCLIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCLIUtils.swift; sourceTree = "<group>"; };
+		AB6652C82A3349A400F3FC5D /* HarborMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborMenu.swift; sourceTree = "<group>"; };
+		AB6652CC2A3350EC00F3FC5D /* BottleConfigDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleConfigDropdown.swift; sourceTree = "<group>"; };
 		AB6A967E2A31045A003A019E /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewUtils.swift; sourceTree = "<group>"; };
 		AB7A81012A30D2FE00AA71A6 /* HarborUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborUtils.swift; sourceTree = "<group>"; };
@@ -76,7 +84,7 @@
 				ABC0BFCF2A31628600382A42 /* Models */,
 				AB6A967D2A310443003A019E /* Views */,
 				AB5CC6D42A3090E800AEBB2B /* Utils */,
-				AB5CC6CE2A308CE200AEBB2B /* Dialogs */,
+				AB5CC6CE2A308CE200AEBB2B /* UIElements */,
 				AB5CC6BF2A308BBB00AEBB2B /* HarborApp.swift */,
 				AB5CC6C12A308BBB00AEBB2B /* ContentView.swift */,
 				AB5CC6C32A308BBC00AEBB2B /* Assets.xcassets */,
@@ -93,20 +101,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		AB5CC6CE2A308CE200AEBB2B /* Dialogs */ = {
+		AB5CC6CE2A308CE200AEBB2B /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
+				AB6652C72A33499700F3FC5D /* Commands */,
 				ABC0BFD22A31690500382A42 /* BottleManagement */,
 				AB5CC6CF2A308CFF00AEBB2B /* GPKDownload */,
 			);
-			path = Dialogs;
+			path = UIElements;
 			sourceTree = "<group>";
 		};
 		AB5CC6CF2A308CFF00AEBB2B /* GPKDownload */ = {
 			isa = PBXGroup;
 			children = (
-				AB5CC6D22A308D3700AEBB2B /* GPKDownloadView.swift */,
+				AB5CC6D22A308D3700AEBB2B /* GPKInstallView.swift */,
 				AB5CC6D72A30938A00AEBB2B /* BrewInstallView.swift */,
+				AB6652C12A33342B00F3FC5D /* XCLIInstallView.swift */,
 			);
 			path = GPKDownload;
 			sourceTree = "<group>";
@@ -117,8 +127,17 @@
 				AB5CC6D52A30910300AEBB2B /* GPKUtils.swift */,
 				AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */,
 				AB7A81012A30D2FE00AA71A6 /* HarborUtils.swift */,
+				AB6652C32A3334E600F3FC5D /* XCLIUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		AB6652C72A33499700F3FC5D /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				AB6652C82A3349A400F3FC5D /* HarborMenu.swift */,
+			);
+			path = Commands;
 			sourceTree = "<group>";
 		};
 		AB6A967D2A310443003A019E /* Views */ = {
@@ -143,6 +162,7 @@
 			children = (
 				ABC0BFD32A31691500382A42 /* BottleOpsDropdown.swift */,
 				AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */,
+				AB6652CC2A3350EC00F3FC5D /* BottleConfigDropdown.swift */,
 			);
 			path = BottleManagement;
 			sourceTree = "<group>";
@@ -175,7 +195,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					AB5CC6BB2A308BBB00AEBB2B = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -219,15 +239,19 @@
 			files = (
 				AB5CC6D82A30938A00AEBB2B /* BrewInstallView.swift in Sources */,
 				AB7A81002A30CC7100AA71A6 /* BrewUtils.swift in Sources */,
+				AB6652CD2A3350EC00F3FC5D /* BottleConfigDropdown.swift in Sources */,
 				AB5CC6D62A30910300AEBB2B /* GPKUtils.swift in Sources */,
 				AB3BE5EE2A32248D00358BBC /* LaunchExtDropdown.swift in Sources */,
 				AB5CC6C22A308BBB00AEBB2B /* ContentView.swift in Sources */,
 				AB5CC6C02A308BBB00AEBB2B /* HarborApp.swift in Sources */,
 				AB7A81022A30D2FE00AA71A6 /* HarborUtils.swift in Sources */,
+				AB6652C42A3334E600F3FC5D /* XCLIUtils.swift in Sources */,
 				AB6A967F2A31045A003A019E /* SetupView.swift in Sources */,
 				ABC0BFD12A31629300382A42 /* BottleModel.swift in Sources */,
 				ABC0BFCE2A31627400382A42 /* BottleManagementView.swift in Sources */,
-				AB5CC6D32A308D3700AEBB2B /* GPKDownloadView.swift in Sources */,
+				AB6652C22A33342B00F3FC5D /* XCLIInstallView.swift in Sources */,
+				AB5CC6D32A308D3700AEBB2B /* GPKInstallView.swift in Sources */,
+				AB6652C92A3349A400F3FC5D /* HarborMenu.swift in Sources */,
 				ABC0BFD42A31691500382A42 /* BottleOpsDropdown.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,9 +292,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -328,9 +354,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -358,6 +386,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Harbor/Preview Content\"";
 				DEVELOPMENT_TEAM = PSAZVTU7XU;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -389,6 +418,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Harbor/Preview Content\"";
 				DEVELOPMENT_TEAM = PSAZVTU7XU;
 				ENABLE_HARDENED_RUNTIME = YES;
