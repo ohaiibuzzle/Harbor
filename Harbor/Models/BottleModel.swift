@@ -15,7 +15,7 @@ struct BottleModel: Identifiable, Equatable, Codable {
     var primaryApplicationArgument: String = ""
     var enableHUD: Bool = false
     var enableESync: Bool = false
-    var pleaseShutUp: Bool = false
+    var pleaseShutUp: Bool = true
 
 
     func launchApplication(_ application: String, arguments: [String] = []) {
