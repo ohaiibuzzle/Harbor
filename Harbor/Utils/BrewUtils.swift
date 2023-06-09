@@ -42,7 +42,7 @@ struct BrewUtils {
         tell application "Terminal"
             activate
             -- Enter x86_64 shell
-            do script "arch -x86_64 /bin/zsh"
+            do script "arch -x86_64 /bin/sh"
             delay 1
             -- Install Homebrew
             do script shellScript in front window

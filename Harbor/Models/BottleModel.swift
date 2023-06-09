@@ -73,7 +73,7 @@ struct BottleModel: Identifiable, Equatable {
         task.environment = ["WINEPREFIX": path.path]
 
         // Run winecfg to bootstrap the bottle with a Windows 10 environment
-        task.arguments = ["winecfg", "-v", "10"]
+        task.arguments = ["winecfg", "-v", "win10"]
         task.launch()
         task.waitUntilExit()
     }
