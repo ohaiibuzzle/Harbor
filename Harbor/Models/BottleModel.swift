@@ -13,13 +13,24 @@ struct BottleModel: Identifiable, Equatable {
     var path: URL
     var primaryApplicationPath: String = ""
     var primaryApplicationArgument: String = ""
+    var enableHUD: Bool = false
+    var enableESync: Bool = false
 
 
     func launchApplication(_ application: String, arguments: [String] = []) {
         let task = Process()
         task.launchPath = "/usr/local/opt/game-porting-toolkit/bin/wine64"
         task.arguments = [application] + arguments
-        task.environment = ["MTL_HUD_ENABLED": "1", "WINEESYNC": "1", "WINEPREFIX": path.path]
+        // task.environment = ["MTL_HUD_ENABLED": "1", "WINEESYNC": "1", "WINEPREFIX": path.path]
+        task.environment = ["WINEPREFIX": path.path]
+
+        if enableHUD {
+            task.environment?["MTL_HUD_ENABLED"] = "1"
+        }
+        if enableESync {
+            task.environment?["WINEESYNC"] = "1"
+        }
+
         task.launch()
     }
 

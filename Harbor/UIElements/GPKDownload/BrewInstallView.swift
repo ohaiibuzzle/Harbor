@@ -10,11 +10,11 @@ import SwiftUI
 struct BrewInstallView: View {
     @Binding var isPresented: Bool
     @Binding var isBrewInstalled: Bool
-
+    
     @State var isInstallingBrew = false
     // Timer to periodically check if Homebrew is installed
     let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
-
+    
     var body: some View {
         VStack {
             Group {
@@ -29,27 +29,30 @@ struct BrewInstallView: View {
                 .multilineTextAlignment(.center)
             }
             Spacer()
-            if !isInstallingBrew {
-                Group {
-                    if BrewUtils.shared.testX64Brew() {
-                        Text("x86_64 Homebrew is installed")
-                            .foregroundColor(.green)
-                    } else {
-                        Text("x86_64 Homebrew is not installed")
-                            .foregroundColor(.red)
-                    }
-                }
-            } else {
-                // Loading indicator
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .onReceive(timer) { _ in
+            Group {
+                if !isInstallingBrew {
+                    Group {
                         if BrewUtils.shared.testX64Brew() {
-                            timer.upstream.connect().cancel()
+                            Text("x86_64 Homebrew is installed")
+                                .foregroundColor(.green)
+                        } else {
+                            Text("x86_64 Homebrew is not installed")
+                                .foregroundColor(.red)
                         }
                     }
-                Text("Installing x86_64 Homebrew...")
+                } else {
+                    // Loading indicator
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .onReceive(timer) { _ in
+                            if BrewUtils.shared.testX64Brew() {
+                                timer.upstream.connect().cancel()
+                            }
+                        }
+                    Text("Installing x86_64 Homebrew...")
+                }
             }
+            .padding()
             Spacer()
             HStack {
                 Button("Cancel") {

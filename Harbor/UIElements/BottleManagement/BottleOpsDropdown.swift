@@ -22,21 +22,21 @@ struct NewBottleDropdown: View {
                 .font(.title)
                 .padding()
             
-            Group {
-                HStack {
-                    Text("Name")
+            Spacer()
+            
+            Grid(alignment: .leading) {
+                GridRow {
+                    Text("Name: ")
                     Spacer()
                     TextField("My Bottle", text: $bottle.name)
-                        .frame(width: 125)
                 }
                 
                 // Browsable file picker for new bottle folder
-                HStack {
-                    Group {
-                        Text("Path")
+                GridRow {
+                        Text("Path: ")
                         Spacer()
+                    HStack {
                         TextField("", text: $bottlePath)
-                            .frame(width: 125)
                         Button("Browse") {
                             let dialog = NSOpenPanel()
                             dialog.title = "Choose a folder for your new bottle"
@@ -66,41 +66,46 @@ struct NewBottleDropdown: View {
             }
 
             if editingMode {
-                Group {
+                Grid(alignment: .leading) {
                     // Primary application
-                    HStack {
-                        Text("Primary Application")
+                    GridRow {
+                        Text("Primary Application: ")
                         Spacer()
-                        TextField("MyApp.exe", text: $bottle.primaryApplicationPath)
-                            .frame(width: 125)
-                        Button("Browse") {
-                            let dialog = NSOpenPanel()
-                            dialog.title = "Choose a primary application for your bottle"
-                            dialog.showsResizeIndicator = true
-                            dialog.showsHiddenFiles = false
-                            dialog.canChooseDirectories = false
-                            dialog.canChooseFiles = true
-                            dialog.canCreateDirectories = false
-                            dialog.allowsMultipleSelection = false
-                            dialog.directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-                            if dialog.runModal() == NSApplication.ModalResponse.OK {
-                                let result = dialog.url
-                                if result != nil {
-                                    bottle.primaryApplicationPath = bottle.appPathFromUnixPath(result!)
+                        HStack {
+                            TextField("MyApp.exe", text: $bottle.primaryApplicationPath)
+                            Button("Browse") {
+                                let dialog = NSOpenPanel()
+                                dialog.title = "Choose a primary application for your bottle"
+                                dialog.showsResizeIndicator = true
+                                dialog.showsHiddenFiles = false
+                                dialog.canChooseDirectories = false
+                                dialog.canChooseFiles = true
+                                dialog.canCreateDirectories = false
+                                dialog.allowsMultipleSelection = false
+                                dialog.directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                                if dialog.runModal() == NSApplication.ModalResponse.OK {
+                                    let result = dialog.url
+                                    if result != nil {
+                                        bottle.primaryApplicationPath = bottle.appPathFromUnixPath(result!)
+                                    }
+                                } else {
+                                    // User clicked on "Cancel"
+                                    return
                                 }
-                            } else {
-                                // User clicked on "Cancel"
-                                return
                             }
                         }
                     }
-                    HStack {
-                        Text("Primary Application Argument")
+                    GridRow {
+                        Text("Primary Application Argument: ")
                         Spacer()
                         TextField("", text: $bottle.primaryApplicationArgument)
-                            .frame(width: 125)
                     }
                 }
+            }
+
+            HStack {
+                Toggle("Enable HUD", isOn: $bottle.enableHUD)
+                Toggle("Enable ESync", isOn: $bottle.enableESync)
             }
             
             if isWorking {
@@ -109,7 +114,9 @@ struct NewBottleDropdown: View {
                     .progressViewStyle(.linear)
                     .padding()
             }
-
+            
+            Spacer()
+            
             // Cancel and Create buttons
             HStack {
                 Button("Cancel") {

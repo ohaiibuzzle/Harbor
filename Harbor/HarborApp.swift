@@ -13,5 +13,8 @@ struct HarborApp: App {
         WindowGroup {
             ContentView()
         }
+        .commands{
+            HarborMenu()
+        }
     }
 }

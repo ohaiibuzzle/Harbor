@@ -32,28 +32,36 @@ struct GPKDownloadView: View {
                     .padding()
             } else {
                 VStack {
-                    // Browse button for GPK
-                    Button("Browse") {
-                        let panel = NSOpenPanel()
-                        panel.canChooseFiles = true
-                        panel.canChooseDirectories = false
-                        panel.allowsMultipleSelection = false
-                        panel.allowedFileTypes = ["dmg"]
-                        panel.begin { response in
-                            if response == .OK {
-                                let result = panel.url
-                                if let result = result {
-                                    let destination = HarborUtils.shared.getContainerHome()
-                                        .appendingPathComponent("GPK.dmg")
-                                    do {
-                                        // Remove any existing GPK.dmg
-                                        if FileManager.default.fileExists(atPath: destination.path) {
-                                            try FileManager.default.removeItem(at: destination)
+                    HStack {
+                        Button(action: {
+                            NSWorkspace.shared.open(URL(
+                                string: "https://developer.apple.com/download/more/?=game%20porting%20toolkit")!)
+                        }) {
+                            Text("Download GPK")
+                        }
+                        // Browse button for GPK
+                        Button("Browse") {
+                            let panel = NSOpenPanel()
+                            panel.canChooseFiles = true
+                            panel.canChooseDirectories = false
+                            panel.allowsMultipleSelection = false
+                            panel.allowedFileTypes = ["dmg"]
+                            panel.begin { response in
+                                if response == .OK {
+                                    let result = panel.url
+                                    if let result = result {
+                                        let destination = HarborUtils.shared.getContainerHome()
+                                            .appendingPathComponent("GPK.dmg")
+                                        do {
+                                            // Remove any existing GPK.dmg
+                                            if FileManager.default.fileExists(atPath: destination.path) {
+                                                try FileManager.default.removeItem(at: destination)
+                                            }
+                                            try FileManager.default.copyItem(at: result, to: destination)
+                                            gpkSelected = true
+                                        } catch {
+                                            NSLog("Failed to copy GPK.dmg to \(destination)")
                                         }
-                                        try FileManager.default.copyItem(at: result, to: destination)
-                                        gpkSelected = true
-                                    } catch {
-                                        NSLog("Failed to copy GPK.dmg to \(destination)")
                                     }
                                 }
                             }
@@ -70,12 +78,7 @@ struct GPKDownloadView: View {
                 Button("Cancel") {
                     isPresented = false
                 }
-                Button(action: {
-                    NSWorkspace.shared.open(URL(
-                        string: "https://developer.apple.com/download/more/?=game%20porting%20toolkit")!)
-                }) {
-                    Text("Download GPK")
-                }
+                
                 if GPKUtils.shared.checkGPKInstallStatus() != .installed {
                     Button(action: {
                         if GPKUtils.shared.showGPKInstallAlert() {
@@ -84,6 +87,7 @@ struct GPKDownloadView: View {
                                 GPKUtils.shared.installGPK()
                                 Task { @MainActor in
                                     gpkInstalling = false
+                                    gpkInstalled = GPKUtils.shared.checkGPKInstallStatus() == .installed
                                 }
                             }
                         }

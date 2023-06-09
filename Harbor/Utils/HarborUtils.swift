@@ -25,4 +25,13 @@ struct HarborUtils {
         }
         return harborHome
     }
+
+    func dropNukeOnWine() {
+        // SIGKILL any `wineserver` processes
+        let task = Process()
+        task.launchPath = "/usr/bin/killall"
+        task.arguments = ["-9", "wineserver"]
+        task.launch()
+        task.waitUntilExit()
+    }
 }
