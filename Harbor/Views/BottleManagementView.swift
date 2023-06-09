@@ -80,9 +80,23 @@ struct BottleManagementView: View {
             }
             ToolbarItem(placement: .automatic) {
                 Button {
-                    BottleLoader.shared.delete(bottles.first(where: { $0.id == selectedBottle })!)
-                    bottles.removeAll(where: { $0.id == selectedBottle })
-                    selectedBottle = nil
+                    // ALARM
+                    let alert = NSAlert()
+                    alert.messageText = "Are you sure you want to delete this bottle?"
+                    alert.informativeText = "Deleting this bottle will INSTANTLY destroy every data in \(bottles.first(where: { $0.id == selectedBottle })!.path.absoluteString). This action cannot be undone."
+                    alert.alertStyle = .critical
+                    alert.addButton(withTitle: "Delete")
+                    alert.addButton(withTitle: "Cancel")
+
+                    if alert.runModal() == .alertFirstButtonReturn {
+                        // User clicked on "Delete"
+                        BottleLoader.shared.delete(bottles.first(where: { $0.id == selectedBottle })!)
+                        bottles.removeAll(where: { $0.id == selectedBottle })
+                        selectedBottle = nil
+                    } else {
+                        // User clicked on "Cancel"
+                        return
+                    }
                 } label: {
                     Label("Nuke", systemImage: "trash")
                 }

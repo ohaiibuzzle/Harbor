@@ -127,14 +127,8 @@ struct NewBottleDropdown: View {
                 Button(editingMode ? "Save" : "Create") {
                     if editingMode {
                         // Save the bottle
+                        BottleLoader.shared.bottles[BottleLoader.shared.bottles.firstIndex(where: { $0.id == bottle.id })!] = bottle
                         isPresented = false
-                        BottleLoader.shared.bottles = BottleLoader.shared.bottles.map { (bottle) -> BottleModel in
-                            if bottle.id == self.bottle.id {
-                                return self.bottle
-                            } else {
-                                return bottle
-                            }
-                        }
                     } else {
                         // Create the bottle
                         isWorking = true

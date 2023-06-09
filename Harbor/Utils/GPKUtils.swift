@@ -18,13 +18,19 @@ struct GPKUtils {
     static let shared = GPKUtils()
     
     func checkGPKInstallStatus() -> GPKStatus {
+        let isDir = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1)
+        isDir.initialize(to: false)
+        defer { isDir.deallocate() }
+
         // Check if /usr/local/opt/game-porting-toolkit/bin/wine64 has existed
         let gpkD3DLib = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib/external/libd3dshared.dylib")
         let gpkWine64 = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/bin/wine64")
 
-        if FileManager.default.fileExists(atPath: gpkD3DLib.path) && FileManager.default.fileExists(atPath: gpkWine64.path) {
+        if FileManager.default.fileExists(atPath: gpkD3DLib.path, isDirectory: isDir) &&
+            FileManager.default.fileExists(atPath: gpkWine64.path, isDirectory: isDir) {
             return .installed
-        } else if FileManager.default.fileExists(atPath: gpkD3DLib.path) || FileManager.default.fileExists(atPath: gpkWine64.path) {
+        } else if FileManager.default.fileExists(atPath: gpkD3DLib.path, isDirectory: isDir) ||
+                    FileManager.default.fileExists(atPath: gpkWine64.path, isDirectory: isDir) {
             return .partiallyInstalled
         } else {
             return .notInstalled

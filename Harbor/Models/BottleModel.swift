@@ -117,7 +117,9 @@ struct BottleLoader {
         let bottlesPlistPath = containerHome.appendingPathComponent("bottles.plist")
         var bottlesPlist = [String: Any]()
         for bottle in bottles {
-            bottlesPlist[bottle.id.uuidString] = ["name": bottle.name, "path": bottle.path.path, "primaryApplicationPath": bottle.primaryApplicationPath]
+            bottlesPlist[bottle.id.uuidString] = ["name": bottle.name, "path": bottle.path.path,
+                                                  "primaryApplicationPath": bottle.primaryApplicationPath,
+                                                  "primaryApplicationArgument": bottle.primaryApplicationArgument]
         }
         (bottlesPlist as NSDictionary).write(toFile: bottlesPlistPath.path, atomically: true)
     }
