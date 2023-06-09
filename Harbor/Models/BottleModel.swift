@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BottleModel: Identifiable, Equatable {
+struct BottleModel: Identifiable, Equatable, Codable {
     var id: UUID
     var name: String = "New Bottle"
     var path: URL
@@ -15,6 +15,7 @@ struct BottleModel: Identifiable, Equatable {
     var primaryApplicationArgument: String = ""
     var enableHUD: Bool = false
     var enableESync: Bool = false
+    var pleaseShutUp: Bool = false
 
 
     func launchApplication(_ application: String, arguments: [String] = []) {
@@ -29,6 +30,11 @@ struct BottleModel: Identifiable, Equatable {
         }
         if enableESync {
             task.environment?["WINEESYNC"] = "1"
+        }
+
+        if pleaseShutUp {
+            task.standardOutput = nil
+            task.standardError = nil
         }
 
         task.launch()
@@ -91,37 +97,34 @@ struct BottleLoader {
         }
     }
 
+    func save(_ bottles: [BottleModel]) {
+        let containerHome = HarborUtils.shared.getContainerHome()
+        let bottleListPath = containerHome.appendingPathComponent("bottles.json")
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        do {
+            let data = try encoder.encode(bottles)
+            try data.write(to: bottleListPath)
+        } catch {
+            NSLog("Failed to save bottles.json")
+        }
+    }
+
     func load() -> [BottleModel] {
         var bottles = [BottleModel]()
         let containerHome = HarborUtils.shared.getContainerHome()
         // Load bottles.plist
-        let bottlesPlistPath = containerHome.appendingPathComponent("bottles.plist")
-        if FileManager.default.fileExists(atPath: bottlesPlistPath.path) {
-            let bottlesPlist = NSDictionary(contentsOfFile: bottlesPlistPath.path)
-            if let bottlesPlist = bottlesPlist {
-                for bottle in bottlesPlist {
-                    let bottleDict = bottle.value as! NSDictionary
-                    let bottlePath = URL(fileURLWithPath: bottleDict["path"] as! String)
-                    let bottleName = bottleDict["name"] as! String
-                    let bottlePrimaryApplicationPath = bottleDict["primaryApplicationPath"] as? String ?? ""
-                    let bottlePrimaryApplicationArgument = bottleDict["primaryApplicationArgument"] as? String ?? ""
-                    bottles.append(BottleModel(id: UUID(uuidString: bottle.key as! String)!, name: bottleName, path: bottlePath, primaryApplicationPath: bottlePrimaryApplicationPath, primaryApplicationArgument: bottlePrimaryApplicationArgument))
-                }
+        let bottleListPath = containerHome.appendingPathComponent("bottles.json")
+        if FileManager.default.fileExists(atPath: bottleListPath.path) {
+            let decoder = JSONDecoder()
+            do {
+                let data = try Data(contentsOf: bottleListPath)
+                bottles = try decoder.decode([BottleModel].self, from: data)
+            } catch {
+                NSLog("Failed to load bottles.json")
             }
         }
         return bottles
-    }
-
-    func save(_ bottles: [BottleModel]) {
-        let containerHome = HarborUtils.shared.getContainerHome()
-        let bottlesPlistPath = containerHome.appendingPathComponent("bottles.plist")
-        var bottlesPlist = [String: Any]()
-        for bottle in bottles {
-            bottlesPlist[bottle.id.uuidString] = ["name": bottle.name, "path": bottle.path.path,
-                                                  "primaryApplicationPath": bottle.primaryApplicationPath,
-                                                  "primaryApplicationArgument": bottle.primaryApplicationArgument]
-        }
-        (bottlesPlist as NSDictionary).write(toFile: bottlesPlistPath.path, atomically: true)
     }
 
     func delete(_ bottle: BottleModel) {

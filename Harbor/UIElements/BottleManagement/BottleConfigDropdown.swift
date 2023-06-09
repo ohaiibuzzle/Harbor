@@ -20,6 +20,7 @@ struct BottleConfigDropdown: View {
             VStack(alignment: .leading) {
                 Toggle("Enable HUD", isOn: $bottle.enableHUD)
                 Toggle("Enable ESync", isOn: $bottle.enableESync)
+                Toggle("Don't log to stdout", isOn: $bottle.pleaseShutUp)
             }
             Spacer()
             HStack {
