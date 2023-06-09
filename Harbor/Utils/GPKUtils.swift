@@ -39,7 +39,7 @@ struct GPKUtils {
         }
         
         let aaplScript = """
-        property shellScript : "\(BrewUtils.shared.x64BrewPrefix)/bin/brew install game-porting-toolkit && \
+        property shellScript : "\(BrewUtils.shared.x64BrewPrefix)/bin/brew install apple/apple/game-porting-toolkit && \
         clear && echo 'Game Porting Toolkit has been installed. You can now close this Terminal window.' && exit"
         
         tell application "Terminal"
@@ -108,21 +108,6 @@ struct GPKUtils {
             let gpkBinDest = harborContainer.appendingPathComponent("bin")
             if FileManager.default.fileExists(atPath: gpkBinDest.path) == false {
                 try? FileManager.default.createDirectory(at: gpkBinDest, withIntermediateDirectories: true, attributes: nil)
-            }
-            
-            // Get list of files beginning with gameportingtoolkit
-            let gpkBin = try? FileManager.default.contentsOfDirectory(atPath: gpkVolume.path)
-                .filter { $0.starts(with: "gameportingtoolkit") }
-
-            // Copy the files to Harbor's container
-            for file in gpkBin ?? [] {
-                let cp2 = Process()
-                cp2.executableURL = URL(fileURLWithPath: "/bin/cp")
-                cp2.arguments = ["-R", "\(gpkVolume.path)/\(file)", gpkBinDest.path]
-                cp2.standardOutput = nil
-                cp2.standardError = nil
-                cp2.launch()
-                cp2.waitUntilExit()
             }
 
             // Unmount the image
