@@ -11,4 +11,6 @@ Cooked up in about 2 minutes with IconKitchen. I'm a software engineer, not a gr
 If you are in need of something *stronger*, get [Whisky](https://github.com/IsaacMarovitz/Whisky). This is just the bare minimum to get GPTK working
 
 # Downloads
-Not quite ripe yet to set sail, please compile on your own
+Harbor has not quite aged enough yet, but if sailing the high seas is your jam, [start your journey](https://github.com/ohaiibuzzle/Harbor/releases)
+
+Have fun and report bugs!
