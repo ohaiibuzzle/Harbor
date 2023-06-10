@@ -83,14 +83,16 @@ struct BottleManagementView: View {
                     // ALARM
                     let alert = NSAlert()
                     alert.messageText = "Are you sure you want to delete this bottle?"
-                    alert.informativeText = "Deleting this bottle will INSTANTLY destroy every data in \(bottles.first(where: { $0.id == selectedBottle })!.path.absoluteString). This action cannot be undone."
                     alert.alertStyle = .critical
+                    let checkbox = NSButton(checkboxWithTitle: "Remove all bottle data in \(bottles.first(where: { $0.id == selectedBottle })!.path.absoluteString)", target: nil, action: nil)
+                    checkbox.state = .on
+                    alert.accessoryView = checkbox
                     alert.addButton(withTitle: "Delete")
                     alert.addButton(withTitle: "Cancel")
 
                     if alert.runModal() == .alertFirstButtonReturn {
                         // User clicked on "Delete"
-                        BottleLoader.shared.delete(bottles.first(where: { $0.id == selectedBottle })!)
+                        BottleLoader.shared.delete(bottles.first(where: { $0.id == selectedBottle })!, checkbox.state)
                         bottles.removeAll(where: { $0.id == selectedBottle })
                         selectedBottle = nil
                     } else {
