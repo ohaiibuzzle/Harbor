@@ -1,9 +1,9 @@
 # Harbor
-<picture>
-  <source srcset="https://raw.githubusercontent.com/ohaiibuzzle/Harbor/senpai/Harbor/Assets.xcassets/AppIcon.appiconset/AppIcon-256.png" media="(min-width: 256px)">
-</picture>
-A simple, stupid wrapper for Apple's Game Porting Toolkit
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ohaiibuzzle/Harbor/senpai/Harbor/Assets.xcassets/AppIcon.appiconset/AppIcon-256.png">
+  <h4 align="center">A simple, stupid wrapper for Apple's Game Porting Toolkit</p>
+</p>
+  
 # What's up with the icon?
 Cooked up in about 2 minutes with IconKitchen. I'm a software engineer, not a graphic designer.
 
