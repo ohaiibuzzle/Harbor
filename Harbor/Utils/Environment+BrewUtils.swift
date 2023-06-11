@@ -10,4 +10,3 @@ extension EnvironmentValues {
             set { self[BrewUtilsEnvironmentKey.self] = newValue }
     }
 }
-

@@ -18,7 +18,8 @@ struct HarborUtils {
         // Create it if needed
         if !FileManager.default.fileExists(atPath: harborHome.path) {
             do {
-                try FileManager.default.createDirectory(at: harborHome, withIntermediateDirectories: true, attributes: nil)
+                try FileManager.default.createDirectory(at: harborHome,
+                                                        withIntermediateDirectories: true, attributes: nil)
             } catch {
                 NSLog("Harbor: Failed to create Harbor home directory")
             }
@@ -33,7 +34,7 @@ struct HarborUtils {
         task.arguments = ["-9", "wineserver"]
         task.launch()
         task.waitUntilExit()
-        
+
         task = Process()
         task.launchPath = "/usr/bin/killall"
         task.arguments = ["-9", "wine64-preloader"]

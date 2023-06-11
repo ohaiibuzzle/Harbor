@@ -9,14 +9,14 @@ import SwiftUI
 
 struct BrewInstallView: View {
     @Binding var isPresented: Bool
-    
+
     @Environment(\.brewUitls)
     var brewUtils
-    
+
     @State var isInstallingBrew = false
     // Timer to periodically check if Homebrew is installed
     let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
-    
+
     var body: some View {
         VStack {
             Group {
@@ -46,7 +46,7 @@ struct BrewInstallView: View {
                         .progressViewStyle(CircularProgressViewStyle())
                         .onReceive(timer) { _ in
                             brewUtils.testX64Brew()
-                            
+
                             if brewUtils.installed {
                                 timer.upstream.connect().cancel()
                             }
@@ -73,7 +73,7 @@ struct BrewInstallView: View {
                         }
                     }
                 }
-            }   
+            }
         }
         .padding()
     }

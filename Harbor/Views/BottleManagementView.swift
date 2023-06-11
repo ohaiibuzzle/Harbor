@@ -10,24 +10,24 @@ import SwiftUI
 struct BottleManagementView: View {
     @State private var bottles = BottleLoader.shared.bottles
     @State private var selectedBottle: BottleModel.ID?
-    
+
     @State private var showNewBottleSheet = false
     @State private var showEditBottleSheet = false
     @State private var showLaunchExtSheet = false
     @State private var showAdvConfigSheet = false
-    
+
     @State private var sortOrder = [KeyPathComparator(\BottleModel.name)]
     var body: some View {
         VStack {
             Text("home.bottles.title")
                 .font(.title)
                 .padding()
-            
+
             Text("home.bottles.subtitle")
                 .padding()
                 .multilineTextAlignment(.center)
         }
-        
+
         Table(bottles, selection: $selectedBottle, sortOrder: $sortOrder) {
             TableColumn("home.table.name", value: \.name)
             TableColumn("home.table.path", value: \.path.relativeString)
@@ -35,7 +35,7 @@ struct BottleManagementView: View {
         }
         .padding()
         .frame(minWidth: 500, minHeight: 200)
-        .onChange(of: sortOrder) { oldOrder, newOrder in
+        .onChange(of: sortOrder) { _, newOrder in
             bottles.sort(using: newOrder)
         }
         .toolbar {
@@ -86,13 +86,14 @@ struct BottleManagementView: View {
                     alert.alertStyle = .critical
                     let checkbox = NSButton(checkboxWithTitle:
                                                 String(format: String(localized: "home.alert.deletePath %@"),
-                                                       bottles.first(where: { $0.id == selectedBottle })!.path.absoluteString),
+                                                       bottles.first(where: { $0.id == selectedBottle })!
+                                                        .path.absoluteString),
                         target: nil, action: nil)
                     checkbox.state = .on
                     alert.accessoryView = checkbox
                     alert.addButton(withTitle: String(localized: "btn.delete"))
                     alert.addButton(withTitle: String(localized: "btn.cancel"))
-                    
+
                     if alert.runModal() == .alertFirstButtonReturn {
                         // User clicked on "Delete"
                         BottleLoader.shared.delete(bottles.first(where: { $0.id == selectedBottle })!, checkbox.state)
@@ -108,18 +109,22 @@ struct BottleManagementView: View {
                 .disabled(selectedBottle == nil)
             }
         }
-        
+
         .sheet(isPresented: $showNewBottleSheet) {
-            NewBottleDropdown(isPresented: $showNewBottleSheet, bottle: BottleModel(id: UUID(), path: URL(fileURLWithPath: "")))
+            NewBottleDropdown(isPresented: $showNewBottleSheet,
+                              bottle: BottleModel(id: UUID(), path: URL(fileURLWithPath: "")))
         }
         .sheet(isPresented: $showEditBottleSheet) {
-            EditBottleView(isPresented: $showEditBottleSheet, bottle: bottles.first(where: { $0.id == selectedBottle })!)
+            EditBottleView(isPresented: $showEditBottleSheet,
+                           bottle: bottles.first(where: { $0.id == selectedBottle })!)
         }
         .sheet(isPresented: $showLaunchExtSheet) {
-            LaunchExtDropdown(isPresented: $showLaunchExtSheet, bottle: bottles.first(where: { $0.id == selectedBottle })!)
+            LaunchExtDropdown(isPresented: $showLaunchExtSheet,
+                              bottle: bottles.first(where: { $0.id == selectedBottle })!)
         }
         .sheet(isPresented: $showAdvConfigSheet) {
-            BottleConfigDropdown(isPresented: $showAdvConfigSheet, bottle: $bottles.first(where: { $0.id == selectedBottle })!)
+            BottleConfigDropdown(isPresented: $showAdvConfigSheet,
+                                 bottle: $bottles.first(where: { $0.id == selectedBottle })!)
         }
         .onChange(of: showNewBottleSheet) {
             bottles = BottleLoader.shared.bottles
@@ -127,7 +132,7 @@ struct BottleManagementView: View {
         .onChange(of: showEditBottleSheet) {
             bottles = BottleLoader.shared.bottles
         }
-        
+
     }
 }
 

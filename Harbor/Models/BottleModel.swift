@@ -18,7 +18,6 @@ struct BottleModel: Identifiable, Equatable, Codable {
     var enableESync: Bool = false
     var pleaseShutUp: Bool = true
 
-
     func launchApplication(_ application: String, arguments: [String] = []) {
         let task = Process()
         task.launchPath = "/usr/local/opt/game-porting-toolkit/bin/wine64"
@@ -55,7 +54,8 @@ struct BottleModel: Identifiable, Equatable, Codable {
     }
 
     func launchPrimaryApplication() {
-        launchApplication(primaryApplicationPath, arguments: primaryApplicationArgument.split(separator: " ").map(String.init))
+        launchApplication(primaryApplicationPath,
+                          arguments: primaryApplicationArgument.split(separator: " ").map(String.init))
     }
 
     func appPathFromUnixPath(_ unixPath: URL) -> String {
@@ -88,7 +88,7 @@ struct BottleModel: Identifiable, Equatable, Codable {
 
 struct BottleLoader {
     static var shared = BottleLoader()
-    
+
     var bottles: [BottleModel] {
         get {
             return load()

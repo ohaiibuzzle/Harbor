@@ -10,7 +10,7 @@ import SwiftUI
 struct BottleMenu: Commands {
     @Binding var bottles: [BottleModel]
     @Binding var selectedBottle: BottleModel.ID?
-    
+
     var body: some Commands {
         CommandMenu("Bottle") {
             Button("Launch winecfg") {
@@ -22,4 +22,3 @@ struct BottleMenu: Commands {
         }
     }
 }
-

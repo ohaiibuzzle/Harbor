@@ -11,11 +11,11 @@ import Observation
 @Observable
 final class XCLIUtils {
     var installed = false
-    
+
     init() {
         checkXcliInstalled()
     }
-    
+
     func checkXcliInstalled() {
         // SANITY: Check if /Library/Developer/CommandLineTools exists
         guard FileManager.default.fileExists(atPath: "/Library/Developer/CommandLineTools") else {

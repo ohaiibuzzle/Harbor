@@ -10,16 +10,16 @@ import SwiftUI
 struct LaunchExtDropdown: View {
     @Binding var isPresented: Bool
     var bottle: BottleModel
-    
+
     @State var applicationPath = ""
     @State var applicationArgument = ""
-    
+
     var body: some View {
         VStack {
             Text("sheet.launchExt.title")
                 .font(.title)
                 .padding()
-            
+
             Text("sheet.launchExt.subtitle \(bottle.name)")
                 .padding()
             Grid {
@@ -51,7 +51,7 @@ struct LaunchExtDropdown: View {
                     }
                 }
                 .padding()
-                
+
                 GridRow {
                     Text("sheet.launchExt.argsLabel")
                     TextField("", text: $applicationArgument)
@@ -65,7 +65,9 @@ struct LaunchExtDropdown: View {
                     isPresented = false
                 }
                 Button("btn.launch") {
-                    bottle.launchApplication(applicationPath, arguments: bottle.primaryApplicationArgument.split(separator: " ").map { String($0) })
+                    bottle.launchApplication(applicationPath,
+                                             arguments: bottle.primaryApplicationArgument
+                                                .split(separator: " ").map { String($0) })
                     isPresented = false
                 }
                 .disabled(applicationPath.isEmpty)
@@ -77,5 +79,6 @@ struct LaunchExtDropdown: View {
 }
 
 #Preview {
-    LaunchExtDropdown(isPresented: Binding.constant(true), bottle: BottleModel(id: UUID(), name: "Demo", path: URL(fileURLWithPath: "")))
+    LaunchExtDropdown(isPresented: Binding.constant(true),
+                      bottle: BottleModel(id: UUID(), name: "Demo", path: URL(fileURLWithPath: "")))
 }

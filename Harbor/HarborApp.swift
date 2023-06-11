@@ -16,7 +16,7 @@ struct HarborApp: App {
                 .environment(\.brewUitls, .init())
                 .environment(\.xcliUtils, .init())
         }
-        .commands{
+        .commands {
             HarborMenu()
         }
     }

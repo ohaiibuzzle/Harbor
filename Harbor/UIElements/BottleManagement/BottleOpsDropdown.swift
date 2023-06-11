@@ -14,15 +14,15 @@ struct NewBottleDropdown: View {
     @State var bottle: BottleModel
     @State var bottlePath = ""
     @State var isWorking = false
-    
+
     var body: some View {
         VStack {
             Text(editingMode ? "sheet.edit.title" : "sheet.new.title")
                 .font(.title)
                 .padding()
-            
+
             Spacer()
-            
+
             Grid(alignment: .leading) {
                 GridRow {
                     Text("sheet.new.bottleNameLabel")
@@ -37,7 +37,7 @@ struct NewBottleDropdown: View {
                             }
                         }
                 }
-                
+
                 // Browsable file picker for new bottle folder
                 GridRow {
                         Text("sheet.new.bottlePathLabel")
@@ -53,7 +53,8 @@ struct NewBottleDropdown: View {
                             dialog.canChooseFiles = false
                             dialog.canCreateDirectories = true
                             dialog.allowsMultipleSelection = false
-                            dialog.directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                            dialog.directoryURL = FileManager.default
+                                .urls(for: .documentDirectory, in: .userDomainMask).first
                             if dialog.runModal() == NSApplication.ModalResponse.OK {
                                 let result = dialog.url
                                 if result != nil {
@@ -109,16 +110,16 @@ struct NewBottleDropdown: View {
                     }
                 }
             }
-            
+
             if isWorking {
                 // Bar indicating progress
                 ProgressView()
                     .progressViewStyle(.linear)
                     .padding()
             }
-            
+
             Spacer()
-            
+
             // Cancel and Create buttons
             HStack {
                 Button("btn.cancel") {
@@ -127,7 +128,8 @@ struct NewBottleDropdown: View {
                 Button(editingMode ? "btn.done" : "btn.create") {
                     if editingMode {
                         // Save the bottle
-                        BottleLoader.shared.bottles[BottleLoader.shared.bottles.firstIndex(where: { $0.id == bottle.id })!] = bottle
+                        BottleLoader.shared.bottles[BottleLoader.shared.bottles
+                            .firstIndex(where: { $0.id == bottle.id })!] = bottle
                         isPresented = false
                     } else {
                         // Create the bottle
@@ -156,11 +158,14 @@ struct EditBottleView: View {
     var bottle: BottleModel
     var body: some View {
         // Basically reuse New in editing mode
-        NewBottleDropdown(isPresented: $isPresented, editingMode: true, bottle: bottle, bottlePath: bottle.path.absoluteString)
+        NewBottleDropdown(isPresented: $isPresented, editingMode: true,
+                          bottle: bottle, bottlePath: bottle.path.absoluteString)
     }
 
 }
 
 #Preview {
-    NewBottleDropdown(isPresented: Binding.constant(true), bottle: BottleModel(id: UUID(), name: "My Bottle", path: URL(fileURLWithPath: "/Users/venti/Documents/My Bottle")))
+    NewBottleDropdown(isPresented: Binding.constant(true),
+                      bottle: BottleModel(id: UUID(), name: "My Bottle",
+                                          path: URL(fileURLWithPath: "/Users/venti/Documents/My Bottle")))
 }

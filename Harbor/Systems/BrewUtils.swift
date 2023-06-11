@@ -16,13 +16,13 @@ final class BrewUtils {
     init() {
         testX64Brew()
     }
-    
+
     func testX64Brew() {
         guard FileManager.default.fileExists(atPath: x64BrewPrefix) else {
             installed = false
             return
         }
-        
+
         // Launch homebrew from within to check if it's correctly installed
         let task = Process()
         task.executableURL = URL(fileURLWithPath: "/bin/bash")
@@ -55,7 +55,7 @@ final class BrewUtils {
         Task(priority: .userInitiated) {
             NSLog("Harbor: Launching Homebrew installation")
             let script = NSAppleScript(source: aaplScript)
-            var errors: NSDictionary? = nil
+            var errors: NSDictionary?
             script?.executeAndReturnError(&errors)
             if errors != nil {
                 NSLog("Harbor: Homebrew installation failed")
@@ -65,7 +65,7 @@ final class BrewUtils {
 
         repeat {
             self.testX64Brew()
-            
+
             // NSLog("Harbor: Waiting for Homebrew installation to complete")
             sleep(1)
         } while installed == false

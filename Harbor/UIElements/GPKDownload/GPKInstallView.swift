@@ -11,12 +11,12 @@ struct GPKDownloadView: View {
     @Binding var isPresented: Bool
     @State var gpkSelected = false
     @State var gpkInstalling = false
-    
+
     @Environment(\.gpkUtils)
     var gpkUtils
     @Environment(\.brewUitls)
     var brewUtils
-    
+
     var body: some View {
         VStack {
             Text("sheet.GPKInstall.title")
@@ -36,9 +36,9 @@ struct GPKDownloadView: View {
                         Button(action: {
                             NSWorkspace.shared.open(URL(
                                 string: "https://developer.apple.com/download/more/?=game%20porting%20toolkit")!)
-                        }) {
+                        }, label: {
                             Text("sheet.GPKInstall.btn.download")
-                        }
+                        })
                         // Browse button for GPK
                         Button("btn.browse") {
                             let panel = NSOpenPanel()
@@ -78,7 +78,7 @@ struct GPKDownloadView: View {
                 Button("btn.cancel") {
                     isPresented = false
                 }
-                
+
                 if gpkUtils.status != .installed {
                     Button(action: {
                         if gpkUtils.showGPKInstallAlert() {
@@ -91,16 +91,16 @@ struct GPKDownloadView: View {
                                 }
                             }
                         }
-                    }) {
+                    }, label: {
                         Text("sheet.GPKInstall.btn.install")
-                    }
+                    })
                     .disabled(gpkSelected == false)
                 } else {
                     Button(action: {
                         isPresented = false
-                    }) {
+                    }, label: {
                         Text("btn.OK")
-                    }
+                    })
                 }
             }
         }

@@ -10,7 +10,7 @@ import SwiftUI
 struct BottleConfigDropdown: View {
     @Binding var isPresented: Bool
     @Binding var bottle: BottleModel
-    
+
     var body: some View {
         VStack {
             Text("sheet.advConf.title \(bottle.name)")
@@ -36,7 +36,8 @@ struct BottleConfigDropdown: View {
             }
             Spacer()
             Button("btn.OK") {
-                BottleLoader.shared.bottles[BottleLoader.shared.bottles.firstIndex(where: { $0.id == bottle.id })!] = bottle
+                BottleLoader.shared.bottles[BottleLoader.shared.bottles
+                    .firstIndex(where: { $0.id == bottle.id })!] = bottle
                 isPresented = false
             }
         }
@@ -46,5 +47,7 @@ struct BottleConfigDropdown: View {
 }
 
 #Preview {
-    BottleConfigDropdown(isPresented: Binding.constant(true), bottle: Binding.constant(BottleModel(id: UUID(), name: "Bottle", path: URL(fileURLWithPath: ""))))
+    BottleConfigDropdown(isPresented: Binding.constant(true),
+                         bottle: Binding.constant(BottleModel(
+                            id: UUID(), name: "Bottle", path: URL(fileURLWithPath: ""))))
 }

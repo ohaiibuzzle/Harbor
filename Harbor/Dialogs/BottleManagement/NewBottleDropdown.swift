@@ -13,13 +13,13 @@ struct NewBottleDropdown: View {
     var editingMode: Bool = false
 
     @State var bottleName = ""
-    
+
     var body: some View {
         VStack {
             Text("New Bottle")
                 .font(.title)
                 .padding()
-            
+
             HStack {
                 Text("Name")
                 TextField("My Bottle", text: $bottle.name)
@@ -39,7 +39,8 @@ struct NewBottleDropdown: View {
                         dialog.canChooseFiles = false
                         dialog.canCreateDirectories = true
                         dialog.allowsMultipleSelection = false
-                        dialog.directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                        dialog.directoryURL = FileManager.default
+                            .urls(for: .documentDirectory, in: .userDomainMask).first
                         if dialog.runModal() == NSApplication.ModalResponse.OK {
                             let result = dialog.url
                             if result != nil {
@@ -101,7 +102,7 @@ struct EditBottleView: View {
     @Binding var bottle: BottleModel
 
     @State var bottleName = ""
-    
+
     var body: some View {
         // Basically reuse New in editing mode
         NewBottleDropdown(isPresented: $isPresented, bottle: $bottle, editingMode: true)
@@ -110,5 +111,7 @@ struct EditBottleView: View {
 }
 
 #Preview {
-    NewBottleDropdown(isPresented: Binding.constant(true), bottle: Binding.constant(BottleModel(id: UUID(), name: "My Bottle", path: URL(fileURLWithPath: "/Users/venti/Documents/My Bottle"))))
+    NewBottleDropdown(isPresented: Binding.constant(true),
+                      bottle: Binding.constant(BottleModel(
+                        id: UUID(), name: "My Bottle", path: URL(fileURLWithPath: "/Users/venti/Documents/My Bottle"))))
 }

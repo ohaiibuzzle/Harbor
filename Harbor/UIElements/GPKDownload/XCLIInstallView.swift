@@ -9,10 +9,10 @@ import SwiftUI
 
 struct XCLIInstallView: View {
     @Binding var isPresented: Bool
-    
+
     @Environment(\.xcliUtils)
     var xcliUtils
-    
+
     let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
 
     var body: some View {
@@ -25,14 +25,14 @@ struct XCLIInstallView: View {
                 Text("sheet.XCLIInstall.subtitle")
                 .multilineTextAlignment(.center)
             }
-            
+
             Group {
                 if !xcliUtils.installed {
                     ProgressView()
                         .padding()
                         .onReceive(timer) { _ in
                             xcliUtils.checkXcliInstalled()
-                            
+
                             if xcliUtils.installed {
                                 timer.upstream.connect().cancel()
                                 isPresented = false
@@ -44,7 +44,8 @@ struct XCLIInstallView: View {
 
                     Button("btn.download") {
                         // Have to be done manually since Apple don't beta seed this
-                        NSWorkspace.shared.open(URL(string: "https://developer.apple.com/download/more/?=command%20line%20tools")!)
+                        NSWorkspace.shared.open(
+                            URL(string: "https://developer.apple.com/download/more/?=command%20line%20tools")!)
                     }
             } else {
                     Text("sheet.XCLIInstall.status.installed")
@@ -54,7 +55,7 @@ struct XCLIInstallView: View {
             }
             }
             .padding()
-            
+
             HStack {
                 Spacer()
                 Button("btn.cancel") {
