@@ -82,19 +82,17 @@ struct BottleManagementView: View {
                 Button {
                     // ALARM
                     let alert = NSAlert()
-                    alert.messageText = NSLocalizedString("home.alert.deleteTitle", comment: "")
+                    alert.messageText = String(localized: "home.alert.deleteTitle")
                     alert.alertStyle = .critical
                     let checkbox = NSButton(checkboxWithTitle:
-                                            """
-                                            \(NSLocalizedString("home.alert.deletePath", comment: ""))
-                                            \(bottles.first(where: { $0.id == selectedBottle })!.path.absoluteString)
-                                            """,
-                                            target: nil, action: nil)
+                                                String(format: String(localized: "home.alert.deletePath %@"),
+                                                       bottles.first(where: { $0.id == selectedBottle })!.path.absoluteString),
+                        target: nil, action: nil)
                     checkbox.state = .on
                     alert.accessoryView = checkbox
-                    alert.addButton(withTitle: NSLocalizedString("btn.delete", comment: ""))
-                    alert.addButton(withTitle: NSLocalizedString("btn.cancel", comment: ""))
-
+                    alert.addButton(withTitle: String(localized: "btn.delete"))
+                    alert.addButton(withTitle: String(localized: "btn.cancel"))
+                    
                     if alert.runModal() == .alertFirstButtonReturn {
                         // User clicked on "Delete"
                         BottleLoader.shared.delete(bottles.first(where: { $0.id == selectedBottle })!, checkbox.state)

@@ -130,11 +130,11 @@ struct GPKUtils {
     func showGPKInstallAlert() -> Bool {
         // Popup an alert warning the user about the GPK installation process
         let alert = NSAlert()
-        alert.messageText = NSLocalizedString("alert.GPKInstall.title", comment: "")
-        alert.informativeText = NSLocalizedString("alert.GPKInstall.informativeText", comment: "")
+        alert.messageText = String(localized:"alert.GPKInstall.title")
+        alert.informativeText = String(localized:"alert.GPKInstall.informativeText")
         alert.alertStyle = .warning
-        alert.addButton(withTitle: NSLocalizedString("btn.OK", comment: ""))
-        alert.addButton(withTitle: NSLocalizedString("btn.cancel", comment: ""))
+        alert.addButton(withTitle: String(localized:"btn.OK"))
+        alert.addButton(withTitle: String(localized:"btn.cancel"))
         
         if alert.runModal() == .alertFirstButtonReturn {
             // User clicked OK. Go time.
