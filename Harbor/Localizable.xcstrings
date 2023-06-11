@@ -4,107 +4,256 @@
     "" : {
 
     },
-    "Advanced Config" : {
-
+    "alert.GPKInstall.informativeText" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harbor will now install the Game Porting Toolkit.\nDue to Apple's decision to ship Game Porting Toolkit in source code form, the installation process will take a long time and your machine may get **really** hot.\nIf your laptop is fanless and you have some kind of cooling solution, now is the time to use it."
+          }
+        }
+      }
     },
-    "Application: " : {
-
+    "alert.GPKInstall.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game Porting Toolkit Installation"
+          }
+        }
+      }
     },
-    "Arguments: " : {
-
+    "btn.browse" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Browse"
+          }
+        }
+      }
     },
-    "Browse" : {
-
+    "btn.cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
     },
-    "Cancel" : {
-
+    "btn.create" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create"
+          }
+        }
+      }
     },
-    "Configure %@" : {
-
+    "btn.delete" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
     },
-    "Create" : {
-
+    "btn.done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
     },
-    "Don't log to stdout" : {
-
+    "btn.download" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download"
+          }
+        }
+      }
     },
-    "Done" : {
-
+    "btn.install" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install"
+          }
+        }
+      }
     },
-    "Download" : {
-
+    "btn.launch" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launch"
+          }
+        }
+      }
     },
-    "Download GPK" : {
-
+    "btn.OK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
     },
-    "Edit" : {
-
+    "home.alert.deletePath" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove all bottle data in"
+          }
+        }
+      }
     },
-    "Edit Bottle" : {
-
+    "home.alert.deleteTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete this bottle?"
+          }
+        }
+      }
     },
-    "Enable ESync" : {
-
+    "home.bottles.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wine bottles are separate environments that you can use to install Windows applications. \nYou can create as many bottles as you want, and each bottle can have its own Windows version and configuration."
+          }
+        }
+      }
     },
-    "Enable HUD" : {
-
+    "home.bottles.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Wine Bottles"
+          }
+        }
+      }
     },
-    "GPK is already installed" : {
-
+    "home.btn.advConf" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced Configuration"
+          }
+        }
+      }
     },
-    "GPK.dmg selected" : {
-
+    "home.btn.edit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        }
+      }
     },
-    "Harbor Setup" : {
-
+    "home.btn.new" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New"
+          }
+        }
+      }
     },
-    "Homebrew Installation" : {
-
+    "home.btn.nuke" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuke"
+          }
+        }
+      }
     },
-    "In order to function, Harbor needs a copy of Apple's Game Porting Toolkit.\nYou can download it from Apple Developers as we can't include it due to Apple's license" : {
-
+    "home.btn.run" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run"
+          }
+        }
+      }
     },
-    "In order to install Apple's Game Porting Toolkit\nyou will need a copy of the x86_64 Homebrew package manager." : {
-
+    "home.btn.runExt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run External App"
+          }
+        }
+      }
     },
-    "In order to install Apple's Game Porting Toolkit\nyou will need a copy of the Xcode Command Line Tools." : {
-
+    "home.table.name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
     },
-    "Install" : {
-
+    "home.table.path" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Path"
+          }
+        }
+      }
     },
-    "Install Apple's Game Porting Toolkit" : {
-
+    "home.table.primaryApp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primary Application"
+          }
+        }
+      }
     },
-    "Install GPK" : {
-
-    },
-    "Install Homebrew" : {
-
-    },
-    "Install XCLT 15" : {
-
-    },
-    "Installing x86_64 Homebrew..." : {
-
-    },
-    "Kill all Wine instances" : {
-
-    },
-    "Launch" : {
-
-    },
-    "Launch an External App" : {
-
-    },
-    "Launch explorer" : {
-
-    },
-    "Launch regedit" : {
-
-    },
-    "Launch winecfg" : {
-
+    "menu.harbor.killAll" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kill All Wine Processes"
+          }
+        }
+      }
     },
     "My Bottle" : {
 
@@ -112,68 +261,375 @@
     "MyApp.exe" : {
 
     },
-    "Name" : {
-
+    "setup.btn.installGPK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install GPTK"
+          }
+        }
+      }
     },
-    "Name: " : {
-
+    "setup.btn.installHB" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install Homebrew"
+          }
+        }
+      }
     },
-    "New" : {
-
+    "setup.btn.installXCLI15" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install XCLI 15"
+          }
+        }
+      }
     },
-    "New Bottle" : {
-
+    "setup.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harbor needs you to install a few components before it can continue"
+          }
+        }
+      }
     },
-    "Nuke" : {
-
+    "setup.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harbor Setup"
+          }
+        }
+      }
     },
-    "Path" : {
-
+    "sheet.advConf.eSyncToggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable ESync"
+          }
+        }
+      }
     },
-    "Path: " : {
-
+    "sheet.advConf.explorerBtn" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launch Explorer"
+          }
+        }
+      }
     },
-    "Primary Application" : {
-
+    "sheet.advConf.hudToggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Metal HUD"
+          }
+        }
+      }
     },
-    "Primary Application Argument: " : {
-
+    "sheet.advConf.regeditBtn" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launch regedit"
+          }
+        }
+      }
     },
-    "Primary Application: " : {
-
+    "sheet.advConf.stdOutToggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't log to stdout"
+          }
+        }
+      }
     },
-    "Run" : {
-
+    "sheet.advConf.title %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuring %@"
+          }
+        }
+      }
     },
-    "Run External" : {
-
+    "sheet.advConf.winecfgBtn" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launch winecfg"
+          }
+        }
+      }
     },
-    "Save" : {
-
+    "sheet.edit.primaryAppArgsLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primary Application Arguments"
+          }
+        }
+      }
     },
-    "The application will be copied to and launched from prefix %@" : {
-
+    "sheet.edit.primaryAppLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primary Application: "
+          }
+        }
+      }
     },
-    "Waiting for Xcode Command Line Tools to be installed..." : {
-
+    "sheet.edit.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Bottle"
+          }
+        }
+      }
     },
-    "Wine bottles are separate environments that you can use to install Windows applications. \nYou can create as many bottles as you want, and each bottle can have its own Windows version and configuration." : {
-
+    "sheet.GPKInstall.btn.download" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download GPTK"
+          }
+        }
+      }
     },
-    "x86_64 Homebrew is installed" : {
-
+    "sheet.GPKInstall.btn.install" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install GPTK"
+          }
+        }
+      }
     },
-    "x86_64 Homebrew is not installed" : {
-
+    "sheet.GPKInstall.status.installed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPTK is installed"
+          }
+        }
+      }
     },
-    "Xcode Command Line Tools are installed." : {
-
+    "sheet.GPKInstall.status.selected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPTK.dmg has been selected"
+          }
+        }
+      }
     },
-    "Xcode Command Line Tools Installation" : {
-
+    "sheet.GPKInstall.subTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In order to function, Harbor needs a copy of Apple's Game Porting Toolkit. \nYou can download it from Apple Developers as we can't include it due to Apple's license"
+          }
+        }
+      }
     },
-    "Your Wine Bottles" : {
-
+    "sheet.GPKInstall.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install Apple's Game Porting Toolkit"
+          }
+        }
+      }
+    },
+    "sheet.HBInstall.status.installed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "x86_64 Homebrew is installed"
+          }
+        }
+      }
+    },
+    "sheet.HBInstall.status.installing" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installing x86_64 Homebrew..."
+          }
+        }
+      }
+    },
+    "sheet.HBInstall.status.notInstalled" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "x86_64 Homebrew is not installed"
+          }
+        }
+      }
+    },
+    "sheet.HBInstall.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In order to install Apple's Game Porting Toolkit, \nyou will need a copy of the x86_64 Homebrew package manager."
+          }
+        }
+      }
+    },
+    "sheet.HBInstall.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew Installation"
+          }
+        }
+      }
+    },
+    "sheet.launchExt.applicationLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Application"
+          }
+        }
+      }
+    },
+    "sheet.launchExt.argsLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arguments"
+          }
+        }
+      }
+    },
+    "sheet.launchExt.subtitle %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The application will be copied to and launched from prefix %@"
+          }
+        }
+      }
+    },
+    "sheet.launchExt.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launch an External App"
+          }
+        }
+      }
+    },
+    "sheet.new.bottleNameLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "sheet.new.bottlePathLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Path"
+          }
+        }
+      }
+    },
+    "sheet.new.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Bottle"
+          }
+        }
+      }
+    },
+    "sheet.XCLIInstall.status.installed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode Command Line Tools is installed"
+          }
+        }
+      }
+    },
+    "sheet.XCLIInstall.status.waiting" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waiting for Xcode Command Line Tools to be installed..."
+          }
+        }
+      }
+    },
+    "sheet.XCLIInstall.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In order to install Apple's Game Porting Toolkit you will need a copy of the Xcode Command Line Tools."
+          }
+        }
+      }
+    },
+    "sheet.XCLIInstall.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode Command Line Tools Installation"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

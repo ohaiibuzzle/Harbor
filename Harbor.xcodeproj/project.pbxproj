@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB19DA972A358FE400967784 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AB19DA962A358FE400967784 /* Localizable.xcstrings */; };
 		AB3BE5EE2A32248D00358BBC /* LaunchExtDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */; };
 		AB5CC6C02A308BBB00AEBB2B /* HarborApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6BF2A308BBB00AEBB2B /* HarborApp.swift */; };
 		AB5CC6C22A308BBB00AEBB2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6C12A308BBB00AEBB2B /* ContentView.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB19DA962A358FE400967784 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchExtDropdown.swift; sourceTree = "<group>"; };
 		AB4707BF2A30C2C60019DC5F /* Harbor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Harbor.entitlements; sourceTree = "<group>"; };
 		AB5CC6BC2A308BBB00AEBB2B /* Harbor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Harbor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +83,7 @@
 		AB5CC6BE2A308BBB00AEBB2B /* Harbor */ = {
 			isa = PBXGroup;
 			children = (
+				AB19DA962A358FE400967784 /* Localizable.xcstrings */,
 				ABC0BFCF2A31628600382A42 /* Models */,
 				AB6A967D2A310443003A019E /* Views */,
 				AB5CC6D42A3090E800AEBB2B /* Utils */,
@@ -209,6 +212,7 @@
 			knownRegions = (
 				en,
 				Base,
+				vi,
 			);
 			mainGroup = AB5CC6B32A308BBB00AEBB2B;
 			productRefGroup = AB5CC6BD2A308BBB00AEBB2B /* Products */;
@@ -227,6 +231,7 @@
 			files = (
 				AB5CC6C72A308BBC00AEBB2B /* Preview Assets.xcassets in Resources */,
 				AB5CC6C42A308BBC00AEBB2B /* Assets.xcassets in Resources */,
+				AB19DA972A358FE400967784 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
