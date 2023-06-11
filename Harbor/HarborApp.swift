@@ -12,6 +12,9 @@ struct HarborApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.gpkUtils, .init())
+                .environment(\.brewUitls, .init())
+                .environment(\.xcliUtils, .init())
         }
         .commands{
             HarborMenu()

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct BrewInstallView: View {
     @Binding var isPresented: Bool
-    @Binding var isBrewInstalled: Bool
+    
+    @Environment(\.brewUitls)
+    var brewUtils
     
     @State var isInstallingBrew = false
     // Timer to periodically check if Homebrew is installed
@@ -32,7 +34,7 @@ struct BrewInstallView: View {
             Group {
                 if !isInstallingBrew {
                     Group {
-                        if BrewUtils.shared.testX64Brew() {
+                        if brewUtils.installed {
                             Text("x86_64 Homebrew is installed")
                                 .foregroundColor(.green)
                         } else {
@@ -45,7 +47,9 @@ struct BrewInstallView: View {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
                         .onReceive(timer) { _ in
-                            if BrewUtils.shared.testX64Brew() {
+                            brewUtils.testX64Brew()
+                            
+                            if brewUtils.installed {
                                 timer.upstream.connect().cancel()
                             }
                         }
@@ -58,16 +62,15 @@ struct BrewInstallView: View {
                 Button("Cancel") {
                     isPresented = false
                 }
-                if BrewUtils.shared.testX64Brew() {
+                if brewUtils.installed {
                     Button("Done") {
-                        isBrewInstalled = true
                         isPresented = false
                     }
                 } else {
                     Button("Install") {
                         Task.detached(priority: .userInitiated) {
                             isInstallingBrew = true
-                            BrewUtils.shared.installX64Brew()
+                            brewUtils.installX64Brew()
                             isInstallingBrew = false
                         }
                     }
@@ -80,6 +83,6 @@ struct BrewInstallView: View {
 
 struct BrewInstallView_Previews: PreviewProvider {
     static var previews: some View {
-        BrewInstallView(isPresented: Binding.constant(true), isBrewInstalled: Binding.constant(false))
+        BrewInstallView(isPresented: Binding.constant(true))
     }
 }

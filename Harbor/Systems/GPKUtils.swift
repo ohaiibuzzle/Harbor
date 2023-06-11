@@ -7,6 +7,7 @@
 
 import Foundation
 import AppKit
+import Observation
 
 enum GPKStatus {
     case notInstalled
@@ -14,10 +15,15 @@ enum GPKStatus {
     case installed
 }
 
-struct GPKUtils {
-    static let shared = GPKUtils()
+@Observable
+final class GPKUtils {
+    var status: GPKStatus = .notInstalled
     
-    func checkGPKInstallStatus() -> GPKStatus {
+    init() {
+        checkGPKInstallStatus()
+    }
+    
+    func checkGPKInstallStatus() {
         let isDir = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1)
         isDir.initialize(to: false)
         defer { isDir.deallocate() }
@@ -26,26 +32,26 @@ struct GPKUtils {
         let gpkD3DLib = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib/external/libd3dshared.dylib")
         let gpkWine64 = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/bin/wine64")
 
-        if FileManager.default.fileExists(atPath: gpkD3DLib.path, isDirectory: isDir) &&
-            FileManager.default.fileExists(atPath: gpkWine64.path, isDirectory: isDir) {
-            return .installed
-        } else if FileManager.default.fileExists(atPath: gpkD3DLib.path, isDirectory: isDir) ||
-                    FileManager.default.fileExists(atPath: gpkWine64.path, isDirectory: isDir) {
-            return .partiallyInstalled
-        } else {
-            return .notInstalled
+        let gpkD3DLinInstalled = FileManager.default.fileExists(atPath: gpkD3DLib.path, isDirectory: isDir)
+        let gpkWine64Installed = FileManager.default.fileExists(atPath: gpkWine64.path, isDirectory: isDir)
+        
+        self.status = switch (gpkD3DLinInstalled, gpkWine64Installed) {
+        case (true, true): .installed
+        case (false, false): .notInstalled
+        default: .partiallyInstalled
         }
     }
     
-    func installGPK() {
+    func installGPK(using brewUtils: BrewUtils) {
         // Abort if Brew is not installed
-        if BrewUtils.shared.testX64Brew() == false {
+        brewUtils.testX64Brew()
+        if brewUtils.installed == false {
             NSLog("Harbor: Brew not installed. Aborting")
             return
         }
         
         let aaplScript = """
-        property shellScript : "\(BrewUtils.shared.x64BrewPrefix)/bin/brew install apple/apple/game-porting-toolkit && \
+        property shellScript : "\(brewUtils.x64BrewPrefix)/bin/brew install apple/apple/game-porting-toolkit && \
         clear && echo 'Game Porting Toolkit has been installed. You can now close this Terminal window.' && exit"
         
         tell application "Terminal"
@@ -66,10 +72,11 @@ struct GPKUtils {
             }
         }
         
-        while checkGPKInstallStatus() == .notInstalled {
+        repeat {
             // Wait for GPK to be installed
             sleep(1)
-        }
+            checkGPKInstallStatus()
+        } while self.status == .notInstalled
 
         // Copy the GPK libraries
         copyGPKLibraries()

@@ -6,16 +6,23 @@
 //
 
 import Foundation
+import Observation
 
-struct BrewUtils {
-    static let shared = BrewUtils()
-
+@Observable
+final class BrewUtils {
+    var installed = false
     let x64BrewPrefix = "/usr/local/Homebrew"
 
-    func testX64Brew() -> Bool {
-        if !FileManager.default.fileExists(atPath: x64BrewPrefix) {
-            return false
+    init() {
+        testX64Brew()
+    }
+    
+    func testX64Brew() {
+        guard FileManager.default.fileExists(atPath: x64BrewPrefix) else {
+            installed = false
+            return
         }
+        
         // Launch homebrew from within to check if it's correctly installed
         let task = Process()
         task.executableURL = URL(fileURLWithPath: "/bin/bash")
@@ -25,11 +32,7 @@ struct BrewUtils {
         task.launch()
         task.waitUntilExit()
 
-        if task.terminationStatus == 0 {
-            return true
-        } else {
-            return false
-        }
+        installed = task.terminationStatus == 0
     }
 
     func installX64Brew() {
@@ -60,9 +63,11 @@ struct BrewUtils {
             }
         }
 
-        while BrewUtils.shared.testX64Brew() == false {
+        repeat {
+            self.testX64Brew()
+            
             // NSLog("Harbor: Waiting for Homebrew installation to complete")
             sleep(1)
-        }
+        } while installed == false
     }
 }
