@@ -6,14 +6,21 @@
 //
 
 import Foundation
+import Observation
 
-struct XCLIUtils {
-    static let shared = XCLIUtils()
+@Observable
+final class XCLIUtils {
+    var installed = false
     
-    func checkXcliInstalled() -> Bool {
+    init() {
+        checkXcliInstalled()
+    }
+    
+    func checkXcliInstalled() {
         // SANITY: Check if /Library/Developer/CommandLineTools exists
-        if !FileManager.default.fileExists(atPath: "/Library/Developer/CommandLineTools") {
-            return false
+        guard FileManager.default.fileExists(atPath: "/Library/Developer/CommandLineTools") else {
+            installed = false
+            return
         }
 
         // pkgutil --pkg-info=com.apple.pkg.CLTools_Executables | grep version
@@ -28,10 +35,6 @@ struct XCLIUtils {
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         let output = String(data: data, encoding: .utf8)!
 
-        if output.contains("version: 15.") {
-            return true
-        } else {
-            return false
-        }
+        installed = output.contains("version: 15.")
     }
 }

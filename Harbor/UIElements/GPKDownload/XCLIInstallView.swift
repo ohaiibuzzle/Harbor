@@ -9,7 +9,9 @@ import SwiftUI
 
 struct XCLIInstallView: View {
     @Binding var isPresented: Bool
-    @Binding var isXCliInstalled: Bool
+    
+    @Environment(\.xcliUtils)
+    var xcliUtils
     
     let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
 
@@ -25,12 +27,13 @@ struct XCLIInstallView: View {
             }
             
             Group {
-            if !isXCliInstalled {
+                if !xcliUtils.installed {
                     ProgressView()
                         .padding()
                         .onReceive(timer) { _ in
-                            isXCliInstalled = XCLIUtils.shared.checkXcliInstalled()
-                            if isXCliInstalled {
+                            xcliUtils.checkXcliInstalled()
+                            
+                            if xcliUtils.installed {
                                 timer.upstream.connect().cancel()
                                 isPresented = false
                             }
@@ -61,10 +64,10 @@ struct XCLIInstallView: View {
                 .keyboardShortcut(.cancelAction)
 
                 Button("btn.OK") {
-                    isXCliInstalled = true
+                    xcliUtils.checkXcliInstalled()
                     isPresented = false
                 }
-                .disabled(!isXCliInstalled)
+                .disabled(!xcliUtils.installed)
                 .padding()
                 .keyboardShortcut(.defaultAction)
                 Spacer()
@@ -74,5 +77,5 @@ struct XCLIInstallView: View {
 }
 
 #Preview {
-    XCLIInstallView(isPresented: Binding.constant(true), isXCliInstalled: Binding.constant(XCLIUtils.shared.checkXcliInstalled()))
+    XCLIInstallView(isPresented: Binding.constant(true))
 }

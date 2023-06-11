@@ -12,7 +12,10 @@ struct GPKDownloadView: View {
     @State var gpkSelected = false
     @State var gpkInstalling = false
     
-    @Binding var gpkInstalled: Bool
+    @Environment(\.gpkUtils)
+    var gpkUtils
+    @Environment(\.brewUitls)
+    var brewUtils
     
     var body: some View {
         VStack {
@@ -23,7 +26,7 @@ struct GPKDownloadView: View {
             Text("sheet.GPKInstall.subTitle")
             .multilineTextAlignment(.center)
             .padding()
-            if GPKUtils.shared.checkGPKInstallStatus() == .installed {
+            if gpkUtils.status == .installed {
                 Text("sheet.GPKInstall.status.installed")
                     .foregroundColor(.green)
                     .padding()
@@ -76,15 +79,15 @@ struct GPKDownloadView: View {
                     isPresented = false
                 }
                 
-                if GPKUtils.shared.checkGPKInstallStatus() != .installed {
+                if gpkUtils.status != .installed {
                     Button(action: {
-                        if GPKUtils.shared.showGPKInstallAlert() {
+                        if gpkUtils.showGPKInstallAlert() {
                             gpkInstalling = true
                             Task.detached(priority: .userInitiated) {
-                                GPKUtils.shared.installGPK()
+                                gpkUtils.installGPK(using: brewUtils)
                                 Task { @MainActor in
                                     gpkInstalling = false
-                                    gpkInstalled = GPKUtils.shared.checkGPKInstallStatus() == .installed
+                                    gpkUtils.checkGPKInstallStatus()
                                 }
                             }
                         }
@@ -95,7 +98,6 @@ struct GPKDownloadView: View {
                 } else {
                     Button(action: {
                         isPresented = false
-                        gpkInstalled = true
                     }) {
                         Text("btn.OK")
                     }
@@ -108,6 +110,6 @@ struct GPKDownloadView: View {
 
 struct GPKDownloadView_Previews: PreviewProvider {
     static var previews: some View {
-        GPKDownloadView(isPresented: Binding.constant(true), gpkInstalled: Binding.constant(false))
+        GPKDownloadView(isPresented: Binding.constant(true))
     }
 }

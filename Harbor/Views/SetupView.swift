@@ -11,10 +11,12 @@ struct SetupView: View {
     @State var isXcliInstallerDropdownShown = false
     @State var isBrewInstallerDropdownShown = false
     @State var isGPKInstallerDropdownShown = false
-    @State var isBrewInstalled = BrewUtils.shared.testX64Brew()
-    @State var isXcliInstalled = XCLIUtils.shared.checkXcliInstalled()
+    
+    @Environment(\.brewUitls)
+    var brewUtils
 
-    @Binding var isGPKInstalled: Bool
+    @Environment(\.xcliUtils)
+    var xcliUtils
     
     var body: some View {
         VStack {
@@ -33,26 +35,26 @@ struct SetupView: View {
                 Button("setup.btn.installHB") {
                     isBrewInstallerDropdownShown.toggle()
                 }
-                .disabled(!isXcliInstalled)
+                .disabled(!xcliUtils.installed)
                 Button("setup.btn.installGPK") {
                     isGPKInstallerDropdownShown.toggle()
                 }
-                .disabled(!isBrewInstalled)
+                .disabled(!brewUtils.installed)
             }
             .padding()
         }
         .sheet(isPresented: $isXcliInstallerDropdownShown) {
-            XCLIInstallView(isPresented: $isXcliInstallerDropdownShown, isXCliInstalled: $isXcliInstalled)
+            XCLIInstallView(isPresented: $isXcliInstallerDropdownShown)
         }
         .sheet(isPresented: $isBrewInstallerDropdownShown) {
-            BrewInstallView(isPresented: $isBrewInstallerDropdownShown, isBrewInstalled: $isBrewInstalled)
+            BrewInstallView(isPresented: $isBrewInstallerDropdownShown)
         }
         .sheet(isPresented: $isGPKInstallerDropdownShown) {
-            GPKDownloadView(isPresented: $isGPKInstallerDropdownShown, gpkInstalled: $isGPKInstalled)
+            GPKDownloadView(isPresented: $isGPKInstallerDropdownShown)
         }
     }
 }
 
 #Preview {
-    SetupView(isGPKInstalled: Binding.constant(false))
+    SetupView()
 }
