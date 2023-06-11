@@ -20,14 +20,11 @@ struct BrewInstallView: View {
     var body: some View {
         VStack {
             Group {
-                Text("Homebrew Installation")
+                Text("sheet.HBInstall.title")
                     .padding()
                     .bold()
                     .font(.title)
-                Text("""
-                    In order to install Apple's Game Porting Toolkit
-                    you will need a copy of the x86_64 Homebrew package manager.
-                    """)
+                Text("sheet.HBInstall.subtitle")
                 .multilineTextAlignment(.center)
             }
             Spacer()
@@ -35,9 +32,10 @@ struct BrewInstallView: View {
                 if !isInstallingBrew {
                     Group {
                         if brewUtils.installed {
-                            Text("x86_64 Homebrew is installed")
+                            Text("sheet.HBInstall.status.installed")
                                 .foregroundColor(.green)
                         } else {
+                            Text("sheet.HBInstall.status.notInstalled")
                             Text("x86_64 Homebrew is not installed")
                                 .foregroundColor(.red)
                         }
@@ -53,21 +51,21 @@ struct BrewInstallView: View {
                                 timer.upstream.connect().cancel()
                             }
                         }
-                    Text("Installing x86_64 Homebrew...")
+                    Text("sheet.HBInstall.status.installing")
                 }
             }
             .padding()
             Spacer()
             HStack {
-                Button("Cancel") {
+                Button("btn.cancel") {
                     isPresented = false
                 }
                 if brewUtils.installed {
-                    Button("Done") {
+                    Button("btn.OK") {
                         isPresented = false
                     }
                 } else {
-                    Button("Install") {
+                    Button("btn.install") {
                         Task.detached(priority: .userInitiated) {
                             isInstallingBrew = true
                             brewUtils.installX64Brew()

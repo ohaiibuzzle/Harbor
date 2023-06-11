@@ -19,19 +19,19 @@ struct BottleManagementView: View {
     @State private var sortOrder = [KeyPathComparator(\BottleModel.name)]
     var body: some View {
         VStack {
-            Text("Your Wine Bottles")
+            Text("home.bottles.title")
                 .font(.title)
                 .padding()
             
-            Text("Wine bottles are separate environments that you can use to install Windows applications. \nYou can create as many bottles as you want, and each bottle can have its own Windows version and configuration.")
+            Text("home.bottles.subtitle")
                 .padding()
                 .multilineTextAlignment(.center)
         }
         
         Table(bottles, selection: $selectedBottle, sortOrder: $sortOrder) {
-            TableColumn("Name", value: \.name)
-            TableColumn("Path", value: \.path.relativeString)
-            TableColumn("Primary Application", value: \.primaryApplicationPath)
+            TableColumn("home.table.name", value: \.name)
+            TableColumn("home.table.path", value: \.path.relativeString)
+            TableColumn("home.table.primaryApp", value: \.primaryApplicationPath)
         }
         .padding()
         .frame(minWidth: 500, minHeight: 200)
@@ -43,14 +43,14 @@ struct BottleManagementView: View {
                 Button {
                     showNewBottleSheet = true
                 } label: {
-                    Label("New", systemImage: "plus")
+                    Label("home.btn.new", systemImage: "plus")
                 }
             }
             ToolbarItem(placement: .automatic) {
                 Button {
                     showEditBottleSheet = true
                 } label: {
-                    Label("Edit", systemImage: "pencil")
+                    Label("home.btn.edit", systemImage: "pencil")
                 }
                 .disabled(selectedBottle == nil)
             }
@@ -58,7 +58,7 @@ struct BottleManagementView: View {
                 Button {
                     bottles.first(where: { $0.id == selectedBottle })!.launchPrimaryApplication()
                 } label: {
-                    Label("Run", systemImage: "play")
+                    Label("home.btn.run", systemImage: "play")
                 }
                 .disabled(selectedBottle == nil)
             }
@@ -66,7 +66,7 @@ struct BottleManagementView: View {
                 Button {
                     showLaunchExtSheet = true
                 } label: {
-                    Label("Run External", systemImage: "tray.and.arrow.down")
+                    Label("home.btn.runExt", systemImage: "tray.and.arrow.down")
                 }
                 .disabled(selectedBottle == nil)
             }
@@ -74,7 +74,7 @@ struct BottleManagementView: View {
                 Button {
                     showAdvConfigSheet = true
                 } label: {
-                    Label("Advanced Config", systemImage: "gear")
+                    Label("home.btn.advConf", systemImage: "gear")
                 }
                 .disabled(selectedBottle == nil)
             }
@@ -82,15 +82,22 @@ struct BottleManagementView: View {
                 Button {
                     // ALARM
                     let alert = NSAlert()
-                    alert.messageText = "Are you sure you want to delete this bottle?"
-                    alert.informativeText = "Deleting this bottle will INSTANTLY destroy every data in \(bottles.first(where: { $0.id == selectedBottle })!.path.absoluteString). This action cannot be undone."
+                    alert.messageText = NSLocalizedString("home.alert.deleteTitle", comment: "")
                     alert.alertStyle = .critical
-                    alert.addButton(withTitle: "Delete")
-                    alert.addButton(withTitle: "Cancel")
+                    let checkbox = NSButton(checkboxWithTitle:
+                                            """
+                                            \(NSLocalizedString("home.alert.deletePath", comment: ""))
+                                            \(bottles.first(where: { $0.id == selectedBottle })!.path.absoluteString)
+                                            """,
+                                            target: nil, action: nil)
+                    checkbox.state = .on
+                    alert.accessoryView = checkbox
+                    alert.addButton(withTitle: NSLocalizedString("btn.delete", comment: ""))
+                    alert.addButton(withTitle: NSLocalizedString("btn.cancel", comment: ""))
 
                     if alert.runModal() == .alertFirstButtonReturn {
                         // User clicked on "Delete"
-                        BottleLoader.shared.delete(bottles.first(where: { $0.id == selectedBottle })!)
+                        BottleLoader.shared.delete(bottles.first(where: { $0.id == selectedBottle })!, checkbox.state)
                         bottles.removeAll(where: { $0.id == selectedBottle })
                         selectedBottle = nil
                     } else {
@@ -98,7 +105,7 @@ struct BottleManagementView: View {
                         return
                     }
                 } label: {
-                    Label("Nuke", systemImage: "trash")
+                    Label("home.btn.nuke", systemImage: "trash")
                 }
                 .disabled(selectedBottle == nil)
             }

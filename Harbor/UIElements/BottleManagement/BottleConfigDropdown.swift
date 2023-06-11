@@ -13,29 +13,29 @@ struct BottleConfigDropdown: View {
     
     var body: some View {
         VStack {
-            Text("Configure \(bottle.name)")
+            Text("sheet.advConf.title \(bottle.name)")
                 .font(.title)
                 .padding()
             Spacer()
             VStack(alignment: .leading) {
-                Toggle("Enable HUD", isOn: $bottle.enableHUD)
-                Toggle("Enable ESync", isOn: $bottle.enableESync)
-                Toggle("Don't log to stdout", isOn: $bottle.pleaseShutUp)
+                Toggle("sheet.advConf.hudToggle", isOn: $bottle.enableHUD)
+                Toggle("sheet.advConf.eSyncToggle", isOn: $bottle.enableESync)
+                Toggle("sheet.advConf.stdOutToggle", isOn: $bottle.pleaseShutUp)
             }
             Spacer()
             HStack {
-                Button("Launch winecfg") {
+                Button("sheet.advConf.winecfgBtn") {
                     bottle.launchApplication("winecfg")
                 }
-                Button("Launch explorer") {
+                Button("sheet.advConf.explorerBtn") {
                     bottle.launchApplication("explorer")
                 }
-                Button("Launch regedit") {
+                Button("sheet.advConf.regeditBtn") {
                     bottle.launchApplication("regedit")
                 }
             }
             Spacer()
-            Button("Save") {
+            Button("btn.OK") {
                 BottleLoader.shared.bottles[BottleLoader.shared.bottles.firstIndex(where: { $0.id == bottle.id })!] = bottle
                 isPresented = false
             }

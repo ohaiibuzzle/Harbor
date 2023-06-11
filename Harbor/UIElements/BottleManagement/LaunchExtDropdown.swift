@@ -16,20 +16,20 @@ struct LaunchExtDropdown: View {
     
     var body: some View {
         VStack {
-            Text("Launch an External App")
+            Text("sheet.launchExt.title")
                 .font(.title)
                 .padding()
             
-            Text("The application will be copied to and launched from prefix \(bottle.name)")
+            Text("sheet.launchExt.subtitle \(bottle.name)")
                 .padding()
             Grid {
                 GridRow {
-                    Text("Application: ")
+                    Text("sheet.launchExt.applicationLabel")
                     HStack {
                         TextField("MyApp.exe", text: $applicationPath)
-                        Button("Browse") {
+                        Button("btn.browse") {
                             let dialog = NSOpenPanel()
-                            dialog.title = "Choose an application to launch"
+                            dialog.title = "sheet.launchExt.title"
                             dialog.showsResizeIndicator = true
                             dialog.showsHiddenFiles = false
                             dialog.canChooseDirectories = false
@@ -53,7 +53,7 @@ struct LaunchExtDropdown: View {
                 .padding()
                 
                 GridRow {
-                    Text("Arguments: ")
+                    Text("sheet.launchExt.argsLabel")
                     TextField("", text: $applicationArgument)
                 }
                 .padding()
@@ -61,10 +61,10 @@ struct LaunchExtDropdown: View {
 
             HStack {
                 Spacer()
-                Button("Cancel") {
+                Button("btn.cancel") {
                     isPresented = false
                 }
-                Button("Launch") {
+                Button("btn.launch") {
                     bottle.launchApplication(applicationPath, arguments: bottle.primaryApplicationArgument.split(separator: " ").map { String($0) })
                     isPresented = false
                 }
