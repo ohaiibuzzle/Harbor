@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 struct BottleModel: Identifiable, Equatable, Codable {
     var id: UUID
@@ -127,11 +128,13 @@ struct BottleLoader {
         return bottles
     }
 
-    func delete(_ bottle: BottleModel) {
+    func delete(_ bottle: BottleModel, _ checkbox: NSControl.StateValue) {
         var bottles = load()
         bottles.removeAll(where: { $0.id == bottle.id })
         // Remove the bottle directory
-        try? FileManager.default.removeItem(at: bottle.path)
+        if checkbox == .on {
+            try? FileManager.default.removeItem(at: bottle.path)
+        }
         save(bottles)
     }
 }
