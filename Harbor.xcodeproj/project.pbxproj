@@ -231,6 +231,7 @@
 				en,
 				Base,
 				vi,
+				pl,
 			);
 			mainGroup = AB5CC6B32A308BBB00AEBB2B;
 			productRefGroup = AB5CC6BD2A308BBB00AEBB2B /* Products */;

@@ -11,6 +11,12 @@
             "state" : "translated",
             "value" : "Harbor will now install the Game Porting Toolkit.\nDue to Apple's decision to ship Game Porting Toolkit in source code form, the installation process will take a long time and your machine may get **really** hot.\nIf your laptop is fanless and you have some kind of cooling solution, now is the time to use it."
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harbor zainstaluje teraz Game Porting Toolkit. Ze względu na decyzję Apple o dostarczaniu Game Porting Toolkit w formie kodu źródłowego, proces instalacji potrwa długo, a Twój komputer może się **naprawdę** rozgrzać.\nJeśli Twój laptop nie ma wentylatora i posiadasz jakieś rozwiązanie chłodzące, to jest dobry moment, aby je użyć."
+          }
         }
       }
     },
@@ -20,6 +26,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Game Porting Toolkit Installation"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalacja Game Porting Toolkit"
           }
         }
       }
@@ -31,6 +43,12 @@
             "state" : "translated",
             "value" : "Browse"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przeglądaj"
+          }
         }
       }
     },
@@ -40,6 +58,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancel"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anuluj"
           }
         }
       }
@@ -51,6 +75,12 @@
             "state" : "translated",
             "value" : "Create"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stwórz"
+          }
         }
       }
     },
@@ -60,6 +90,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń"
           }
         }
       }
@@ -71,6 +107,12 @@
             "state" : "translated",
             "value" : "Done"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gotowe"
+          }
         }
       }
     },
@@ -80,6 +122,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Download"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pobierz"
           }
         }
       }
@@ -91,6 +139,12 @@
             "state" : "translated",
             "value" : "Install"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instaluj"
+          }
         }
       }
     },
@@ -100,6 +154,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Launch"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uruchom"
           }
         }
       }
@@ -111,6 +171,12 @@
             "state" : "translated",
             "value" : "Done"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gotowe"
+          }
         }
       }
     },
@@ -120,6 +186,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Remove all bottle data in \n%@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń wszystkie dane butelki w %@"
           }
         }
       }
@@ -132,6 +204,12 @@
             "state" : "translated",
             "value" : "Are you sure you want to delete this bottle?"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czy jesteś pewien, że chcesz usunąć tą butelkę?"
+          }
         }
       }
     },
@@ -140,7 +218,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wine bottles are separate environments that you can use to install Windows applications. \nYou can create as many bottles as you want, and each bottle can have its own Windows version and configuration."
+            "value" : "Wine bottles are separate enplronments that you can use to install Windows applications. \nYou can create as many bottles as you want, and each bottle can have its own Windows version and configuration."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Butelki Wine to oddzielne środowiska, w których można instalować aplikacje Windows. Możesz tworzyć tyle butelek, ile chcesz, a każda butelka może mieć swoją własną wersję Windowsa i konfigurację."
           }
         }
       }
@@ -152,6 +236,12 @@
             "state" : "translated",
             "value" : "Your Wine Bottles"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Twoje butelki Wine"
+          }
         }
       }
     },
@@ -161,6 +251,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Advanced Configuration"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaawansowana konfiguracja"
           }
         }
       }
@@ -172,6 +268,12 @@
             "state" : "translated",
             "value" : "Edit"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edycja"
+          }
         }
       }
     },
@@ -181,6 +283,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "New"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nowe"
           }
         }
       }
@@ -192,6 +300,12 @@
             "state" : "translated",
             "value" : "Nuke"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zniszcz"
+          }
         }
       }
     },
@@ -201,6 +315,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Run"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uruchom"
           }
         }
       }
@@ -212,6 +332,12 @@
             "state" : "translated",
             "value" : "Run External App"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uruchom aplikacje zewnętrzną"
+          }
         }
       }
     },
@@ -221,6 +347,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Name"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa"
           }
         }
       }
@@ -232,6 +364,12 @@
             "state" : "translated",
             "value" : "Path"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ścieżka"
+          }
         }
       }
     },
@@ -241,6 +379,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Primary Application"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikacja główna"
           }
         }
       }
@@ -252,14 +396,34 @@
             "state" : "translated",
             "value" : "Kill All Wine Processes"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zakończ wszystkie procesy Wine"
+          }
         }
       }
     },
     "My Bottle" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moja Butelka"
+          }
+        }
+      }
     },
     "MyApp.exe" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MojaAplikacja.exe"
+          }
+        }
+      }
     },
     "setup.btn.installGPK" : {
       "localizations" : {
@@ -267,6 +431,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Install GPTK"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zainstaluj GPTK"
           }
         }
       }
@@ -278,6 +448,12 @@
             "state" : "translated",
             "value" : "Install Homebrew"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zainstaluj Homebrew"
+          }
         }
       }
     },
@@ -287,6 +463,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Install XCLI 15"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zainstaluj XCLI 15"
           }
         }
       }
@@ -298,6 +480,12 @@
             "state" : "translated",
             "value" : "Harbor needs you to install a few components before it can continue"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Musisz zainstalować parę komponentów zanim Harbor będzie mógł kontynuować"
+          }
         }
       }
     },
@@ -307,6 +495,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Harbor Setup"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalacja Harbor"
           }
         }
       }
@@ -318,6 +512,12 @@
             "state" : "translated",
             "value" : "Enable ESync"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącz ESync"
+          }
         }
       }
     },
@@ -327,6 +527,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Launch Explorer"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uruchom explorer"
           }
         }
       }
@@ -338,6 +544,12 @@
             "state" : "translated",
             "value" : "Enable Metal HUD"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącz Metal HUD"
+          }
         }
       }
     },
@@ -347,6 +559,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Launch regedit"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uruchom regedit"
           }
         }
       }
@@ -358,6 +576,12 @@
             "state" : "translated",
             "value" : "Don't log to stdout"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie loguj do stdout"
+          }
         }
       }
     },
@@ -367,6 +591,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Configuring %@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konfigurowanie %@"
           }
         }
       }
@@ -378,6 +608,12 @@
             "state" : "translated",
             "value" : "Launch winecfg"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uruchom winecfg"
+          }
         }
       }
     },
@@ -387,6 +623,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Primary Application Arguments"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Argumenty aplikacji głównej"
           }
         }
       }
@@ -398,6 +640,12 @@
             "state" : "translated",
             "value" : "Primary Application"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikacja główna"
+          }
         }
       }
     },
@@ -407,6 +655,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edit Bottle"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edytuj butelkę"
           }
         }
       }
@@ -418,6 +672,12 @@
             "state" : "translated",
             "value" : "Download GPTK"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pobierz GPTK"
+          }
         }
       }
     },
@@ -427,6 +687,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Install GPTK"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zainstaluj GPTK"
           }
         }
       }
@@ -438,6 +704,12 @@
             "state" : "translated",
             "value" : "GPTK is installed"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPTK jest zainstalowany"
+          }
         }
       }
     },
@@ -447,6 +719,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "GPTK.dmg has been selected"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPTK.dmg został wybrany"
           }
         }
       }
@@ -458,6 +736,12 @@
             "state" : "translated",
             "value" : "In order to function, Harbor needs a copy of Apple's Game Porting Toolkit. \nYou can download it from Apple Developers as we can't include it due to Apple's license"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aby funkcjonować, Harbor potrzebuje Game Porting Toolkit od Apple. Nie możemy go umieścić ze względu na licencję, ale możesz go pobrać ze strony Apple Developers"
+          }
         }
       }
     },
@@ -467,6 +751,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Install Apple's Game Porting Toolkit"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zainstaluj Game Porting Toolkit od Apple"
           }
         }
       }
@@ -478,6 +768,12 @@
             "state" : "translated",
             "value" : "x86_64 Homebrew is installed"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew na x86_64 jest zainstalowany"
+          }
         }
       }
     },
@@ -487,6 +783,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Installing x86_64 Homebrew..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalowanie Homebrew na x86_64"
           }
         }
       }
@@ -498,6 +800,12 @@
             "state" : "translated",
             "value" : "x86_64 Homebrew is not installed"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew na x86_64 nie jest zainstalowany"
+          }
         }
       }
     },
@@ -507,6 +815,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "In order to install Apple's Game Porting Toolkit, \nyou will need a copy of the x86_64 Homebrew package manager."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aby zainstalować Game Porting Toolkit od Apple, potrzebujesz menedżera pakietów Homebrew na x86_64"
           }
         }
       }
@@ -518,6 +832,12 @@
             "state" : "translated",
             "value" : "Homebrew Installation"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalacja Homebrew"
+          }
         }
       }
     },
@@ -527,6 +847,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Application"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikacja"
           }
         }
       }
@@ -538,6 +864,12 @@
             "state" : "translated",
             "value" : "Arguments"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Argumenty"
+          }
         }
       }
     },
@@ -547,6 +879,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "The application will be copied to and launched from prefix %@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikacja zostanie skopiowana i uruchomiona w prefiksie %@"
           }
         }
       }
@@ -558,6 +896,12 @@
             "state" : "translated",
             "value" : "Launch an External App"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uruchom aplikację zewnętrzną"
+          }
         }
       }
     },
@@ -567,6 +911,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Name"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa"
           }
         }
       }
@@ -578,6 +928,12 @@
             "state" : "translated",
             "value" : "Path"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ścieżka"
+          }
         }
       }
     },
@@ -587,6 +943,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "New Bottle"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nowa butelka"
           }
         }
       }
@@ -598,6 +960,12 @@
             "state" : "translated",
             "value" : "Xcode Command Line Tools is installed"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Narzędzia wiersza poleceń Xcode są zainstalowane"
+          }
         }
       }
     },
@@ -607,6 +975,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Waiting for Xcode Command Line Tools to be installed..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czekam na zainstalowanie narzędzi wiersza poleceń Xcode"
           }
         }
       }
@@ -618,6 +992,12 @@
             "state" : "translated",
             "value" : "In order to install Apple's Game Porting Toolkit you will need a copy of the Xcode Command Line Tools."
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aby zainstalować Game Porting Toolkit od Apple, potrzebujesz narzędzi wiersza poleceń Xcode"
+          }
         }
       }
     },
@@ -627,6 +1007,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Xcode Command Line Tools Installation"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalacja narzędzi wiersza poleceń Xcode"
           }
         }
       }
