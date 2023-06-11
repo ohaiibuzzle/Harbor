@@ -114,12 +114,12 @@
         }
       }
     },
-    "home.alert.deletePath" : {
+    "home.alert.deletePath %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Remove all bottle data in"
+            "value" : "Remove all bottle data in \n%@"
           }
         }
       }
