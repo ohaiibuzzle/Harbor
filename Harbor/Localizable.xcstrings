@@ -1,0 +1,180 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "Advanced Config" : {
+
+    },
+    "Application: " : {
+
+    },
+    "Arguments: " : {
+
+    },
+    "Browse" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Configure %@" : {
+
+    },
+    "Create" : {
+
+    },
+    "Don't log to stdout" : {
+
+    },
+    "Done" : {
+
+    },
+    "Download" : {
+
+    },
+    "Download GPK" : {
+
+    },
+    "Edit" : {
+
+    },
+    "Edit Bottle" : {
+
+    },
+    "Enable ESync" : {
+
+    },
+    "Enable HUD" : {
+
+    },
+    "GPK is already installed" : {
+
+    },
+    "GPK.dmg selected" : {
+
+    },
+    "Harbor Setup" : {
+
+    },
+    "Homebrew Installation" : {
+
+    },
+    "In order to function, Harbor needs a copy of Apple's Game Porting Toolkit.\nYou can download it from Apple Developers as we can't include it due to Apple's license" : {
+
+    },
+    "In order to install Apple's Game Porting Toolkit\nyou will need a copy of the x86_64 Homebrew package manager." : {
+
+    },
+    "In order to install Apple's Game Porting Toolkit\nyou will need a copy of the Xcode Command Line Tools." : {
+
+    },
+    "Install" : {
+
+    },
+    "Install Apple's Game Porting Toolkit" : {
+
+    },
+    "Install GPK" : {
+
+    },
+    "Install Homebrew" : {
+
+    },
+    "Install XCLT 15" : {
+
+    },
+    "Installing x86_64 Homebrew..." : {
+
+    },
+    "Kill all Wine instances" : {
+
+    },
+    "Launch" : {
+
+    },
+    "Launch an External App" : {
+
+    },
+    "Launch explorer" : {
+
+    },
+    "Launch regedit" : {
+
+    },
+    "Launch winecfg" : {
+
+    },
+    "My Bottle" : {
+
+    },
+    "MyApp.exe" : {
+
+    },
+    "Name" : {
+
+    },
+    "Name: " : {
+
+    },
+    "New" : {
+
+    },
+    "New Bottle" : {
+
+    },
+    "Nuke" : {
+
+    },
+    "Path" : {
+
+    },
+    "Path: " : {
+
+    },
+    "Primary Application" : {
+
+    },
+    "Primary Application Argument: " : {
+
+    },
+    "Primary Application: " : {
+
+    },
+    "Run" : {
+
+    },
+    "Run External" : {
+
+    },
+    "Save" : {
+
+    },
+    "The application will be copied to and launched from prefix %@" : {
+
+    },
+    "Waiting for Xcode Command Line Tools to be installed..." : {
+
+    },
+    "Wine bottles are separate environments that you can use to install Windows applications. \nYou can create as many bottles as you want, and each bottle can have its own Windows version and configuration." : {
+
+    },
+    "x86_64 Homebrew is installed" : {
+
+    },
+    "x86_64 Homebrew is not installed" : {
+
+    },
+    "Xcode Command Line Tools are installed." : {
+
+    },
+    "Xcode Command Line Tools Installation" : {
+
+    },
+    "Your Wine Bottles" : {
+
+    }
+  },
+  "version" : "1.0"
+}

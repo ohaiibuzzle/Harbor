@@ -17,7 +17,7 @@ struct NewBottleDropdown: View {
     
     var body: some View {
         VStack {
-            Text(editingMode ? "Edit Bottle" : "New Bottle")
+            Text(editingMode ? "sheet.edit.title" : "sheet.new.title")
                 .font(.title)
                 .padding()
             
@@ -25,7 +25,7 @@ struct NewBottleDropdown: View {
             
             Grid(alignment: .leading) {
                 GridRow {
-                    Text("Name: ")
+                    Text("sheet.new.bottleNameLabel")
                     Spacer()
                     TextField("My Bottle", text: $bottle.name)
                         .onChange(of: bottle.name) { oldValue, newValue in
@@ -40,13 +40,13 @@ struct NewBottleDropdown: View {
                 
                 // Browsable file picker for new bottle folder
                 GridRow {
-                        Text("Path: ")
+                        Text("sheet.new.bottlePathLabel")
                         Spacer()
                     HStack {
                         TextField("", text: $bottlePath)
-                        Button("Browse") {
+                        Button("btn.browse") {
                             let dialog = NSOpenPanel()
-                            dialog.title = "Choose a folder for your new bottle"
+                            dialog.title = "sheet.new.title"
                             dialog.showsResizeIndicator = true
                             dialog.showsHiddenFiles = false
                             dialog.canChooseDirectories = true
@@ -76,13 +76,13 @@ struct NewBottleDropdown: View {
                 Grid(alignment: .leading) {
                     // Primary application
                     GridRow {
-                        Text("Primary Application: ")
+                        Text("sheet.edit.primaryAppLabel")
                         Spacer()
                         HStack {
                             TextField("MyApp.exe", text: $bottle.primaryApplicationPath)
-                            Button("Browse") {
+                            Button("btn.browse") {
                                 let dialog = NSOpenPanel()
-                                dialog.title = "Choose a primary application for your bottle"
+                                dialog.title = "sheet.edit.primaryApp.popup"
                                 dialog.showsResizeIndicator = true
                                 dialog.showsHiddenFiles = false
                                 dialog.canChooseDirectories = false
@@ -103,7 +103,7 @@ struct NewBottleDropdown: View {
                         }
                     }
                     GridRow {
-                        Text("Primary Application Argument: ")
+                        Text("sheet.edit.primaryAppArgsLabel")
                         Spacer()
                         TextField("", text: $bottle.primaryApplicationArgument)
                     }
@@ -121,10 +121,10 @@ struct NewBottleDropdown: View {
             
             // Cancel and Create buttons
             HStack {
-                Button("Cancel") {
+                Button("btn.cancel") {
                     isPresented = false
                 }
-                Button(editingMode ? "Save" : "Create") {
+                Button(editingMode ? "btn.done" : "btn.create") {
                     if editingMode {
                         // Save the bottle
                         BottleLoader.shared.bottles[BottleLoader.shared.bottles.firstIndex(where: { $0.id == bottle.id })!] = bottle

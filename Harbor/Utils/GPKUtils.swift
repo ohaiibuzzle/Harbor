@@ -130,16 +130,11 @@ struct GPKUtils {
     func showGPKInstallAlert() -> Bool {
         // Popup an alert warning the user about the GPK installation process
         let alert = NSAlert()
-        alert.messageText = "Game Porting Toolkit installation"
-        alert.informativeText = """
-    Harbor will now install the Game Porting Toolkit.
-    Due to Apple's decision to ship Game Porting Toolkit in source code form, the installation process will take \
-    a long time and your machine may get **really** hot.
-    If your laptop is fanless and you have some kind of cooling solution, now is the time to use it.
-    """
+        alert.messageText = NSLocalizedString("alert.GPKInstall.title", comment: "")
+        alert.informativeText = NSLocalizedString("alert.GPKInstall.informativeText", comment: "")
         alert.alertStyle = .warning
-        alert.addButton(withTitle: "OK")
-        alert.addButton(withTitle: "Cancel")
+        alert.addButton(withTitle: NSLocalizedString("btn.OK", comment: ""))
+        alert.addButton(withTitle: NSLocalizedString("btn.cancel", comment: ""))
         
         if alert.runModal() == .alertFirstButtonReturn {
             // User clicked OK. Go time.

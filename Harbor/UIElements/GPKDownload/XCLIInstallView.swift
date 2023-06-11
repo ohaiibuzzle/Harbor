@@ -16,14 +16,11 @@ struct XCLIInstallView: View {
     var body: some View {
         VStack {
             Group {
-                Text("Xcode Command Line Tools Installation")
+                Text("sheet.XCLIInstall.title")
                     .padding()
                     .bold()
                     .font(.title)
-                Text("""
-                    In order to install Apple's Game Porting Toolkit
-                    you will need a copy of the Xcode Command Line Tools.
-                    """)
+                Text("sheet.XCLIInstall.subtitle")
                 .multilineTextAlignment(.center)
             }
             
@@ -39,15 +36,15 @@ struct XCLIInstallView: View {
                             }
                         }
 
-                    Text("Waiting for Xcode Command Line Tools to be installed...")
+                    Text("sheet.XCLIInstall.status.waiting")
                         .multilineTextAlignment(.center)
 
-                    Button("Download") {
+                    Button("btn.download") {
                         // Have to be done manually since Apple don't beta seed this
                         NSWorkspace.shared.open(URL(string: "https://developer.apple.com/download/more/?=command%20line%20tools")!)
                     }
             } else {
-                    Text("Xcode Command Line Tools are installed.")
+                    Text("sheet.XCLIInstall.status.installed")
                         .padding()
                         .multilineTextAlignment(.center)
                         .foregroundColor(.green)
@@ -57,13 +54,13 @@ struct XCLIInstallView: View {
             
             HStack {
                 Spacer()
-                Button("Cancel") {
+                Button("btn.cancel") {
                     isPresented = false
                 }
                 .padding()
                 .keyboardShortcut(.cancelAction)
 
-                Button("Done") {
+                Button("btn.OK") {
                     isXCliInstalled = true
                     isPresented = false
                 }

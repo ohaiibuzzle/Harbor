@@ -16,18 +16,15 @@ struct GPKDownloadView: View {
     
     var body: some View {
         VStack {
-            Text("Install Apple's Game Porting Toolkit")
+            Text("sheet.GPKInstall.title")
                 .bold()
                 .font(.title)
                 .padding()
-            Text("""
-                 In order to function, Harbor needs a copy of Apple's Game Porting Toolkit.
-                 You can download it from Apple Developers as we can't include it due to Apple's license
-                 """)
+            Text("sheet.GPKInstall.subTitle")
             .multilineTextAlignment(.center)
             .padding()
             if GPKUtils.shared.checkGPKInstallStatus() == .installed {
-                Text("GPK is already installed")
+                Text("sheet.GPKInstall.status.installed")
                     .foregroundColor(.green)
                     .padding()
             } else {
@@ -37,10 +34,10 @@ struct GPKDownloadView: View {
                             NSWorkspace.shared.open(URL(
                                 string: "https://developer.apple.com/download/more/?=game%20porting%20toolkit")!)
                         }) {
-                            Text("Download GPK")
+                            Text("sheet.GPKInstall.btn.download")
                         }
                         // Browse button for GPK
-                        Button("Browse") {
+                        Button("btn.browse") {
                             let panel = NSOpenPanel()
                             panel.canChooseFiles = true
                             panel.canChooseDirectories = false
@@ -60,7 +57,7 @@ struct GPKDownloadView: View {
                                             try FileManager.default.copyItem(at: result, to: destination)
                                             gpkSelected = true
                                         } catch {
-                                            NSLog("Failed to copy GPK.dmg to \(destination)")
+                                            NSLog("sheet.GPKInstall.status.failedCopy \(destination)")
                                         }
                                     }
                                 }
@@ -68,14 +65,14 @@ struct GPKDownloadView: View {
                         }
                     }
                     if gpkSelected {
-                        Text("GPK.dmg selected")
+                        Text("sheet.GPKInstall.status.selected")
                             .foregroundColor(.green)
                     }
                 }
                 .padding()
             }
             HStack {
-                Button("Cancel") {
+                Button("btn.cancel") {
                     isPresented = false
                 }
                 
@@ -92,7 +89,7 @@ struct GPKDownloadView: View {
                             }
                         }
                     }) {
-                        Text("Install GPK")
+                        Text("sheet.GPKInstall.btn.install")
                     }
                     .disabled(gpkSelected == false)
                 } else {
@@ -100,7 +97,7 @@ struct GPKDownloadView: View {
                         isPresented = false
                         gpkInstalled = true
                     }) {
-                        Text("Done")
+                        Text("btn.OK")
                     }
                 }
             }

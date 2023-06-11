@@ -18,20 +18,23 @@ struct SetupView: View {
     
     var body: some View {
         VStack {
-            Text("Harbor Setup")
+            Text("setup.title")
                 .font(.largeTitle)
                 .bold()
                 .padding()
             
+            Text("setup.subtitle")
+                .multilineTextAlignment(.center)
+            
             VStack {
-                Button("Install XCLT 15") {
+                Button("setup.btn.installXCLI15") {
                     isXcliInstallerDropdownShown.toggle()
                 }
-                Button("Install Homebrew") {
+                Button("setup.btn.installHB") {
                     isBrewInstallerDropdownShown.toggle()
                 }
                 .disabled(!isXcliInstalled)
-                Button("Install GPK") {
+                Button("setup.btn.installGPK") {
                     isGPKInstallerDropdownShown.toggle()
                 }
                 .disabled(!isBrewInstalled)

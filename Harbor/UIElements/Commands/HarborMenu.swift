@@ -10,7 +10,7 @@ import SwiftUI
 struct HarborMenu: Commands {
     var body: some Commands {
         CommandGroup(after: .appVisibility) {
-            Button("Kill all Wine instances") {
+            Button("menu.harbor.killAll") {
                 HarborUtils.shared.dropNukeOnWine()
             }
             .keyboardShortcut("k", modifiers: [.command, .option, .shift])
