@@ -8,7 +8,7 @@
 import Foundation
 import AppKit
 
-struct BottleModel: Identifiable, Equatable, Codable {
+struct HarborBottle: Identifiable, Equatable, Codable {
     var id: UUID
     var name: String = "New Bottle"
     var path: URL
@@ -37,7 +37,11 @@ struct BottleModel: Identifiable, Equatable, Codable {
             task.standardError = nil
         }
 
-        task.launch()
+        do {
+            try task.run()
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
     }
 
     func launchExtApplication(_ application: String, arguments: [String] = []) {
@@ -81,7 +85,11 @@ struct BottleModel: Identifiable, Equatable, Codable {
 
         // Run winecfg to bootstrap the bottle with a Windows 10 environment
         task.arguments = ["winecfg", "-v", "win10"]
-        task.launch()
+        do {
+            try task.run()
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
         task.waitUntilExit()
     }
 }
@@ -89,7 +97,7 @@ struct BottleModel: Identifiable, Equatable, Codable {
 struct BottleLoader {
     static var shared = BottleLoader()
 
-    var bottles: [BottleModel] {
+    var bottles: [HarborBottle] {
         get {
             return load()
         }
@@ -98,7 +106,7 @@ struct BottleLoader {
         }
     }
 
-    func save(_ bottles: [BottleModel]) {
+    func save(_ bottles: [HarborBottle]) {
         let containerHome = HarborUtils.shared.getContainerHome()
         let bottleListPath = containerHome.appendingPathComponent("bottles.json")
         let encoder = JSONEncoder()
@@ -111,8 +119,8 @@ struct BottleLoader {
         }
     }
 
-    func load() -> [BottleModel] {
-        var bottles = [BottleModel]()
+    func load() -> [HarborBottle] {
+        var bottles = [HarborBottle]()
         let containerHome = HarborUtils.shared.getContainerHome()
         // Load bottles.plist
         let bottleListPath = containerHome.appendingPathComponent("bottles.json")
@@ -120,7 +128,7 @@ struct BottleLoader {
             let decoder = JSONDecoder()
             do {
                 let data = try Data(contentsOf: bottleListPath)
-                bottles = try decoder.decode([BottleModel].self, from: data)
+                bottles = try decoder.decode([HarborBottle].self, from: data)
             } catch {
                 NSLog("Failed to load bottles.json")
             }
@@ -128,7 +136,7 @@ struct BottleLoader {
         return bottles
     }
 
-    func delete(_ bottle: BottleModel, _ checkbox: NSControl.StateValue) {
+    func delete(_ bottle: HarborBottle, _ checkbox: NSControl.StateValue) {
         var bottles = load()
         bottles.removeAll(where: { $0.id == bottle.id })
         // Remove the bottle directory

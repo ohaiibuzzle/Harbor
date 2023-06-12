@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BottleConfigDropdown: View {
     @Binding var isPresented: Bool
-    @Binding var bottle: BottleModel
+    @Binding var bottle: HarborBottle
 
     var body: some View {
         VStack {
@@ -49,6 +49,6 @@ struct BottleConfigDropdown: View {
 
 #Preview {
     BottleConfigDropdown(isPresented: Binding.constant(true),
-                         bottle: Binding.constant(BottleModel(
+                         bottle: Binding.constant(HarborBottle(
                             id: UUID(), name: "Bottle", path: URL(fileURLWithPath: ""))))
 }

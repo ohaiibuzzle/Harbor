@@ -180,6 +180,9 @@
         }
       }
     },
+    "harbor.errorAlert" : {
+
+    },
     "HarborBuilder" : {
 
     },

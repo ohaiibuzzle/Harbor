@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LaunchExtDropdown: View {
     @Binding var isPresented: Bool
-    var bottle: BottleModel
+    var bottle: HarborBottle
 
     @State var applicationPath = ""
     @State var applicationArgument = ""
@@ -79,5 +79,5 @@ struct LaunchExtDropdown: View {
 
 #Preview {
     LaunchExtDropdown(isPresented: Binding.constant(true),
-                      bottle: BottleModel(id: UUID(), name: "Demo", path: URL(fileURLWithPath: "")))
+                      bottle: HarborBottle(id: UUID(), name: "Demo", path: URL(fileURLWithPath: "")))
 }

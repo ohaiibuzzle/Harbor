@@ -30,7 +30,11 @@ final class XCLIUtils {
         task.arguments = ["--pkg-info=com.apple.pkg.CLTools_Executables"]
         let pipe = Pipe()
         task.standardOutput = pipe
-        task.launch()
+        do {
+            try task.run()
+        } catch {
+            return
+        }
         task.waitUntilExit()
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         if let output = String(data: data, encoding: .utf8) {

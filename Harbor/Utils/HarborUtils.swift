@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 struct HarborUtils {
     static let shared = HarborUtils()
@@ -27,18 +28,34 @@ struct HarborUtils {
         return harborHome
     }
 
+    func quickError(_ errorMessage: String) {
+        let alert = NSAlert()
+        alert.alertStyle = .critical
+        alert.messageText = String(localized: "harbor.errorAlert")
+        alert.informativeText = errorMessage
+        alert.runModal()
+    }
+
     func dropNukeOnWine() {
         // SIGKILL any `wineserver` processes
         var task = Process()
         task.launchPath = "/usr/bin/killall"
         task.arguments = ["-9", "wineserver"]
-        task.launch()
+        do {
+            try task.run()
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
         task.waitUntilExit()
 
         task = Process()
         task.launchPath = "/usr/bin/killall"
         task.arguments = ["-9", "wine64-preloader"]
-        task.launch()
+        do {
+            try task.run()
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
         task.waitUntilExit()
     }
 }

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct BottleManagementView: View {
     @State private var bottles = BottleLoader.shared.bottles
-    @State private var selectedBottle: BottleModel.ID?
+    @State private var selectedBottle: HarborBottle.ID?
 
     @State private var showNewBottleSheet = false
     @State private var showEditBottleSheet = false
     @State private var showLaunchExtSheet = false
     @State private var showAdvConfigSheet = false
 
-    @State private var sortOrder = [KeyPathComparator(\BottleModel.name)]
+    @State private var sortOrder = [KeyPathComparator(\HarborBottle.name)]
     var body: some View {
         VStack {
             Text("home.bottles.title")
@@ -116,7 +116,7 @@ struct BottleManagementView: View {
 
         .sheet(isPresented: $showNewBottleSheet) {
             NewBottleDropdown(isPresented: $showNewBottleSheet,
-                              bottle: BottleModel(id: UUID(), path: URL(fileURLWithPath: "")))
+                              bottle: HarborBottle(id: UUID(), path: URL(fileURLWithPath: "")))
         }
         .sheet(isPresented: $showEditBottleSheet) {
             if let thisBottle = bottles.first(where: { $0.id == selectedBottle }) {

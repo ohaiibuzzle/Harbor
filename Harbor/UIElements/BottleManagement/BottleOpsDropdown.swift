@@ -11,7 +11,7 @@ struct NewBottleDropdown: View {
     @Binding var isPresented: Bool
     var editingMode: Bool = false
 
-    @State var bottle: BottleModel
+    @State var bottle: HarborBottle
     @State var bottlePath = ""
     @State var isWorking = false
 
@@ -154,7 +154,7 @@ struct NewBottleDropdown: View {
 
 struct EditBottleView: View {
     @Binding var isPresented: Bool
-    var bottle: BottleModel
+    var bottle: HarborBottle
     var body: some View {
         // Basically reuse New in editing mode
         NewBottleDropdown(isPresented: $isPresented, editingMode: true,
@@ -165,6 +165,6 @@ struct EditBottleView: View {
 
 #Preview {
     NewBottleDropdown(isPresented: Binding.constant(true),
-                      bottle: BottleModel(id: UUID(), name: "My Bottle",
+                      bottle: HarborBottle(id: UUID(), name: "My Bottle",
                                           path: URL(fileURLWithPath: "/Users/venti/Documents/My Bottle")))
 }

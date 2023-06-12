@@ -29,7 +29,11 @@ final class BrewUtils {
         task.arguments = ["--", "\(x64BrewPrefix)/bin/brew", "--version"]
         task.standardOutput = nil
         task.standardError = nil
-        task.launch()
+        do {
+            try task.run()
+        } catch {
+            return
+        }
         task.waitUntilExit()
 
         installed = task.terminationStatus == 0
