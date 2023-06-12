@@ -187,11 +187,24 @@
             "state" : "translated",
             "value" : "Error!"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Błąd!"
+          }
         }
       }
     },
     "HarborBuilder" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HarborBuilder"
+          }
+        }
+      }
     },
     "home.alert.deletePath %@" : {
       "localizations" : {
@@ -493,6 +506,12 @@
             "state" : "translated",
             "value" : "Use a pre-built GPK bottle. Faster, but may be more unstable"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Używa skompilowanej wersji butelki GPK. Szybsze, ale może być mniej stabilne"
+          }
         }
       }
     },
@@ -502,6 +521,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Game Porting Toolkit installation complete. You can now close this window"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalacja Game Porting Toolkit zakończona. Możesz teraz zamknąć to okno"
           }
         }
       }
@@ -513,6 +538,12 @@
             "state" : "translated",
             "value" : "Please enter your admin password in order to un-quarantine the newly installed bottle"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wpisz hasło Administratora, aby usunąć kwarantannę z nowo zainstalowanej butelki"
+          }
         }
       }
     },
@@ -522,6 +553,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safer Setup"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bezpieczniejsza instalacja"
           }
         }
       }
@@ -533,6 +570,12 @@
             "state" : "translated",
             "value" : "Compiles GPK on-device. Slower, but will have less issues"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kompiluje GPK na urządzeniu. Wolniejsze, ale mniej problematyczne"
+          }
         }
       }
     },
@@ -542,6 +585,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Faster setup"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szybsza instalacja"
           }
         }
       }
@@ -745,6 +794,12 @@
             "state" : "translated",
             "value" : "Select GPK Bottle"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz butelkę GPK"
+          }
         }
       }
     },
@@ -754,6 +809,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You can install GPTK quicker by obtaining a pre-built brew bottle of GPTK. \nThis saves your Mac from compiling Wine at the cost of potential compatibility issues.\nPlease note that this installation method excludes the shader compiler from Apple"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Możesz zainstalować GPK szybciej wybierając wcześniej skompilowaną butelkę Homebrew z GPTK.\nTo oszczędza twojego Maca od kompilowania Wine kosztem potencjalnych problemów z kompatybilnością\nTa metoda instalacji nie zawiera kompilatora shaderów od Apple"
           }
         }
       }
@@ -796,6 +857,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select GPK dmg archive"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz archiwum dmg GPK"
           }
         }
       }
@@ -923,7 +990,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aby zainstalować Game Porting Toolkit od Apple, potrzebujesz menedżera pakietów Homebrew na x86_64"
+            "value" : "Aby zainstalować Game Porting Toolkit od Apple, potrzebujesz menedżera pakietów Homebrew na x86_64."
           }
         }
       }
@@ -1083,7 +1150,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Czekam na zainstalowanie narzędzi wiersza poleceń Xcode"
+            "value" : "Czekam na zainstalowanie narzędzi wiersza poleceń Xcode..."
           }
         }
       }
@@ -1099,7 +1166,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aby zainstalować Game Porting Toolkit od Apple, potrzebujesz narzędzi wiersza poleceń Xcode"
+            "value" : "Aby zainstalować Game Porting Toolkit od Apple, potrzebujesz narzędzi wiersza poleceń Xcode."
           }
         }
       }
