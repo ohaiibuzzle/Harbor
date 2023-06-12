@@ -23,7 +23,7 @@
 		AB7A81002A30CC7100AA71A6 /* BrewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */; };
 		AB7A81022A30D2FE00AA71A6 /* HarborUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A81012A30D2FE00AA71A6 /* HarborUtils.swift */; };
 		ABC0BFCE2A31627400382A42 /* BottleManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFCD2A31627400382A42 /* BottleManagementView.swift */; };
-		ABC0BFD12A31629300382A42 /* BottleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFD02A31629300382A42 /* BottleModel.swift */; };
+		ABC0BFD12A31629300382A42 /* HarborBottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFD02A31629300382A42 /* HarborBottle.swift */; };
 		ABC0BFD42A31691500382A42 /* BottleOpsDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFD32A31691500382A42 /* BottleOpsDropdown.swift */; };
 		ABD56AB32A36E419002A439C /* GPKSafeInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD56AB12A36E419002A439C /* GPKSafeInstallView.swift */; };
 		ABD56AB42A36E419002A439C /* GPKFastInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD56AB22A36E419002A439C /* GPKFastInstallView.swift */; };
@@ -51,7 +51,7 @@
 		AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewUtils.swift; sourceTree = "<group>"; };
 		AB7A81012A30D2FE00AA71A6 /* HarborUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborUtils.swift; sourceTree = "<group>"; };
 		ABC0BFCD2A31627400382A42 /* BottleManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleManagementView.swift; sourceTree = "<group>"; };
-		ABC0BFD02A31629300382A42 /* BottleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleModel.swift; sourceTree = "<group>"; };
+		ABC0BFD02A31629300382A42 /* HarborBottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborBottle.swift; sourceTree = "<group>"; };
 		ABC0BFD32A31691500382A42 /* BottleOpsDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleOpsDropdown.swift; sourceTree = "<group>"; };
 		ABD56AB12A36E419002A439C /* GPKSafeInstallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKSafeInstallView.swift; sourceTree = "<group>"; };
 		ABD56AB22A36E419002A439C /* GPKFastInstallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKFastInstallView.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		ABC0BFCF2A31628600382A42 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				ABC0BFD02A31629300382A42 /* BottleModel.swift */,
+				ABC0BFD02A31629300382A42 /* HarborBottle.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -299,7 +299,7 @@
 				AB7A81022A30D2FE00AA71A6 /* HarborUtils.swift in Sources */,
 				AB6652C42A3334E600F3FC5D /* XCLIUtils.swift in Sources */,
 				AB6A967F2A31045A003A019E /* SetupView.swift in Sources */,
-				ABC0BFD12A31629300382A42 /* BottleModel.swift in Sources */,
+				ABC0BFD12A31629300382A42 /* HarborBottle.swift in Sources */,
 				ABC0BFCE2A31627400382A42 /* BottleManagementView.swift in Sources */,
 				AB6652C22A33342B00F3FC5D /* XCLIInstallView.swift in Sources */,
 				AB6652C92A3349A400F3FC5D /* HarborMenu.swift in Sources */,
@@ -446,9 +446,10 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Harbor/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Harbor;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
-				INFOPLIST_KEY_NSAppleEventsUsageDescription = "$(PRODUCT_NAME) needs your permission to run terminal commands";
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Harbor needs your permission to run terminal commands";
 				INFOPLIST_KEY_NSDownloadsFolderUsageDescription = "Harbor needs to access your Documents folder to look for the GPK";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -482,9 +483,10 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Harbor/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Harbor;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
-				INFOPLIST_KEY_NSAppleEventsUsageDescription = "$(PRODUCT_NAME) needs your permission to run terminal commands";
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Harbor needs your permission to run terminal commands";
 				INFOPLIST_KEY_NSDownloadsFolderUsageDescription = "Harbor needs to access your Documents folder to look for the GPK";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
