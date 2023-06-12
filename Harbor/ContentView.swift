@@ -12,7 +12,7 @@ struct ContentView: View {
     private var gpkUtils
 
     var body: some View {
-        if gpkUtils.status == .notInstalled {
+        if gpkUtils.status != .installed {
             // GPK is not installed
             SetupView()
         } else {

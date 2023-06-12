@@ -81,7 +81,7 @@ final class GPKUtils {
 
         repeat {
             // Wait for GPK to be installed
-            sleep(1)
+            sleep(5)
             checkGPKInstallStatus()
         } while self.status == .notInstalled
 
@@ -135,7 +135,7 @@ final class GPKUtils {
 
         repeat {
             // Wait for GPK to be installed
-            sleep(1)
+            sleep(5)
             checkGPKInstallStatus()
         } while self.status == .notInstalled
 
@@ -174,7 +174,11 @@ final class GPKUtils {
             cpProcess.arguments = ["-R", gpkLib.path, gpkLibDest.path]
             cpProcess.standardOutput = nil
             cpProcess.standardError = nil
-            cpProcess.launch()
+            do {
+                try cpProcess.run()
+            } catch {
+                HarborUtils.shared.quickError(error.localizedDescription)
+            }
             cpProcess.waitUntilExit()
 
             // Copy all the gameportingtoolkit* binaries to Harbor's container (for later use)
@@ -189,7 +193,11 @@ final class GPKUtils {
             let hdiutil2 = Process()
             hdiutil2.executableURL = URL(fileURLWithPath: "/usr/bin/hdiutil")
             hdiutil2.arguments = ["detach", gpkVolume.path]
-            hdiutil2.launch()
+            do {
+                try hdiutil2.run()
+            } catch {
+                HarborUtils.shared.quickError(error.localizedDescription)
+            }
             hdiutil2.waitUntilExit()
         } else {
             NSLog("Harbor: GPK disk image not found. Aborting")
