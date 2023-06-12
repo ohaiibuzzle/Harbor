@@ -34,8 +34,10 @@ struct GPKSafeInstallView: View {
                 VStack {
                     HStack {
                         Button(action: {
-                            NSWorkspace.shared.open(URL(
-                                string: "https://developer.apple.com/download/more/?=game%20porting%20toolkit")!)
+                            if let url = URL(
+                                string: "https://developer.apple.com/download/more/?=game%20porting%20toolkit") {
+                                NSWorkspace.shared.open(url)
+                            }
                         }, label: {
                             Text("sheet.GPKInstall.btn.download")
                         })

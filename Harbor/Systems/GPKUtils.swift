@@ -70,11 +70,12 @@ final class GPKUtils {
         """
 
         Task {
-            let script = NSAppleScript(source: aaplScript)!
-            var error: NSDictionary?
-            script.executeAndReturnError(&error)
-            if let error = error {
-                NSLog("Harbor: Failed to execute AppleScript: \(error)")
+            if let script = NSAppleScript(source: aaplScript) {
+                var error: NSDictionary?
+                script.executeAndReturnError(&error)
+                if let error = error {
+                    NSLog("Harbor: Failed to execute AppleScript: \(error)")
+                }
             }
         }
 
@@ -121,11 +122,14 @@ final class GPKUtils {
         """
 
         Task {
-            let script = NSAppleScript(source: aaplScript)!
-            var error: NSDictionary?
-            script.executeAndReturnError(&error)
-            if let error = error {
-                NSLog("Harbor: Failed to execute AppleScript: \(error)")
+            if let script = NSAppleScript(source: aaplScript) {
+                var error: NSDictionary?
+                script.executeAndReturnError(&error)
+                if let error = error {
+                    NSLog("Harbor: Failed to execute AppleScript: \(error)")
+                }
+            } else {
+                return
             }
         }
 

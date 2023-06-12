@@ -36,8 +36,9 @@ struct BottleConfigDropdown: View {
             }
             Spacer()
             Button("btn.OK") {
-                BottleLoader.shared.bottles[BottleLoader.shared.bottles
-                    .firstIndex(where: { $0.id == bottle.id })!] = bottle
+                if let bottleIndex = BottleLoader.shared.bottles.firstIndex(where: { $0.id == bottle.id }) {
+                    BottleLoader.shared.bottles[bottleIndex] = bottle
+                }
                 isPresented = false
             }
         }

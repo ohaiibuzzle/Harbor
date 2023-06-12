@@ -35,10 +35,12 @@ struct GPKFastInstallView: View {
                     .padding()
             } else {
                 VStack {
-                    HStack{
+                    HStack {
                         Button {
-                            NSWorkspace.shared.open(URL(string:
-                                                            "https://github.com/ohaiibuzzle/HarborBuilder/actions/workflows/1.build-gptk.yml")!)
+                            if let url = URL(string:
+                                "https://github.com/ohaiibuzzle/HarborBuilder/actions/workflows/1.build-gptk.yml") {
+                                NSWorkspace.shared.open(url)
+                            }
                         } label: {
                             Text("HarborBuilder")
                                 .frame(minWidth: 200)
@@ -65,8 +67,8 @@ struct GPKFastInstallView: View {
                                 Text("sheet.fastGPKInstall.btn.selectBottle")
                                     .frame(minWidth: 200)
                             }
-                            if gpkPath != nil {
-                                Text(gpkPath!.lastPathComponent)
+                            if let gpkPath = gpkPath {
+                                Text(gpkPath.lastPathComponent)
                             } else {
                                 Text("")
                             }
@@ -118,12 +120,14 @@ struct GPKFastInstallView: View {
 
                         if gpkUtils.status != .installed {
                             Button(action: {
-                                gpkInstalling = true
-                                Task.detached(priority: .userInitiated) {
-                                    gpkUtils.fastInstallGPK(using: brewUtils, gpkBottle: gpkPath!)
-                                    Task { @MainActor in
-                                        gpkInstalling = false
-                                        gpkUtils.checkGPKInstallStatus()
+                                if let gpkConcretePath = gpkPath {
+                                    gpkInstalling = true
+                                    Task.detached(priority: .userInitiated) {
+                                        gpkUtils.fastInstallGPK(using: brewUtils, gpkBottle: gpkConcretePath)
+                                        Task { @MainActor in
+                                            gpkInstalling = false
+                                            gpkUtils.checkGPKInstallStatus()
+                                        }
                                     }
                                 }
                             }, label: {

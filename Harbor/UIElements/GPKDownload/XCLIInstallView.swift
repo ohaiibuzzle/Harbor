@@ -43,9 +43,10 @@ struct XCLIInstallView: View {
                         .multilineTextAlignment(.center)
 
                     Button("btn.download") {
-                        // Have to be done manually since Apple don't beta seed this
-                        NSWorkspace.shared.open(
-                            URL(string: "https://developer.apple.com/download/more/?=command%20line%20tools")!)
+                        if let url = URL(string: "https://developer.apple.com/download/more/?=command%20line%20tools") {
+                            // Have to be done manually since Apple don't beta seed this
+                            NSWorkspace.shared.open(url)
+                        }
                     }
             } else {
                     Text("sheet.XCLIInstall.status.installed")

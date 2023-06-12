@@ -56,9 +56,8 @@ struct NewBottleDropdown: View {
                             dialog.directoryURL = FileManager.default
                                 .urls(for: .documentDirectory, in: .userDomainMask).first
                             if dialog.runModal() == NSApplication.ModalResponse.OK {
-                                let result = dialog.url
-                                if result != nil {
-                                    bottlePath = result!.path
+                                if let result = dialog.url {
+                                    bottlePath = result.path
                                 }
                             } else {
                                 // User clicked on "Cancel"
@@ -92,9 +91,8 @@ struct NewBottleDropdown: View {
                                 dialog.allowsMultipleSelection = false
                                 dialog.directoryURL = bottle.path
                                 if dialog.runModal() == NSApplication.ModalResponse.OK {
-                                    let result = dialog.url
-                                    if result != nil {
-                                        bottle.primaryApplicationPath = bottle.appPathFromUnixPath(result!)
+                                    if let result = dialog.url {
+                                        bottle.primaryApplicationPath = bottle.appPathFromUnixPath(result)
                                     }
                                 } else {
                                     // User clicked on "Cancel"
@@ -128,8 +126,9 @@ struct NewBottleDropdown: View {
                 Button(editingMode ? "btn.done" : "btn.create") {
                     if editingMode {
                         // Save the bottle
-                        BottleLoader.shared.bottles[BottleLoader.shared.bottles
-                            .firstIndex(where: { $0.id == bottle.id })!] = bottle
+                        if let bottleIndex = BottleLoader.shared.bottles.firstIndex(where: { $0.id == bottle.id }) {
+                            BottleLoader.shared.bottles[bottleIndex] = bottle
+                        }
                         isPresented = false
                     } else {
                         // Create the bottle

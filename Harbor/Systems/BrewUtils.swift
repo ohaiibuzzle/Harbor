@@ -57,9 +57,9 @@ final class BrewUtils {
             let script = NSAppleScript(source: aaplScript)
             var errors: NSDictionary?
             script?.executeAndReturnError(&errors)
-            if errors != nil {
+            if let errors = errors {
                 NSLog("Harbor: Homebrew installation failed")
-                NSLog("\(errors!)")
+                NSLog("\(errors)")
             }
         }
 

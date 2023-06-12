@@ -39,9 +39,8 @@ struct LaunchExtDropdown: View {
                             dialog.allowedFileTypes = ["exe", "msi"]
                             dialog.directoryURL = bottle.path
                             if dialog.runModal() == NSApplication.ModalResponse.OK {
-                                let result = dialog.url
-                                if result != nil {
-                                    applicationPath = result!.path
+                                if let result = dialog.url {
+                                    applicationPath = result.path
                                 }
                             } else {
                                 // User clicked on "Cancel"

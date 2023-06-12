@@ -42,9 +42,8 @@ struct NewBottleDropdown: View {
                         dialog.directoryURL = FileManager.default
                             .urls(for: .documentDirectory, in: .userDomainMask).first
                         if dialog.runModal() == NSApplication.ModalResponse.OK {
-                            let result = dialog.url
-                            if result != nil {
-                                bottleName = result!.path
+                            if let result = dialog.url {
+                                bottleName = result.path
                             }
                         } else {
                             // User clicked on "Cancel"

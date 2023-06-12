@@ -56,7 +56,9 @@ struct BottleManagementView: View {
             }
             ToolbarItem(placement: .automatic) {
                 Button {
-                    bottles.first(where: { $0.id == selectedBottle })!.launchPrimaryApplication()
+                    if let thisBottle = bottles.first(where: { $0.id == selectedBottle }) {
+                        thisBottle.launchPrimaryApplication()
+                    }
                 } label: {
                     Label("home.btn.run", systemImage: "play")
                 }
@@ -80,28 +82,30 @@ struct BottleManagementView: View {
             }
             ToolbarItem(placement: .automatic) {
                 Button {
-                    // ALARM
-                    let alert = NSAlert()
-                    alert.messageText = String(localized: "home.alert.deleteTitle")
-                    alert.alertStyle = .critical
-                    let checkbox = NSButton(checkboxWithTitle:
-                                                String(format: String(localized: "home.alert.deletePath %@"),
-                                                       bottles.first(where: { $0.id == selectedBottle })!
-                                                        .path.absoluteString),
-                        target: nil, action: nil)
-                    checkbox.state = .on
-                    alert.accessoryView = checkbox
-                    alert.addButton(withTitle: String(localized: "btn.delete"))
-                    alert.addButton(withTitle: String(localized: "btn.cancel"))
+                    if let thisBottle = bottles.first(where: { $0.id == selectedBottle }) {
+                        // ALARM
+                        let alert = NSAlert()
+                        alert.messageText = String(localized: "home.alert.deleteTitle")
+                        alert.alertStyle = .critical
+                        let checkbox = NSButton(checkboxWithTitle:
+                                                    String(format: String(localized: "home.alert.deletePath %@"),
+                                                           thisBottle.path.absoluteString), target: nil, action: nil)
+                        checkbox.state = .on
+                        alert.accessoryView = checkbox
+                        alert.addButton(withTitle: String(localized: "btn.delete"))
+                        alert.addButton(withTitle: String(localized: "btn.cancel"))
 
-                    if alert.runModal() == .alertFirstButtonReturn {
-                        // User clicked on "Delete"
-                        BottleLoader.shared.delete(bottles.first(where: { $0.id == selectedBottle })!, checkbox.state)
-                        bottles.removeAll(where: { $0.id == selectedBottle })
-                        selectedBottle = nil
-                    } else {
-                        // User clicked on "Cancel"
-                        return
+                        if alert.runModal() == .alertFirstButtonReturn {
+                            // User clicked on "Delete"
+                            if let thisBottle = bottles.first(where: { $0.id == selectedBottle }) {
+                                BottleLoader.shared.delete(thisBottle, checkbox.state)
+                                bottles.removeAll(where: { $0.id == selectedBottle })
+                                selectedBottle = nil
+                            }
+                        } else {
+                            // User clicked on "Cancel"
+                            return
+                        }
                     }
                 } label: {
                     Label("home.btn.nuke", systemImage: "trash")
@@ -115,16 +119,22 @@ struct BottleManagementView: View {
                               bottle: BottleModel(id: UUID(), path: URL(fileURLWithPath: "")))
         }
         .sheet(isPresented: $showEditBottleSheet) {
-            EditBottleView(isPresented: $showEditBottleSheet,
-                           bottle: bottles.first(where: { $0.id == selectedBottle })!)
+            if let thisBottle = bottles.first(where: { $0.id == selectedBottle }) {
+                EditBottleView(isPresented: $showEditBottleSheet,
+                               bottle: thisBottle)
+            }
         }
         .sheet(isPresented: $showLaunchExtSheet) {
-            LaunchExtDropdown(isPresented: $showLaunchExtSheet,
-                              bottle: bottles.first(where: { $0.id == selectedBottle })!)
+            if let thisBottle = bottles.first(where: { $0.id == selectedBottle }) {
+                LaunchExtDropdown(isPresented: $showLaunchExtSheet,
+                                  bottle: thisBottle)
+            }
         }
         .sheet(isPresented: $showAdvConfigSheet) {
-            BottleConfigDropdown(isPresented: $showAdvConfigSheet,
-                                 bottle: $bottles.first(where: { $0.id == selectedBottle })!)
+            if let thisBottle = $bottles.first(where: { $0.id == selectedBottle }) {
+                BottleConfigDropdown(isPresented: $showAdvConfigSheet,
+                                     bottle: thisBottle)
+            }
         }
         .onChange(of: showNewBottleSheet) {
             bottles = BottleLoader.shared.bottles

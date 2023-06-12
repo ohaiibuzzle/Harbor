@@ -33,8 +33,8 @@ final class XCLIUtils {
         task.launch()
         task.waitUntilExit()
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output = String(data: data, encoding: .utf8)!
-
-        installed = output.contains("version: 15.")
+        if let output = String(data: data, encoding: .utf8) {
+            installed = output.contains("version: 15.")
+        }
     }
 }

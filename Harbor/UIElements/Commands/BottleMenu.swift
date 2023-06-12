@@ -14,10 +14,14 @@ struct BottleMenu: Commands {
     var body: some Commands {
         CommandMenu("Bottle") {
             Button("Launch winecfg") {
-                bottles.first(where: { $0.id == selectedBottle })!.launchApplication("winecfg")
+                if let bottle = bottles.first(where: { $0.id == selectedBottle }) {
+                    bottle.launchApplication("winecfg")
+                }
             }
             Button("Launch explorer") {
-                bottles.first(where: { $0.id == selectedBottle })!.launchApplication("explorer")
+                if let bottle = bottles.first(where: { $0.id == selectedBottle }) {
+                    bottle.launchApplication("explorer")
+                }
             }
         }
     }
