@@ -181,7 +181,14 @@
       }
     },
     "harbor.errorAlert" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error!"
+          }
+        }
+      }
     },
     "HarborBuilder" : {
 
