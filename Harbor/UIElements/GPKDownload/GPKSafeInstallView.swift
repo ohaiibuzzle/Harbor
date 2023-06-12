@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GPKDownloadView: View {
+struct GPKSafeInstallView: View {
     @Binding var isPresented: Bool
     @State var gpkSelected = false
     @State var gpkInstalling = false
@@ -74,6 +74,7 @@ struct GPKDownloadView: View {
                 }
                 .padding()
             }
+
             HStack {
                 Button("btn.cancel") {
                     isPresented = false
@@ -108,8 +109,8 @@ struct GPKDownloadView: View {
     }
 }
 
-struct GPKDownloadView_Previews: PreviewProvider {
+struct GPKSafeInstallView_Previews: PreviewProvider {
     static var previews: some View {
-        GPKDownloadView(isPresented: Binding.constant(true))
+        GPKSafeInstallView(isPresented: Binding.constant(true))
     }
 }

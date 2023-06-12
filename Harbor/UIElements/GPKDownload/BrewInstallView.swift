@@ -36,7 +36,6 @@ struct BrewInstallView: View {
                                 .foregroundColor(.green)
                         } else {
                             Text("sheet.HBInstall.status.notInstalled")
-                            Text("x86_64 Homebrew is not installed")
                                 .foregroundColor(.red)
                         }
                     }

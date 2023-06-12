@@ -180,6 +180,9 @@
         }
       }
     },
+    "HarborBuilder" : {
+
+    },
     "home.alert.deletePath %@" : {
       "localizations" : {
         "en" : {
@@ -473,6 +476,66 @@
         }
       }
     },
+    "setup.fasterSetup.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use a pre-built GPK bottle. Faster, but may be more unstable"
+          }
+        }
+      }
+    },
+    "setup.message.complete" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game Porting Toolkit installation complete. You can now close this window"
+          }
+        }
+      }
+    },
+    "setup.message.enterPassword" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enter your admin password in order to un-quarantine the newly installed bottle"
+          }
+        }
+      }
+    },
+    "setup.saferSetup" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safer Setup"
+          }
+        }
+      }
+    },
+    "setup.saferSetup.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compiles GPK on-device. Slower, but will have less issues"
+          }
+        }
+      }
+    },
+    "setup.soIWouldLikeToLiveDangerously" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faster setup"
+          }
+        }
+      }
+    },
     "setup.subtitle" : {
       "localizations" : {
         "en" : {
@@ -665,6 +728,26 @@
         }
       }
     },
+    "sheet.fastGPKInstall.btn.selectBottle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select GPK Bottle"
+          }
+        }
+      }
+    },
+    "sheet.fastGPKInstall.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can install GPTK quicker by obtaining a pre-built brew bottle of GPTK. \nThis saves your Mac from compiling Wine at the cost of potential compatibility issues.\nPlease note that this installation method excludes the shader compiler from Apple"
+          }
+        }
+      }
+    },
     "sheet.GPKInstall.btn.download" : {
       "localizations" : {
         "en" : {
@@ -693,6 +776,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zainstaluj GPTK"
+          }
+        }
+      }
+    },
+    "sheet.GPKInstall.btn.selectGPK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select GPK dmg archive"
           }
         }
       }
@@ -1016,9 +1109,6 @@
           }
         }
       }
-    },
-    "x86_64 Homebrew is not installed" : {
-
     }
   },
   "version" : "1.0"

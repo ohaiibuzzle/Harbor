@@ -55,13 +55,66 @@ final class GPKUtils {
         }
 
         let aaplScript = """
-        property shellScript : "\(brewUtils.x64BrewPrefix)/bin/brew install apple/apple/game-porting-toolkit && \
-        clear && echo 'Game Porting Toolkit has been installed. You can now close this Terminal window.' && exit"
+        property shellScript : "clear && \(brewUtils.x64BrewPrefix)/bin/brew install \
+        apple/apple/game-porting-toolkit && \
+        clear && echo '\(String(localized: "setup.message.complete"))' && exit"
 
         tell application "Terminal"
             activate
             -- Enter x86_64 shell
             do script "arch -x86_64 /bin/sh"
+            delay 2
+            -- Install Homebrew
+            do script shellScript in front window
+        end tell
+        """
+
+        Task {
+            let script = NSAppleScript(source: aaplScript)!
+            var error: NSDictionary?
+            script.executeAndReturnError(&error)
+            if let error = error {
+                NSLog("Harbor: Failed to execute AppleScript: \(error)")
+            }
+        }
+
+        repeat {
+            // Wait for GPK to be installed
+            sleep(1)
+            checkGPKInstallStatus()
+        } while self.status == .notInstalled
+
+        // Copy the GPK libraries
+        copyGPKLibraries()
+    }
+
+    func fastInstallGPK(using brewUtils: BrewUtils, gpkBottle: URL) {
+        // Abort if Brew is not installed
+        brewUtils.testX64Brew()
+        if brewUtils.installed == false {
+            NSLog("Harbor: Brew not installed. Aborting")
+            return
+        }
+
+        // Check if GPK bottle exists
+        if !FileManager.default.fileExists(atPath: gpkBottle.path) {
+            NSLog("Harbor: GPK bottle not found. Aborting")
+            return
+        }
+
+        let aaplScript = """
+        property shellScript : "clear && \(brewUtils.x64BrewPrefix)/bin/brew install gstreamer pkg-config zlib \
+        freetype sdl2 libgphoto2 faudio jpeg libpng mpg123 libtiff libgsm glib gnutls libusb gettext && \
+        \(brewUtils.x64BrewPrefix)/bin/brew install --ignore-dependencies \(gpkBottle.path) && \
+        clear && echo '\(String(localized: "setup.message.enterPassword"))' && \
+        sudo /usr/bin/xattr -r -d com.apple.quarantine /usr/local/opt/game-porting-toolkit/; \
+        clear && echo '\(String(localized: "setup.message.complete"))' && exit"
+
+        tell application "Terminal"
+            activate
+            -- Enter x86_64 shell
+            do script "arch -x86_64 /bin/sh"
+            delay 2
             -- Install Homebrew
             do script shellScript in front window
         end tell
