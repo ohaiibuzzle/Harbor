@@ -102,6 +102,21 @@ struct HarborBottle: Identifiable, Equatable, Codable {
         task.waitUntilExit()
     }
 
+    func killBottle() {
+        // Run wineserver -k to kill the bottle
+        let task = Process()
+        task.launchPath = "/usr/local/opt/game-porting-toolkit/bin/wineserver"
+        // Launch with WINE_PREFIX set to the bottle path
+        task.environment = ["WINEPREFIX": path.path]
+        task.arguments = ["-k"]
+
+        do {
+            try task.run()
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
+    }
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decodeIfPresent(UUID.self, forKey: .id) ?? UUID()

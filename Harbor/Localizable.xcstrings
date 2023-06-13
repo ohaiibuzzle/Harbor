@@ -313,6 +313,16 @@
         }
       }
     },
+    "home.btn.kill" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
+    },
     "home.btn.new" : {
       "localizations" : {
         "en" : {
