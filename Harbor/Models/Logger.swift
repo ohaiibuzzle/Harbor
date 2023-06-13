@@ -8,28 +8,33 @@
 import Foundation
 
 actor Logger {
-    var logContent: [String] = []
+    // File handle to log directly to disk 
+    private var fileHandle: FileHandle?
 
-    func log(_ message: String) {
-        logContent.append(message)
-    }
-
-    func dump() {
-        for message in logContent {
-            print(message)
+    init() {
+        do {
+            let logFile = HarborUtils.shared.getContainerHome().appendingPathComponent("harbor.log")
+            FileManager.default.createFile(atPath: logFile.path, contents: nil, attributes: nil)
+            fileHandle = try FileHandle(forWritingTo: logFile)
+        } catch {
+            print("Failed to create log file")
         }
     }
 
-    func clear() {
-        logContent = []
+    deinit {
+        fileHandle?.closeFile()
     }
 
-    func save() {
-        let logFile = HarborUtils.shared.getContainerHome().appendingPathComponent("log.txt")
-        do {
-            try logContent.joined(separator: "\n").write(to: logFile, atomically: true, encoding: .utf8)
-        } catch {
-            print("Failed to save log file")
+    func log(_ message: String) {
+        if !message.isEmpty {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+            let timestamp = dateFormatter.string(from: Date())
+            let logMessage = "\(timestamp) \(message)"
+            print(logMessage)
+            if let logMessageData = logMessage.data(using: .utf8) {
+                fileHandle?.write(logMessageData)
+            }
         }
     }
 }

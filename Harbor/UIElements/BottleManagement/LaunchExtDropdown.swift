@@ -90,9 +90,8 @@ struct LaunchExtDropdown: View {
                     isPresented = false
                 }
                 Button("btn.launch") {
-                    bottle.launchApplication(applicationPath,
-                                             arguments: bottle.primaryApplicationArgument
-                                                .split(separator: " ").map { String($0) },
+                    bottle.launchExtApplication(applicationPath,
+                                             arguments: applicationArgument.components(separatedBy: " "),
                                              workDir: applicationWorkDir)
                     isPresented = false
                 }
