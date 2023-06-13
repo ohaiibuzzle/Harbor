@@ -111,6 +111,16 @@ struct NewBottleDropdown: View {
                         Spacer()
                         HStack {
                             TextField("", text: $bottle.primaryApplicationWorkDir)
+                            Button("btn.Auto") {
+                                // Path up to the executable
+                                // Remove the executable name from the Windows path
+                                let path = bottle.primaryApplicationPath
+                                    .replacingOccurrences(of: "\\", with: "/")
+                                    .components(separatedBy: "/")
+                                    .dropLast()
+                                    .joined(separator: "\\")
+                                bottle.primaryApplicationWorkDir = path
+                            }
                             Button("btn.browse") {
                                 let dialog = NSOpenPanel()
                                 dialog.title = "sheet.edit.primaryApp.popup"
@@ -174,7 +184,7 @@ struct NewBottleDropdown: View {
             .padding()
         }
         .padding()
-        .frame(width: 500)
+        .frame(minWidth: 500)
     }
 }
 

@@ -36,6 +36,16 @@
         }
       }
     },
+    "btn.Auto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto"
+          }
+        }
+      }
+    },
     "btn.browse" : {
       "localizations" : {
         "en" : {
