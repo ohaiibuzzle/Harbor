@@ -13,6 +13,7 @@ struct LaunchExtDropdown: View {
 
     @State var applicationPath = ""
     @State var applicationArgument = ""
+    @State var applicationWorkDir = ""
 
     var body: some View {
         VStack {
@@ -22,7 +23,7 @@ struct LaunchExtDropdown: View {
 
             Text("sheet.launchExt.subtitle \(bottle.name)")
                 .padding()
-            Grid {
+            Grid(alignment: .leading) {
                 GridRow {
                     Text("sheet.launchExt.applicationLabel")
                     HStack {
@@ -49,14 +50,39 @@ struct LaunchExtDropdown: View {
                         }
                     }
                 }
-                .padding()
 
                 GridRow {
                     Text("sheet.launchExt.argsLabel")
                     TextField("", text: $applicationArgument)
                 }
-                .padding()
+
+                GridRow {
+                    Text("sheet.launchExt.appWorkDirLabel")
+                    HStack {
+                        TextField("", text: $applicationWorkDir)
+                        Button("btn.browse") {
+                            let dialog = NSOpenPanel()
+                            dialog.title = "sheet.launchExt.workDir.popup"
+                            dialog.showsResizeIndicator = true
+                            dialog.showsHiddenFiles = false
+                            dialog.canChooseDirectories = true
+                            dialog.canChooseFiles = false
+                            dialog.canCreateDirectories = true
+                            dialog.allowsMultipleSelection = false
+                            dialog.directoryURL = bottle.path
+                            if dialog.runModal() == NSApplication.ModalResponse.OK {
+                                if let result = dialog.url {
+                                    applicationWorkDir = bottle.pathFromUnixPath(result)
+                                }
+                            } else {
+                                // User clicked on "Cancel"
+                                return
+                            }
+                        }
+                    }
+                }
             }
+            .padding()
 
             HStack {
                 Spacer()
@@ -66,7 +92,8 @@ struct LaunchExtDropdown: View {
                 Button("btn.launch") {
                     bottle.launchApplication(applicationPath,
                                              arguments: bottle.primaryApplicationArgument
-                                                .split(separator: " ").map { String($0) })
+                                                .split(separator: " ").map { String($0) },
+                                             workDir: applicationWorkDir)
                     isPresented = false
                 }
                 .disabled(applicationPath.isEmpty)
