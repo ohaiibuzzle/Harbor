@@ -116,7 +116,7 @@ struct BottleManagementView: View {
 
         .sheet(isPresented: $showNewBottleSheet) {
             NewBottleDropdown(isPresented: $showNewBottleSheet,
-                              bottle: HarborBottle(id: UUID(), path: URL(fileURLWithPath: "")))
+                              bottle: HarborBottle(id: UUID(), name: "", path: URL(fileURLWithPath: "")))
         }
         .sheet(isPresented: $showEditBottleSheet) {
             if let thisBottle = bottles.first(where: { $0.id == selectedBottle }) {

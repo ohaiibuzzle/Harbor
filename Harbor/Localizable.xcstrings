@@ -36,6 +36,16 @@
         }
       }
     },
+    "btn.Auto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto"
+          }
+        }
+      }
+    },
     "btn.browse" : {
       "localizations" : {
         "en" : {
@@ -771,6 +781,16 @@
         }
       }
     },
+    "sheet.edit.primaryAppWorkDirLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primary Working Directory"
+          }
+        }
+      }
+    },
     "sheet.edit.title" : {
       "localizations" : {
         "en" : {
@@ -1023,6 +1043,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aplikacja"
+          }
+        }
+      }
+    },
+    "sheet.launchExt.appWorkDirLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Working Directory"
           }
         }
       }

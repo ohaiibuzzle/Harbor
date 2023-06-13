@@ -92,7 +92,7 @@ struct NewBottleDropdown: View {
                                 dialog.directoryURL = bottle.path
                                 if dialog.runModal() == NSApplication.ModalResponse.OK {
                                     if let result = dialog.url {
-                                        bottle.primaryApplicationPath = bottle.appPathFromUnixPath(result)
+                                        bottle.primaryApplicationPath = bottle.pathFromUnixPath(result)
                                     }
                                 } else {
                                     // User clicked on "Cancel"
@@ -105,6 +105,42 @@ struct NewBottleDropdown: View {
                         Text("sheet.edit.primaryAppArgsLabel")
                         Spacer()
                         TextField("", text: $bottle.primaryApplicationArgument)
+                    }
+                    GridRow {
+                        Text("sheet.edit.primaryAppWorkDirLabel")
+                        Spacer()
+                        HStack {
+                            TextField("", text: $bottle.primaryApplicationWorkDir)
+                            Button("btn.Auto") {
+                                // Path up to the executable
+                                // Remove the executable name from the Windows path
+                                let path = bottle.primaryApplicationPath
+                                    .replacingOccurrences(of: "\\", with: "/")
+                                    .components(separatedBy: "/")
+                                    .dropLast()
+                                    .joined(separator: "\\")
+                                bottle.primaryApplicationWorkDir = path
+                            }
+                            Button("btn.browse") {
+                                let dialog = NSOpenPanel()
+                                dialog.title = "sheet.edit.primaryApp.popup"
+                                dialog.showsResizeIndicator = true
+                                dialog.showsHiddenFiles = false
+                                dialog.canChooseDirectories = true
+                                dialog.canChooseFiles = false
+                                dialog.canCreateDirectories = true
+                                dialog.allowsMultipleSelection = false
+                                dialog.directoryURL = bottle.path
+                                if dialog.runModal() == NSApplication.ModalResponse.OK {
+                                    if let result = dialog.url {
+                                        bottle.primaryApplicationWorkDir = bottle.pathFromUnixPath(result)
+                                    }
+                                } else {
+                                    // User clicked on "Cancel"
+                                    return
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -148,7 +184,7 @@ struct NewBottleDropdown: View {
             .padding()
         }
         .padding()
-        .frame(width: 500, height: 300)
+        .frame(minWidth: 500)
     }
 }
 
