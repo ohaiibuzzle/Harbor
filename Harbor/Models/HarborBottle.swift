@@ -19,7 +19,8 @@ struct HarborBottle: Identifiable, Equatable, Codable {
     var enableESync: Bool = false
     var pleaseShutUp: Bool = true
 
-    func launchApplication(_ application: String, arguments: [String] = [], workDir: String = "") {
+    func launchApplication(_ application: String, arguments: [String] = [],
+                           workDir: String = "", isUnixPath: Bool = false) {
         let task = Process()
         task.launchPath = "/usr/local/opt/game-porting-toolkit/bin/wine64"
         task.arguments = ["start"]
@@ -29,6 +30,9 @@ struct HarborBottle: Identifiable, Equatable, Codable {
             task.arguments?.append(workDir)
         }
 
+        if isUnixPath {
+            task.arguments?.append("/unix")
+        }
         task.arguments?.append(application)
 
         if !arguments.isEmpty {
@@ -58,16 +62,7 @@ struct HarborBottle: Identifiable, Equatable, Codable {
     }
 
     func launchExtApplication(_ application: String, arguments: [String] = [], workDir: String = "") {
-        // if the app is not inside the bottle, we copy it to bottle's drive_c
-        if isAppOutsideBottle(application) {
-            do {
-                try FileManager.default.copyItem(atPath: application, toPath: "\(path.path)/drive_c/\(application)")
-            } catch {
-                NSLog("Failed to copy \(application) to \(path.path)/drive_c/\(application)")
-            }
-        }
-        let newApplication = "C:\\\(application)"
-        launchApplication(newApplication, arguments: arguments)
+        launchApplication(application, arguments: arguments, workDir: workDir, isUnixPath: true)
     }
 
     func launchPrimaryApplication() {
