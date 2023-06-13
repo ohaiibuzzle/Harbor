@@ -74,6 +74,16 @@ struct BottleManagementView: View {
             }
             ToolbarItem(placement: .automatic) {
                 Button {
+                    if let thisBottle = bottles.first(where: { $0.id == selectedBottle }) {
+                        thisBottle.killBottle()
+                    }
+                } label: {
+                    Label("home.btn.kill", systemImage: "stop")
+                }
+                .disabled(selectedBottle == nil)
+            }
+            ToolbarItem(placement: .automatic) {
+                Button {
                     showAdvConfigSheet = true
                 } label: {
                     Label("home.btn.advConf", systemImage: "gear")
