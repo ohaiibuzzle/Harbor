@@ -21,6 +21,8 @@ struct HarborBottle: Identifiable, Equatable, Codable {
 
     func launchApplication(_ application: String, arguments: [String] = [], workDir: String = "") {
         let task = Process()
+        let logger = Logger()
+
         task.launchPath = "/usr/local/opt/game-porting-toolkit/bin/wine64"
         task.arguments = ["start"]
 
@@ -48,12 +50,30 @@ struct HarborBottle: Identifiable, Equatable, Codable {
         if pleaseShutUp {
             task.standardOutput = nil
             task.standardError = nil
+        } else {
+            let pipe = Pipe()
+            task.standardOutput = pipe
+            task.standardError = pipe
+
+            pipe.fileHandleForReading.readabilityHandler = { handle in
+                let data = handle.availableData
+                if let output = String(data: data, encoding: .utf8) {
+                    Task.detached {
+                        await logger.log(output)
+                    }
+                }
+            }
         }
 
         do {
             try task.run()
         } catch {
             HarborUtils.shared.quickError(error.localizedDescription)
+        }
+
+        Task(priority: .background) {
+            task.waitUntilExit()
+            await logger.dump()
         }
     }
 

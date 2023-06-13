@@ -22,6 +22,7 @@
 		AB6A967F2A31045A003A019E /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6A967E2A31045A003A019E /* SetupView.swift */; };
 		AB7A81002A30CC7100AA71A6 /* BrewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */; };
 		AB7A81022A30D2FE00AA71A6 /* HarborUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A81012A30D2FE00AA71A6 /* HarborUtils.swift */; };
+		AB7F9D182A38AC58003014D8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F9D172A38AC58003014D8 /* Logger.swift */; };
 		ABC0BFCE2A31627400382A42 /* BottleManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFCD2A31627400382A42 /* BottleManagementView.swift */; };
 		ABC0BFD12A31629300382A42 /* HarborBottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFD02A31629300382A42 /* HarborBottle.swift */; };
 		ABC0BFD42A31691500382A42 /* BottleOpsDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFD32A31691500382A42 /* BottleOpsDropdown.swift */; };
@@ -50,6 +51,7 @@
 		AB6A967E2A31045A003A019E /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewUtils.swift; sourceTree = "<group>"; };
 		AB7A81012A30D2FE00AA71A6 /* HarborUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborUtils.swift; sourceTree = "<group>"; };
+		AB7F9D172A38AC58003014D8 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		ABC0BFCD2A31627400382A42 /* BottleManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleManagementView.swift; sourceTree = "<group>"; };
 		ABC0BFD02A31629300382A42 /* HarborBottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborBottle.swift; sourceTree = "<group>"; };
 		ABC0BFD32A31691500382A42 /* BottleOpsDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleOpsDropdown.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				ABC0BFD02A31629300382A42 /* HarborBottle.swift */,
+				AB7F9D172A38AC58003014D8 /* Logger.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				ABD56AB42A36E419002A439C /* GPKFastInstallView.swift in Sources */,
 				FC682EDA2A35FD57000C53D6 /* Environment+GPKUtils.swift in Sources */,
 				AB7A81002A30CC7100AA71A6 /* BrewUtils.swift in Sources */,
+				AB7F9D182A38AC58003014D8 /* Logger.swift in Sources */,
 				AB6652CD2A3350EC00F3FC5D /* BottleConfigDropdown.swift in Sources */,
 				AB5CC6D62A30910300AEBB2B /* GPKUtils.swift in Sources */,
 				AB3BE5EE2A32248D00358BBC /* LaunchExtDropdown.swift in Sources */,
