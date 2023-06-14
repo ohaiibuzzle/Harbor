@@ -43,6 +43,12 @@
             "state" : "translated",
             "value" : "Auto"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto"
+          }
         }
       }
     },
@@ -319,6 +325,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Stop"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zatrzymaj"
           }
         }
       }
@@ -798,6 +810,12 @@
             "state" : "translated",
             "value" : "Primary Working Directory"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Główny katalog roboczy"
+          }
         }
       }
     },
@@ -1063,6 +1081,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Working Directory"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katalog roboczy"
           }
         }
       }
