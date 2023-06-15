@@ -47,7 +47,7 @@ struct GPKSafeInstallView: View {
                             panel.canChooseFiles = true
                             panel.canChooseDirectories = false
                             panel.allowsMultipleSelection = false
-                            panel.allowedFileTypes = ["dmg"]
+                            panel.allowedContentTypes = [.diskImage]
                             panel.begin { response in
                                 if response == .OK {
                                     let result = panel.url
@@ -108,6 +108,7 @@ struct GPKSafeInstallView: View {
             }
         }
         .padding()
+        .frame(minHeight: 300)
     }
 }
 

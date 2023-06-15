@@ -75,6 +75,7 @@ struct XCLIInstallView: View {
                 Spacer()
             }
         }
+        .frame(minHeight: 300)
     }
 }
 

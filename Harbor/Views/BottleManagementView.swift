@@ -19,24 +19,25 @@ struct BottleManagementView: View {
     @State private var sortOrder = [KeyPathComparator(\HarborBottle.name)]
     var body: some View {
         VStack {
-            Text("home.bottles.title")
-                .font(.title)
-                .padding()
+            VStack {
+                Text("home.bottles.title")
+                    .font(.title)
+                    .padding()
+                Text("home.bottles.subtitle")
+                    .padding()
+                    .multilineTextAlignment(.center)
+            }
 
-            Text("home.bottles.subtitle")
-                .padding()
-                .multilineTextAlignment(.center)
-        }
-
-        Table(bottles, selection: $selectedBottle, sortOrder: $sortOrder) {
-            TableColumn("home.table.name", value: \.name)
-            TableColumn("home.table.path", value: \.path.relativeString)
-            TableColumn("home.table.primaryApp", value: \.primaryApplicationPath)
-        }
-        .padding()
-        .frame(minWidth: 500, minHeight: 200)
-        .onChange(of: sortOrder) { _, newOrder in
-            bottles.sort(using: newOrder)
+            Table(bottles, selection: $selectedBottle, sortOrder: $sortOrder) {
+                TableColumn("home.table.name", value: \.name)
+                TableColumn("home.table.path", value: \.path.relativeString)
+                TableColumn("home.table.primaryApp", value: \.primaryApplicationPath)
+            }
+            .padding()
+            .frame(minWidth: 500, minHeight: 200)
+            .onChange(of: sortOrder) { _, newOrder in
+                bottles.sort(using: newOrder)
+            }
         }
         .toolbar {
             ToolbarItem(placement: .automatic) {
@@ -104,7 +105,6 @@ struct BottleManagementView: View {
                         alert.accessoryView = checkbox
                         alert.addButton(withTitle: String(localized: "btn.delete"))
                         alert.addButton(withTitle: String(localized: "btn.cancel"))
-
                         if alert.runModal() == .alertFirstButtonReturn {
                             // User clicked on "Delete"
                             if let thisBottle = bottles.first(where: { $0.id == selectedBottle }) {
@@ -123,7 +123,6 @@ struct BottleManagementView: View {
                 .disabled(selectedBottle == nil)
             }
         }
-
         .sheet(isPresented: $showNewBottleSheet) {
             NewBottleDropdown(isPresented: $showNewBottleSheet,
                               bottle: HarborBottle(id: UUID(), name: "", path: URL(fileURLWithPath: "")))
