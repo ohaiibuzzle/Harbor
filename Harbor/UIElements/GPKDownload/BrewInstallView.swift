@@ -75,6 +75,7 @@ struct BrewInstallView: View {
             }
         }
         .padding()
+        .frame(minHeight: 300)
     }
 }
 

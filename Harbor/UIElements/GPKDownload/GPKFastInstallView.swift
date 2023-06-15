@@ -54,7 +54,7 @@ struct GPKFastInstallView: View {
                                 panel.canChooseFiles = true
                                 panel.canChooseDirectories = false
                                 panel.allowsMultipleSelection = false
-                                panel.allowedFileTypes = ["gz"]
+                                panel.allowedContentTypes = [.gzip]
                                 panel.begin { response in
                                     if response == .OK {
                                         let result = panel.url
@@ -79,7 +79,7 @@ struct GPKFastInstallView: View {
                                 panel.canChooseFiles = true
                                 panel.canChooseDirectories = false
                                 panel.allowsMultipleSelection = false
-                                panel.allowedFileTypes = ["dmg"]
+                                panel.allowedContentTypes = [.diskImage]
                                 panel.begin { response in
                                     if response == .OK {
                                         let result = panel.url
@@ -146,6 +146,7 @@ struct GPKFastInstallView: View {
             }
         }
         .padding()
+        .frame(minHeight: 300)
     }
 }
 
