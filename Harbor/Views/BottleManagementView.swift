@@ -30,7 +30,7 @@ struct BottleManagementView: View {
 
             Table(bottles, selection: $selectedBottle, sortOrder: $sortOrder) {
                 TableColumn("home.table.name", value: \.name)
-                TableColumn("home.table.path", value: \.path.relativeString)
+                TableColumn("home.table.path", value: \.path.prettyFileUrl)
                 TableColumn("home.table.primaryApp", value: \.primaryApplicationPath)
             }
             .padding()
@@ -100,7 +100,7 @@ struct BottleManagementView: View {
                         alert.alertStyle = .critical
                         let checkbox = NSButton(checkboxWithTitle:
                                                     String(format: String(localized: "home.alert.deletePath %@"),
-                                                           thisBottle.path.absoluteString), target: nil, action: nil)
+                                                           thisBottle.path.prettyFileUrl), target: nil, action: nil)
                         checkbox.state = .on
                         alert.accessoryView = checkbox
                         alert.addButton(withTitle: String(localized: "btn.delete"))
