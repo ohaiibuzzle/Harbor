@@ -15,6 +15,7 @@
 		AB5CC6C72A308BBC00AEBB2B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5CC6C62A308BBC00AEBB2B /* Preview Assets.xcassets */; };
 		AB5CC6D62A30910300AEBB2B /* GPKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6D52A30910300AEBB2B /* GPKUtils.swift */; };
 		AB5CC6D82A30938A00AEBB2B /* BrewInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6D72A30938A00AEBB2B /* BrewInstallView.swift */; };
+		AB5D49C62A3B5B0B008245A6 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5D49C52A3B5B0B008245A6 /* URLExtensions.swift */; };
 		AB6652C22A33342B00F3FC5D /* XCLIInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6652C12A33342B00F3FC5D /* XCLIInstallView.swift */; };
 		AB6652C42A3334E600F3FC5D /* XCLIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6652C32A3334E600F3FC5D /* XCLIUtils.swift */; };
 		AB6652C92A3349A400F3FC5D /* HarborMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6652C82A3349A400F3FC5D /* HarborMenu.swift */; };
@@ -43,6 +44,7 @@
 		AB5CC6C62A308BBC00AEBB2B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AB5CC6D52A30910300AEBB2B /* GPKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPKUtils.swift; sourceTree = "<group>"; };
 		AB5CC6D72A30938A00AEBB2B /* BrewInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewInstallView.swift; sourceTree = "<group>"; };
+		AB5D49C52A3B5B0B008245A6 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		AB6652C12A33342B00F3FC5D /* XCLIInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCLIInstallView.swift; sourceTree = "<group>"; };
 		AB6652C32A3334E600F3FC5D /* XCLIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCLIUtils.swift; sourceTree = "<group>"; };
 		AB6652C82A3349A400F3FC5D /* HarborMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborMenu.swift; sourceTree = "<group>"; };
@@ -91,16 +93,17 @@
 		AB5CC6BE2A308BBB00AEBB2B /* Harbor */ = {
 			isa = PBXGroup;
 			children = (
-				AB19DA962A358FE400967784 /* Localizable.xcstrings */,
-				FC682EDD2A360480000C53D6 /* Systems */,
+				AB5D49C42A3B4F93008245A6 /* Extensions */,
 				ABC0BFCF2A31628600382A42 /* Models */,
-				AB6A967D2A310443003A019E /* Views */,
-				AB5CC6D42A3090E800AEBB2B /* Utils */,
-				AB5CC6CE2A308CE200AEBB2B /* UIElements */,
-				AB5CC6BF2A308BBB00AEBB2B /* HarborApp.swift */,
-				AB5CC6C12A308BBB00AEBB2B /* ContentView.swift */,
-				AB5CC6C32A308BBC00AEBB2B /* Assets.xcassets */,
 				AB5CC6C52A308BBC00AEBB2B /* Preview Content */,
+				FC682EDD2A360480000C53D6 /* Systems */,
+				AB5CC6CE2A308CE200AEBB2B /* UIElements */,
+				AB5CC6D42A3090E800AEBB2B /* Utils */,
+				AB6A967D2A310443003A019E /* Views */,
+				AB5CC6C12A308BBB00AEBB2B /* ContentView.swift */,
+				AB5CC6BF2A308BBB00AEBB2B /* HarborApp.swift */,
+				AB5CC6C32A308BBC00AEBB2B /* Assets.xcassets */,
+				AB19DA962A358FE400967784 /* Localizable.xcstrings */,
 			);
 			path = Harbor;
 			sourceTree = "<group>";
@@ -143,6 +146,14 @@
 				FC682EDE2A3604B4000C53D6 /* Environment+XCLIUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		AB5D49C42A3B4F93008245A6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AB5D49C52A3B5B0B008245A6 /* URLExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AB6652C72A33499700F3FC5D /* Commands */ = {
@@ -292,6 +303,7 @@
 				AB6652CD2A3350EC00F3FC5D /* BottleConfigDropdown.swift in Sources */,
 				AB5CC6D62A30910300AEBB2B /* GPKUtils.swift in Sources */,
 				AB3BE5EE2A32248D00358BBC /* LaunchExtDropdown.swift in Sources */,
+				AB5D49C62A3B5B0B008245A6 /* URLExtensions.swift in Sources */,
 				AB5CC6C22A308BBB00AEBB2B /* ContentView.swift in Sources */,
 				FC682EDC2A3601E0000C53D6 /* Environment+BrewUtils.swift in Sources */,
 				ABD56AB32A36E419002A439C /* GPKSafeInstallView.swift in Sources */,
