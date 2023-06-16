@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct LaunchExtDropdown: View {
     @Binding var isPresented: Bool
@@ -37,7 +38,7 @@ struct LaunchExtDropdown: View {
                             dialog.canChooseFiles = true
                             dialog.canCreateDirectories = false
                             dialog.allowsMultipleSelection = false
-                            dialog.allowedFileTypes = ["exe", "msi"]
+                            dialog.allowedContentTypes = [.exe, UTType(importedAs: "harbor.msi-package")]
                             dialog.directoryURL = bottle.path
                             if dialog.runModal() == NSApplication.ModalResponse.OK {
                                 if let result = dialog.url {
