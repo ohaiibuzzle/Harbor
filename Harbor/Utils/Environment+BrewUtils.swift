@@ -5,7 +5,7 @@ private struct BrewUtilsEnvironmentKey: EnvironmentKey {
 }
 
 extension EnvironmentValues {
-    var brewUitls: BrewUtils {
+    var brewUtils: BrewUtils {
             get { self[BrewUtilsEnvironmentKey.self] }
             set { self[BrewUtilsEnvironmentKey.self] = newValue }
     }

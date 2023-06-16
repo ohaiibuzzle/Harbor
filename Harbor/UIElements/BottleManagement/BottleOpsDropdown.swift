@@ -199,8 +199,10 @@ struct EditBottleView: View {
 
 }
 
-#Preview {
-    NewBottleDropdown(isPresented: Binding.constant(true),
-                      bottle: HarborBottle(id: UUID(), name: "My Bottle",
-                                          path: URL(fileURLWithPath: "/Users/venti/Documents/My Bottle")))
+struct NewBottleDropdown_Previews: PreviewProvider {
+    static var previews: some View {
+        EditBottleView(isPresented: Binding.constant(true),
+                          bottle: HarborBottle(id: UUID(), name: "My Bottle",
+                                               path: URL(fileURLWithPath: "/Users/venti/Documents/My Bottle")))
+    }
 }

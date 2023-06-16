@@ -13,7 +13,7 @@ struct HarborApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.gpkUtils, .init())
-                .environment(\.brewUitls, .init())
+                .environment(\.brewUtils, .init())
                 .environment(\.xcliUtils, .init())
         }
         .commands {

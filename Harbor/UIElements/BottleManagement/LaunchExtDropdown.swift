@@ -104,7 +104,10 @@ struct LaunchExtDropdown: View {
     }
 }
 
-#Preview {
-    LaunchExtDropdown(isPresented: Binding.constant(true),
-                      bottle: HarborBottle(id: UUID(), name: "Demo", path: URL(fileURLWithPath: "")))
+struct LaunchExtDropdown_Previews: PreviewProvider {
+    static var previews: some View {
+        LaunchExtDropdown(isPresented: Binding.constant(true),
+                          bottle: HarborBottle(id: UUID(), name: "Demo", path: URL(fileURLWithPath: "")))
+        .environment(\.brewUtils, .init())
+    }
 }

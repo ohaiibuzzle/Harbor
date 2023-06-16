@@ -14,7 +14,7 @@ struct GPKSafeInstallView: View {
 
     @Environment(\.gpkUtils)
     var gpkUtils
-    @Environment(\.brewUitls)
+    @Environment(\.brewUtils)
     var brewUtils
 
     var body: some View {
@@ -115,5 +115,7 @@ struct GPKSafeInstallView: View {
 struct GPKSafeInstallView_Previews: PreviewProvider {
     static var previews: some View {
         GPKSafeInstallView(isPresented: Binding.constant(true))
+            .environment(\.gpkUtils, .init())
+            .environment(\.brewUtils, .init())
     }
 }

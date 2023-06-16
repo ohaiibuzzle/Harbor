@@ -47,8 +47,11 @@ struct BottleConfigDropdown: View {
     }
 }
 
-#Preview {
-    BottleConfigDropdown(isPresented: Binding.constant(true),
-                         bottle: Binding.constant(HarborBottle(
-                            id: UUID(), name: "Bottle", path: URL(fileURLWithPath: ""))))
+struct BottleConfigDropdown_Previews: PreviewProvider {
+    static var previews: some View {
+        BottleConfigDropdown(isPresented: Binding.constant(true),
+                             bottle: Binding.constant(HarborBottle(
+                                id: UUID(), name: "Bottle", path: URL(fileURLWithPath: ""))))
+        .environment(\.brewUtils, .init())
+    }
 }
