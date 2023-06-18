@@ -166,20 +166,20 @@ final class GPKUtils {
             }
             let gpkVolume = URL(fileURLWithPath: "/Volumes/\(mountedVolume)")
             let gpkLib = gpkVolume.appendingPathComponent("lib")
-            let gpkLibDest = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/")
+            let gpkLibDest = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib")
 
             // Merge the content from /Volumes/Game Porting Toolkit*/lib to /usr/local/opt/game-porting-toolkit/lib
-            let cpProcess = Process()
-            cpProcess.executableURL = URL(fileURLWithPath: "/bin/cp")
-            cpProcess.arguments = ["-R", gpkLib.path, gpkLibDest.path]
-            cpProcess.standardOutput = nil
-            cpProcess.standardError = nil
+            let dittoProcess = Process()
+            dittoProcess.executableURL = URL(fileURLWithPath: "/usr/bin/ditto")
+            dittoProcess.arguments = ["-V", gpkLib.path, gpkLibDest.path]
+            dittoProcess.standardOutput = nil
+            dittoProcess.standardError = nil
             do {
-                try cpProcess.run()
+                try dittoProcess.run()
             } catch {
                 HarborUtils.shared.quickError(error.localizedDescription)
             }
-            cpProcess.waitUntilExit()
+            dittoProcess.waitUntilExit()
 
             // Copy all the gameportingtoolkit* binaries to Harbor's container (for later use)
             let harborContainer = HarborUtils.shared.getContainerHome()
