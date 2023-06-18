@@ -41,6 +41,8 @@ struct BottleConfigDropdown: View {
                 }
                 isPresented = false
             }
+            .buttonStyle(.borderedProminent)
+            .tint(.accentColor)
         }
         .frame(minWidth: 300, minHeight: 300)
         .padding()

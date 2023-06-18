@@ -164,7 +164,9 @@ struct NewBottleDropdown: View {
                         }
                     }
                 }
-                .disabled(bottle.name == "" || bottle.path.absoluteString == "file:///")
+                .disabled(bottle.name == "" || bottle.path.absoluteString == "file:///" || isWorking)
+                .buttonStyle(.borderedProminent)
+                .tint(.accentColor)
             }
             .padding()
         }

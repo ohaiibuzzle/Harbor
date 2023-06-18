@@ -95,6 +95,8 @@ struct LaunchExtDropdown: View {
                     isPresented = false
                 }
                 .disabled(applicationPath.isEmpty)
+                .buttonStyle(.borderedProminent)
+                .tint(.accentColor)
                 Spacer()
             }
         }
