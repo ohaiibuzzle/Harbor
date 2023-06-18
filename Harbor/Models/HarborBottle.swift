@@ -7,6 +7,7 @@
 
 import Foundation
 import AppKit
+import Observation
 
 struct HarborBottle: Identifiable, Equatable, Codable {
     var id: UUID
@@ -135,6 +136,19 @@ struct HarborBottle: Identifiable, Equatable, Codable {
         self.id = id
         self.name = name
         self.path = path
+    }
+}
+
+@Observable
+class BottleList {
+    var bottles: [HarborBottle] = BottleLoader.shared.load()
+
+    func reload() {
+        bottles = BottleLoader.shared.load()
+    }
+
+    func flush() {
+        BottleLoader.shared.save(bottles)
     }
 }
 

@@ -260,12 +260,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wine bottles are separate enplronments that you can use to install Windows applications. \nYou can create as many bottles as you want, and each bottle can have its own Windows version and configuration."
+            "value" : "Wine bottles are separate environments that you can use to install Windows applications. \nYou can create as many bottles as you want, and each bottle can have its own Windows version and configuration."
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Butelki Wine to oddzielne środowiska, w których można instalować aplikacje Windows. Możesz tworzyć tyle butelek, ile chcesz, a każda butelka może mieć swoją własną wersję Windowsa i konfigurację."
           }
         }
@@ -1247,6 +1247,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Instalacja narzędzi wiersza poleceń Xcode"
+          }
+        }
+      }
+    },
+    "view.mode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bottle View Mode"
+          }
+        }
+      }
+    },
+    "view.mode.card" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card"
+          }
+        }
+      }
+    },
+    "view.mode.table" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Table"
           }
         }
       }

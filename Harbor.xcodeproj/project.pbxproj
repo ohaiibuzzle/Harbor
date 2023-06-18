@@ -16,6 +16,7 @@
 		AB5CC6D62A30910300AEBB2B /* GPKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6D52A30910300AEBB2B /* GPKUtils.swift */; };
 		AB5CC6D82A30938A00AEBB2B /* BrewInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6D72A30938A00AEBB2B /* BrewInstallView.swift */; };
 		AB5D49C62A3B5B0B008245A6 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5D49C52A3B5B0B008245A6 /* URLExtensions.swift */; };
+		AB6254342A3CE30D002A6206 /* BottleCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6254332A3CE30D002A6206 /* BottleCardListView.swift */; };
 		AB6652C22A33342B00F3FC5D /* XCLIInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6652C12A33342B00F3FC5D /* XCLIInstallView.swift */; };
 		AB6652C42A3334E600F3FC5D /* XCLIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6652C32A3334E600F3FC5D /* XCLIUtils.swift */; };
 		AB6652C92A3349A400F3FC5D /* HarborMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6652C82A3349A400F3FC5D /* HarborMenu.swift */; };
@@ -28,6 +29,9 @@
 		ABC0BFD42A31691500382A42 /* BottleOpsDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFD32A31691500382A42 /* BottleOpsDropdown.swift */; };
 		ABD56AB32A36E419002A439C /* GPKSafeInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD56AB12A36E419002A439C /* GPKSafeInstallView.swift */; };
 		ABD56AB42A36E419002A439C /* GPKFastInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD56AB22A36E419002A439C /* GPKFastInstallView.swift */; };
+		ABF5340A2A3F606A0030677A /* ViewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF534092A3F606A0030677A /* ViewMenu.swift */; };
+		ABF5340C2A3F63BE0030677A /* BottleManagementCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF5340B2A3F63BE0030677A /* BottleManagementCardView.swift */; };
+		ABF5340E2A3F63FE0030677A /* BottleManagementTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF5340D2A3F63FE0030677A /* BottleManagementTableView.swift */; };
 		FC682EDA2A35FD57000C53D6 /* Environment+GPKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC682ED92A35FD57000C53D6 /* Environment+GPKUtils.swift */; };
 		FC682EDC2A3601E0000C53D6 /* Environment+BrewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC682EDB2A3601E0000C53D6 /* Environment+BrewUtils.swift */; };
 		FC682EDF2A3604B4000C53D6 /* Environment+XCLIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC682EDE2A3604B4000C53D6 /* Environment+XCLIUtils.swift */; };
@@ -45,6 +49,7 @@
 		AB5CC6D52A30910300AEBB2B /* GPKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPKUtils.swift; sourceTree = "<group>"; };
 		AB5CC6D72A30938A00AEBB2B /* BrewInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewInstallView.swift; sourceTree = "<group>"; };
 		AB5D49C52A3B5B0B008245A6 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
+		AB6254332A3CE30D002A6206 /* BottleCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleCardListView.swift; sourceTree = "<group>"; };
 		AB6652C12A33342B00F3FC5D /* XCLIInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCLIInstallView.swift; sourceTree = "<group>"; };
 		AB6652C32A3334E600F3FC5D /* XCLIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCLIUtils.swift; sourceTree = "<group>"; };
 		AB6652C82A3349A400F3FC5D /* HarborMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborMenu.swift; sourceTree = "<group>"; };
@@ -57,6 +62,9 @@
 		ABC0BFD32A31691500382A42 /* BottleOpsDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleOpsDropdown.swift; sourceTree = "<group>"; };
 		ABD56AB12A36E419002A439C /* GPKSafeInstallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKSafeInstallView.swift; sourceTree = "<group>"; };
 		ABD56AB22A36E419002A439C /* GPKFastInstallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKFastInstallView.swift; sourceTree = "<group>"; };
+		ABF534092A3F606A0030677A /* ViewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMenu.swift; sourceTree = "<group>"; };
+		ABF5340B2A3F63BE0030677A /* BottleManagementCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleManagementCardView.swift; sourceTree = "<group>"; };
+		ABF5340D2A3F63FE0030677A /* BottleManagementTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleManagementTableView.swift; sourceTree = "<group>"; };
 		FC682ED92A35FD57000C53D6 /* Environment+GPKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+GPKUtils.swift"; sourceTree = "<group>"; };
 		FC682EDB2A3601E0000C53D6 /* Environment+BrewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+BrewUtils.swift"; sourceTree = "<group>"; };
 		FC682EDE2A3604B4000C53D6 /* Environment+XCLIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+XCLIUtils.swift"; sourceTree = "<group>"; };
@@ -160,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				AB6652C82A3349A400F3FC5D /* HarborMenu.swift */,
+				ABF534092A3F606A0030677A /* ViewMenu.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -169,6 +178,8 @@
 			children = (
 				AB6A967E2A31045A003A019E /* SetupView.swift */,
 				ABC0BFCD2A31627400382A42 /* BottleManagementView.swift */,
+				ABF5340D2A3F63FE0030677A /* BottleManagementTableView.swift */,
+				ABF5340B2A3F63BE0030677A /* BottleManagementCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +198,7 @@
 				ABC0BFD32A31691500382A42 /* BottleOpsDropdown.swift */,
 				AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */,
 				AB6652CC2A3350EC00F3FC5D /* BottleConfigDropdown.swift */,
+				AB6254332A3CE30D002A6206 /* BottleCardListView.swift */,
 			);
 			path = BottleManagement;
 			sourceTree = "<group>";
@@ -296,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF5340E2A3F63FE0030677A /* BottleManagementTableView.swift in Sources */,
 				AB5CC6D82A30938A00AEBB2B /* BrewInstallView.swift in Sources */,
 				ABD56AB42A36E419002A439C /* GPKFastInstallView.swift in Sources */,
 				FC682EDA2A35FD57000C53D6 /* Environment+GPKUtils.swift in Sources */,
@@ -309,11 +322,14 @@
 				ABD56AB32A36E419002A439C /* GPKSafeInstallView.swift in Sources */,
 				AB5CC6C02A308BBB00AEBB2B /* HarborApp.swift in Sources */,
 				AB7A81022A30D2FE00AA71A6 /* HarborUtils.swift in Sources */,
+				ABF5340C2A3F63BE0030677A /* BottleManagementCardView.swift in Sources */,
 				AB6652C42A3334E600F3FC5D /* XCLIUtils.swift in Sources */,
+				AB6254342A3CE30D002A6206 /* BottleCardListView.swift in Sources */,
 				AB6A967F2A31045A003A019E /* SetupView.swift in Sources */,
 				ABC0BFD12A31629300382A42 /* HarborBottle.swift in Sources */,
 				ABC0BFCE2A31627400382A42 /* BottleManagementView.swift in Sources */,
 				AB6652C22A33342B00F3FC5D /* XCLIInstallView.swift in Sources */,
+				ABF5340A2A3F606A0030677A /* ViewMenu.swift in Sources */,
 				AB6652C92A3349A400F3FC5D /* HarborMenu.swift in Sources */,
 				FC682EDF2A3604B4000C53D6 /* Environment+XCLIUtils.swift in Sources */,
 				ABC0BFD42A31691500382A42 /* BottleOpsDropdown.swift in Sources */,

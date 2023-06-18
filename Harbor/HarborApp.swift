@@ -18,6 +18,7 @@ struct HarborApp: App {
         }
         .commands {
             HarborMenu()
+            ViewMenu()
         }
     }
 }
