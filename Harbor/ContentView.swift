@@ -24,5 +24,8 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environment(\.gpkUtils, .init())
+            .environment(\.brewUtils, .init())
+            .environment(\.xcliUtils, .init())
     }
 }

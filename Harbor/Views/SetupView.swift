@@ -13,7 +13,7 @@ struct SetupView: View {
     @State var isGPKSafeInstallerDropdownShown = false
     @State var isGPKFastInstallerDropdownShown = false
 
-    @Environment(\.brewUitls)
+    @Environment(\.brewUtils)
     var brewUtils
 
     @Environment(\.xcliUtils)
@@ -110,4 +110,6 @@ struct SetupView: View {
 
 #Preview {
     SetupView()
+        .environment(\.brewUtils, .init())
+        .environment(\.xcliUtils, .init())
 }
