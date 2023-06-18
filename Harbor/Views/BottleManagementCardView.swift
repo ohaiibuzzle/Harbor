@@ -12,7 +12,6 @@ struct BottleManagementCardView: View {
     @State private var selectedBottle: HarborBottle.ID?
 
     @State private var showNewBottleSheet = false
-    @State private var showLaunchExtSheet = false
     @State private var showBottleDetail = false
 
     @State private var sortOrder = [KeyPathComparator(\HarborBottle.name)]
@@ -42,12 +41,6 @@ struct BottleManagementCardView: View {
             .sheet(isPresented: $showNewBottleSheet) {
                 NewBottleDropdown(isPresented: $showNewBottleSheet,
                                   bottle: HarborBottle(id: UUID(), name: "", path: URL(fileURLWithPath: "")))
-            }
-            .sheet(isPresented: $showLaunchExtSheet) {
-                if let thisBottle = bottleState.bottles.first(where: { $0.id == selectedBottle }) {
-                    LaunchExtDropdown(isPresented: $showLaunchExtSheet,
-                                      bottle: thisBottle)
-                }
             }
             .onChange(of: showNewBottleSheet) {
                 bottleState.reload()

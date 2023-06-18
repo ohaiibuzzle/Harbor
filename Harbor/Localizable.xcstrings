@@ -463,26 +463,6 @@
         }
       }
     },
-    "My Bottle" : {
-      "localizations" : {
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Moja Butelka"
-          }
-        }
-      }
-    },
-    "MyApp.exe" : {
-      "localizations" : {
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MojaAplikacja.exe"
-          }
-        }
-      }
-    },
     "setup.btn.installGPK" : {
       "localizations" : {
         "en" : {

@@ -28,6 +28,7 @@ struct BottleCardView: View {
     @Binding var isShowingDetails: Bool
 
     @State var isBeingHoveredUpon = false
+    @State var showLaunchExtDropdown = false
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -50,7 +51,7 @@ struct BottleCardView: View {
                     }
                     .buttonStyle(.borderless)
                     Button {
-                        return
+                        showLaunchExtDropdown.toggle()
                     } label: {
                         Image(systemName: "tray.and.arrow.down")
                     }
@@ -76,6 +77,9 @@ struct BottleCardView: View {
         .background(in: RoundedRectangle(cornerSize:
                                             CGSize(width: 20, height: 10)),
                     fillStyle: .init())
+        .sheet(isPresented: $showLaunchExtDropdown) {
+            LaunchExtDropdown(isPresented: $showLaunchExtDropdown, bottle: bottle)
+        }
         .onHover(perform: { hovering in
             isBeingHoveredUpon = hovering
         })
@@ -97,25 +101,26 @@ struct BottleCardDetailedView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Grid(alignment: .leading) {
-                    GridRow {
-                        Text("sheet.new.bottleNameLabel")
-                        TextField("", text: $bottle.name)
+                Form {
+                    Section {
+                        TextField("sheet.new.bottleNameLabel", text: $bottle.name)
                     }
-                    GridRow {
-                        Text("sheet.new.bottlePathLabel")
-                        TextField("", text: $bottlePath)
-                            .textFieldStyle(.plain)
-                            .font(monospaceFont)
-                            .disabled(true)
-                            .onAppear {
-                                bottlePath = bottle.path.prettyFileUrl
-                            }
+                    Section {
+                        HStack {
+                            Text("sheet.new.bottlePathLabel")
+                            TextField("", text: $bottlePath)
+                                .textFieldStyle(.plain)
+                                .font(monospaceFont)
+                                .disabled(true)
+                                .onAppear {
+                                    bottlePath = bottle.path.prettyFileUrl
+                                }
+                        }
                     }
-                    GridRow {
+                    Section {
                         Text("sheet.edit.primaryAppLabel")
                         HStack {
-                            TextField("MyApp.exe", text: $bottle.primaryApplicationPath)
+                            TextField("", text: $bottle.primaryApplicationPath)
                                 .font(monospaceFont)
                             Button("btn.browse") {
                                 let dialog = NSOpenPanel()
@@ -138,12 +143,12 @@ struct BottleCardDetailedView: View {
                             }
                         }
                     }
-                    GridRow {
+                    Section {
                         Text("sheet.edit.primaryAppArgsLabel")
                         TextField("", text: $bottle.primaryApplicationArgument)
                             .font(monospaceFont)
                     }
-                    GridRow {
+                    Section {
                         Text("sheet.edit.primaryAppWorkDirLabel")
                         HStack {
                             TextField("", text: $bottle.primaryApplicationWorkDir)
@@ -180,54 +185,57 @@ struct BottleCardDetailedView: View {
                         }
                     }
                 }
-                Divider()
-                    .padding(.vertical)
-                VStack {
-                    HStack {
+                .formStyle(.grouped)
+                Form {
+                    Section {
                         Toggle("sheet.advConf.hudToggle", isOn: $bottle.enableHUD)
                         Toggle("sheet.advConf.eSyncToggle", isOn: $bottle.enableESync)
                         Toggle("sheet.advConf.stdOutToggle", isOn: $bottle.pleaseShutUp)
-                        Spacer()
                     }
-                    .padding(.vertical)
-                    HStack {
-                        Button("sheet.advConf.winecfgBtn") {
-                            bottle.launchApplication("winecfg")
-                        }
-                        Button("sheet.advConf.explorerBtn") {
-                            bottle.launchApplication("explorer")
-                        }
-                        Button("sheet.advConf.regeditBtn") {
-                            bottle.launchApplication("regedit")
-                        }
-                        Spacer()
-                        Button {
-                            // ALARM
-                            let alert = NSAlert()
-                            alert.messageText = String(localized: "home.alert.deleteTitle")
-                            alert.alertStyle = .critical
-                            let checkbox = NSButton(checkboxWithTitle:
-                                                        String(format: String(localized: "home.alert.deletePath %@"),
-                                                               bottle.path.prettyFileUrl), target: nil, action: nil)
-                            checkbox.state = .on
-                            alert.accessoryView = checkbox
-                            alert.addButton(withTitle: String(localized: "btn.delete"))
-                            alert.addButton(withTitle: String(localized: "btn.cancel"))
-                            if alert.runModal() == .alertFirstButtonReturn {
-                                // User clicked on "Delete"
-                                BottleLoader.shared.delete(bottle, checkbox.state)
-                                self.presentationMode.wrappedValue.dismiss()
-                            } else {
-                                // User clicked on "Cancel"
-                                return
+                    Section {
+                        HStack {
+                            Button("sheet.advConf.winecfgBtn") {
+                                bottle.launchApplication("winecfg")
                             }
-                        } label: {
-                            Label("home.btn.nuke", systemImage: "trash")
+                            Button("sheet.advConf.explorerBtn") {
+                                bottle.launchApplication("explorer")
+                            }
+                            Button("sheet.advConf.regeditBtn") {
+                                bottle.launchApplication("regedit")
+                            }
                         }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.red)
                     }
                 }
+                .formStyle(.grouped)
+                HStack {
+                    Spacer()
+                    Button {
+                        // ALARM
+                        let alert = NSAlert()
+                        alert.messageText = String(localized: "home.alert.deleteTitle")
+                        alert.alertStyle = .critical
+                        let checkbox = NSButton(checkboxWithTitle:
+                                                    String(format: String(localized: "home.alert.deletePath %@"),
+                                                           bottle.path.prettyFileUrl), target: nil, action: nil)
+                        checkbox.state = .on
+                        alert.accessoryView = checkbox
+                        alert.addButton(withTitle: String(localized: "btn.delete"))
+                        alert.addButton(withTitle: String(localized: "btn.cancel"))
+                        if alert.runModal() == .alertFirstButtonReturn {
+                            // User clicked on "Delete"
+                            BottleLoader.shared.delete(bottle, checkbox.state)
+                            self.presentationMode.wrappedValue.dismiss()
+                        } else {
+                            // User clicked on "Cancel"
+                            return
+                        }
+                    } label: {
+                        Label("home.btn.nuke", systemImage: "trash")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.red)
+                }
+                .padding(.horizontal)
             }
         }
         .padding()

@@ -23,11 +23,9 @@ struct NewBottleDropdown: View {
 
             Spacer()
 
-            Grid(alignment: .leading) {
-                GridRow {
-                    Text("sheet.new.bottleNameLabel")
-                    Spacer()
-                    TextField("My Bottle", text: $bottle.name)
+            Form {
+                Section {
+                    TextField("sheet.new.bottleNameLabel", text: $bottle.name)
                         .onChange(of: bottle.name) { oldValue, newValue in
                             // Prevent it from being empty
                             if newValue == "" {
@@ -39,11 +37,9 @@ struct NewBottleDropdown: View {
                 }
 
                 // Browsable file picker for new bottle folder
-                GridRow {
-                        Text("sheet.new.bottlePathLabel")
-                        Spacer()
+                Section {
                     HStack {
-                        TextField("", text: $bottlePath)
+                        TextField("sheet.new.bottlePathLabel", text: $bottlePath)
                         Button("btn.browse") {
                             let dialog = NSOpenPanel()
                             dialog.title = "sheet.new.title"
@@ -70,16 +66,11 @@ struct NewBottleDropdown: View {
                     }
                 }
                 .disabled(editingMode)
-            }
 
-            if editingMode {
-                Grid(alignment: .leading) {
-                    // Primary application
-                    GridRow {
-                        Text("sheet.edit.primaryAppLabel")
-                        Spacer()
+                if editingMode {
+                    Section {
                         HStack {
-                            TextField("MyApp.exe", text: $bottle.primaryApplicationPath)
+                            TextField("sheet.edit.primaryAppLabel", text: $bottle.primaryApplicationPath)
                             Button("btn.browse") {
                                 let dialog = NSOpenPanel()
                                 dialog.title = "sheet.edit.primaryApp.popup"
@@ -101,16 +92,10 @@ struct NewBottleDropdown: View {
                             }
                         }
                     }
-                    GridRow {
-                        Text("sheet.edit.primaryAppArgsLabel")
-                        Spacer()
-                        TextField("", text: $bottle.primaryApplicationArgument)
-                    }
-                    GridRow {
-                        Text("sheet.edit.primaryAppWorkDirLabel")
-                        Spacer()
+                    Section {
+                        TextField("sheet.edit.primaryAppArgsLabel", text: $bottle.primaryApplicationArgument)
                         HStack {
-                            TextField("", text: $bottle.primaryApplicationWorkDir)
+                            TextField("sheet.edit.primaryAppWorkDirLabel", text: $bottle.primaryApplicationWorkDir)
                             Button("btn.Auto") {
                                 // Path up to the executable
                                 // Remove the executable name from the Windows path
