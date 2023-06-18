@@ -24,11 +24,10 @@ struct LaunchExtDropdown: View {
 
             Text("sheet.launchExt.subtitle \(bottle.name)")
                 .padding()
-            Grid(alignment: .leading) {
-                GridRow {
-                    Text("sheet.launchExt.applicationLabel")
+            Form {
+                Section {
                     HStack {
-                        TextField("MyApp.exe", text: $applicationPath)
+                        TextField("sheet.launchExt.applicationLabel", text: $applicationPath)
                         Button("btn.browse") {
                             let dialog = NSOpenPanel()
                             dialog.title = "sheet.launchExt.title"
@@ -52,15 +51,13 @@ struct LaunchExtDropdown: View {
                     }
                 }
 
-                GridRow {
-                    Text("sheet.launchExt.argsLabel")
-                    TextField("", text: $applicationArgument)
+                Section {
+                    TextField("sheet.launchExt.argsLabel", text: $applicationArgument)
                 }
 
-                GridRow {
-                    Text("sheet.launchExt.appWorkDirLabel")
+                Section {
                     HStack {
-                        TextField("", text: $applicationWorkDir)
+                        TextField("sheet.launchExt.appWorkDirLabel", text: $applicationWorkDir)
                         Button("btn.browse") {
                             let dialog = NSOpenPanel()
                             dialog.title = "sheet.launchExt.workDir.popup"
@@ -84,6 +81,7 @@ struct LaunchExtDropdown: View {
                 }
             }
             .padding()
+            .formStyle(.automatic)
 
             HStack {
                 Spacer()
@@ -97,6 +95,8 @@ struct LaunchExtDropdown: View {
                     isPresented = false
                 }
                 .disabled(applicationPath.isEmpty)
+                .buttonStyle(.borderedProminent)
+                .tint(.accentColor)
                 Spacer()
             }
         }
