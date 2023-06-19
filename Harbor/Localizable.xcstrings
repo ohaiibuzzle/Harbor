@@ -265,7 +265,7 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Butelki Wine to oddzielne środowiska, w których można instalować aplikacje Windows. Możesz tworzyć tyle butelek, ile chcesz, a każda butelka może mieć swoją własną wersję Windowsa i konfigurację."
           }
         }
@@ -1238,6 +1238,12 @@
             "state" : "translated",
             "value" : "Bottle View Mode"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryb wyświetlania butelek"
+          }
         }
       }
     },
@@ -1248,6 +1254,12 @@
             "state" : "translated",
             "value" : "Card"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karty"
+          }
         }
       }
     },
@@ -1257,6 +1269,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Table"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tabela"
           }
         }
       }
