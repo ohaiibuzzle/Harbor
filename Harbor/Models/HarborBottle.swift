@@ -72,6 +72,28 @@ struct HarborBottle: Identifiable, Equatable, Codable {
                             workDir: primaryApplicationWorkDir)
     }
 
+    func directLaunchApplication(_ application: String, arguments: [String] = [], shouldWait: Bool = false) {
+        let task = Process()
+        task.launchPath = "/usr/local/opt/game-porting-toolkit/bin/wine64"
+        task.arguments = [application]
+
+        if !arguments.isEmpty {
+            task.arguments?.append(contentsOf: arguments)
+        }
+
+        task.environment = ["WINEPREFIX": path.path]
+
+        do {
+            try task.run()
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
+
+        if shouldWait {
+            task.waitUntilExit()
+        }
+    }
+
     func pathFromUnixPath(_ unixPath: URL) -> String {
         let fullUnixPath = unixPath.path
         // trim everything up to and including the bottle name

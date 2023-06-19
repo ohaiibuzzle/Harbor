@@ -447,6 +447,16 @@
         }
       }
     },
+    "menu.harbor.installDXVK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install DXVK"
+          }
+        }
+      }
+    },
     "menu.harbor.killAll" : {
       "localizations" : {
         "en" : {
@@ -639,6 +649,16 @@
         }
       }
     },
+    "sheet.advConf.dxvkToggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DXVK"
+          }
+        }
+      }
+    },
     "sheet.advConf.eSyncToggle" : {
       "localizations" : {
         "en" : {
@@ -747,6 +767,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uruchom winecfg"
+          }
+        }
+      }
+    },
+    "sheet.dxvk.descriptions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DXVK can be used in Harbor to supplement GPTK if Vulkan is available"
+          }
+        }
+      }
+    },
+    "sheet.dxvk.dxvkSelected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DXVK binaries selected"
+          }
+        }
+      }
+    },
+    "sheet.dxvk.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install DXVK"
           }
         }
       }

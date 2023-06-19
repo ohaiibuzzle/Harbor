@@ -105,7 +105,7 @@ final class GPKUtils {
 
         let aaplScript = """
         property shellScript : "clear && \(brewUtils.x64BrewPrefix)/bin/brew install gstreamer pkg-config zlib \
-        freetype sdl2 libgphoto2 faudio jpeg libpng mpg123 libtiff libgsm glib gnutls libusb gettext && \
+        freetype sdl2 libgphoto2 faudio jpeg libpng mpg123 libtiff libgsm glib gnutls libusb gettext molten-vk && \
         \(brewUtils.x64BrewPrefix)/bin/brew install --ignore-dependencies \(gpkBottle.path) && \
         clear && echo '\(String(localized: "setup.message.enterPassword"))' && \
         sudo /usr/bin/xattr -r -d com.apple.quarantine /usr/local/opt/game-porting-toolkit/; \

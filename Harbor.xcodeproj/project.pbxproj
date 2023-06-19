@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB0D00442A40A3630019D62F /* BottleDXVK.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D00432A40A3630019D62F /* BottleDXVK.swift */; };
+		AB0D00462A40B27F0019D62F /* DXVKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D00452A40B27F0019D62F /* DXVKUtils.swift */; };
+		AB0D004A2A40B7670019D62F /* MenuUIStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D00492A40B7670019D62F /* MenuUIStates.swift */; };
+		AB0D004C2A40B8900019D62F /* DXVKInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D004B2A40B8900019D62F /* DXVKInstallView.swift */; };
 		AB19DA972A358FE400967784 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AB19DA962A358FE400967784 /* Localizable.xcstrings */; };
 		AB3BE5EE2A32248D00358BBC /* LaunchExtDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */; };
 		AB5CC6C02A308BBB00AEBB2B /* HarborApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6BF2A308BBB00AEBB2B /* HarborApp.swift */; };
@@ -38,6 +42,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB0D00432A40A3630019D62F /* BottleDXVK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleDXVK.swift; sourceTree = "<group>"; };
+		AB0D00452A40B27F0019D62F /* DXVKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXVKUtils.swift; sourceTree = "<group>"; };
+		AB0D00492A40B7670019D62F /* MenuUIStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuUIStates.swift; sourceTree = "<group>"; };
+		AB0D004B2A40B8900019D62F /* DXVKInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXVKInstallView.swift; sourceTree = "<group>"; };
 		AB19DA962A358FE400967784 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchExtDropdown.swift; sourceTree = "<group>"; };
 		AB4707BF2A30C2C60019DC5F /* Harbor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Harbor.entitlements; sourceTree = "<group>"; };
@@ -152,6 +160,7 @@
 				FC682ED92A35FD57000C53D6 /* Environment+GPKUtils.swift */,
 				FC682EDB2A3601E0000C53D6 /* Environment+BrewUtils.swift */,
 				FC682EDE2A3604B4000C53D6 /* Environment+XCLIUtils.swift */,
+				AB0D00492A40B7670019D62F /* MenuUIStates.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -199,6 +208,7 @@
 				AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */,
 				AB6652CC2A3350EC00F3FC5D /* BottleConfigDropdown.swift */,
 				AB6254332A3CE30D002A6206 /* BottleCardListView.swift */,
+				AB0D004B2A40B8900019D62F /* DXVKInstallView.swift */,
 			);
 			path = BottleManagement;
 			sourceTree = "<group>";
@@ -209,6 +219,8 @@
 				AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */,
 				AB5CC6D52A30910300AEBB2B /* GPKUtils.swift */,
 				AB6652C32A3334E600F3FC5D /* XCLIUtils.swift */,
+				AB0D00452A40B27F0019D62F /* DXVKUtils.swift */,
+				AB0D00432A40A3630019D62F /* BottleDXVK.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -312,6 +324,8 @@
 				AB5CC6D82A30938A00AEBB2B /* BrewInstallView.swift in Sources */,
 				ABD56AB42A36E419002A439C /* GPKFastInstallView.swift in Sources */,
 				FC682EDA2A35FD57000C53D6 /* Environment+GPKUtils.swift in Sources */,
+				AB0D00442A40A3630019D62F /* BottleDXVK.swift in Sources */,
+				AB0D004C2A40B8900019D62F /* DXVKInstallView.swift in Sources */,
 				AB7A81002A30CC7100AA71A6 /* BrewUtils.swift in Sources */,
 				AB6652CD2A3350EC00F3FC5D /* BottleConfigDropdown.swift in Sources */,
 				AB5CC6D62A30910300AEBB2B /* GPKUtils.swift in Sources */,
@@ -327,10 +341,12 @@
 				AB6254342A3CE30D002A6206 /* BottleCardListView.swift in Sources */,
 				AB6A967F2A31045A003A019E /* SetupView.swift in Sources */,
 				ABC0BFD12A31629300382A42 /* HarborBottle.swift in Sources */,
+				AB0D004A2A40B7670019D62F /* MenuUIStates.swift in Sources */,
 				ABC0BFCE2A31627400382A42 /* BottleManagementView.swift in Sources */,
 				AB6652C22A33342B00F3FC5D /* XCLIInstallView.swift in Sources */,
 				ABF5340A2A3F606A0030677A /* ViewMenu.swift in Sources */,
 				AB6652C92A3349A400F3FC5D /* HarborMenu.swift in Sources */,
+				AB0D00462A40B27F0019D62F /* DXVKUtils.swift in Sources */,
 				FC682EDF2A3604B4000C53D6 /* Environment+XCLIUtils.swift in Sources */,
 				ABC0BFD42A31691500382A42 /* BottleOpsDropdown.swift in Sources */,
 			);

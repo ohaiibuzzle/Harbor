@@ -16,16 +16,22 @@ enum BottleManagementViewModes: String, CaseIterable, Identifiable {
 }
 
 struct BottleManagementView: View {
+    @Bindable var menuUIStates: MenuUIStates
     @AppStorage("ViewMode") var viewMode: BottleManagementViewModes = .table
     var body: some View {
-        if viewMode == .card {
-            BottleManagementCardView()
-        } else {
-            BottleManagementTableView()
+        Group {
+            if viewMode == .card {
+                BottleManagementCardView()
+            } else {
+                BottleManagementTableView()
+            }
+        }
+        .sheet(isPresented: $menuUIStates.shouldShowDXVKSheet) {
+            DXVKInstallView(isPresented: $menuUIStates.shouldShowDXVKSheet)
         }
     }
 }
 
 #Preview {
-    BottleManagementView()
+    BottleManagementView(menuUIStates: MenuUIStates())
 }
