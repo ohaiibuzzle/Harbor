@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ViewMenu: Commands {
-    @AppStorage("ViewMode") var viewMode: BottleManagementViewModes = .table
+    @AppStorage("ViewMode") var viewMode: BottleManagementViewModes = .card
 
     var body: some Commands {
         CommandGroup(before: .toolbar) {
