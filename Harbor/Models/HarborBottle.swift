@@ -19,8 +19,9 @@ struct HarborBottle: Identifiable, Equatable, Codable {
     var enableHUD: Bool = false
     var enableESync: Bool = false
     var pleaseShutUp: Bool = true
+    var envVars: [String: String] = .init()
 
-    func launchApplication(_ application: String, arguments: [String] = [],
+    func launchApplication(_ application: String, arguments: [String] = [], environmentVars: [String: String] = [:],
                            workDir: String = "", isUnixPath: Bool = false) {
         let task = Process()
         task.launchPath = "/usr/local/opt/game-porting-toolkit/bin/wine64"
@@ -50,6 +51,12 @@ struct HarborBottle: Identifiable, Equatable, Codable {
             task.environment?["WINEESYNC"] = "1"
         }
 
+        if !envVars.isEmpty {
+            for (key, value) in envVars {
+                task.environment?[key] = value
+            }
+        }
+
         if pleaseShutUp {
             task.standardOutput = nil
             task.standardError = nil
@@ -62,13 +69,16 @@ struct HarborBottle: Identifiable, Equatable, Codable {
         }
     }
 
-    func launchExtApplication(_ application: String, arguments: [String] = [], workDir: String = "") {
-        launchApplication(application, arguments: arguments, workDir: workDir, isUnixPath: true)
+    func launchExtApplication(_ application: String, arguments: [String] = [], environmentVars: [String: String] = [:],
+                              workDir: String = "") {
+        launchApplication(application, arguments: arguments, environmentVars: environmentVars,
+                          workDir: workDir, isUnixPath: true)
     }
 
     func launchPrimaryApplication() {
         launchApplication(primaryApplicationPath,
                           arguments: primaryApplicationArgument.split(separator: " ").map(String.init),
+                            environmentVars: envVars,
                             workDir: primaryApplicationWorkDir)
     }
 
@@ -152,6 +162,7 @@ struct HarborBottle: Identifiable, Equatable, Codable {
         enableHUD = try container.decodeIfPresent(Bool.self, forKey: .enableHUD) ?? false
         enableESync = try container.decodeIfPresent(Bool.self, forKey: .enableESync) ?? false
         pleaseShutUp = try container.decodeIfPresent(Bool.self, forKey: .pleaseShutUp) ?? true
+        envVars = try container.decodeIfPresent([String: String].self, forKey: .envVars) ?? [:]
     }
 
     init (id: UUID, name: String, path: URL) {

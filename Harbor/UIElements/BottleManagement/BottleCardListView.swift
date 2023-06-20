@@ -186,6 +186,10 @@ struct BottleCardDetailedView: View {
                             }
                         }
                     }
+                    Section {
+                        Text("sheet.edit.envVars")
+                        EnvironmentVarsEditor(environmentVars: $bottle.envVars)
+                    }
                 }
                 .formStyle(.grouped)
                 Form {
