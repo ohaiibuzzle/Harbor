@@ -17,7 +17,7 @@ enum BottleManagementViewModes: String, CaseIterable, Identifiable {
 
 struct BottleManagementView: View {
     @Bindable var menuUIStates: MenuUIStates
-    @AppStorage("ViewMode") var viewMode: BottleManagementViewModes = .table
+    @AppStorage("ViewMode") var viewMode: BottleManagementViewModes = .card
     var body: some View {
         Group {
             if viewMode == .card {
