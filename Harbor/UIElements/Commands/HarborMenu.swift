@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct HarborMenu: Commands {
+    @Bindable var menuUIStates: MenuUIStates
     var body: some Commands {
         CommandGroup(after: .appVisibility) {
+            Button("menu.harbor.installDXVK") {
+                menuUIStates.shouldShowDXVKSheet = true
+            }
             Button("menu.harbor.killAll") {
                 HarborUtils.shared.dropNukeOnWine()
             }
