@@ -15,6 +15,9 @@ struct LaunchExtDropdown: View {
     @State var applicationPath = ""
     @State var applicationArgument = ""
     @State var applicationWorkDir = ""
+    @State var applicationEnvVars = [String: String]()
+
+    let monospaceFont = Font.body.monospaced()
 
     var body: some View {
         VStack {
@@ -27,7 +30,9 @@ struct LaunchExtDropdown: View {
             Form {
                 Section {
                     HStack {
-                        TextField("sheet.launchExt.applicationLabel", text: $applicationPath)
+                        Text("sheet.launchExt.applicationLabel")
+                        TextField("", text: $applicationPath)
+                            .font(monospaceFont)
                         Button("btn.browse") {
                             let dialog = NSOpenPanel()
                             dialog.title = "sheet.launchExt.title"
@@ -52,12 +57,17 @@ struct LaunchExtDropdown: View {
                 }
 
                 Section {
-                    TextField("sheet.launchExt.argsLabel", text: $applicationArgument)
+                    HStack {
+                        Text("sheet.launchExt.argsLabel")
+                        TextField("", text: $applicationArgument)
+                            .font(monospaceFont)
+                    }
                 }
 
                 Section {
                     HStack {
-                        TextField("sheet.launchExt.appWorkDirLabel", text: $applicationWorkDir)
+                        Text("sheet.launchExt.appWorkDirLabel")
+                        TextField("", text: $applicationWorkDir)
                         Button("btn.browse") {
                             let dialog = NSOpenPanel()
                             dialog.title = "sheet.launchExt.workDir.popup"
@@ -79,9 +89,13 @@ struct LaunchExtDropdown: View {
                         }
                     }
                 }
+                Section {
+                    Text("sheet.edit.envVars")
+                    EnvironmentVarsEditor(environmentVars: $applicationEnvVars)
+                }
             }
             .padding()
-            .formStyle(.automatic)
+            .formStyle(.grouped)
 
             HStack {
                 Spacer()

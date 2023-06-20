@@ -196,6 +196,28 @@
         }
       }
     },
+    "envEditor.key" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Key"
+          }
+        }
+      }
+    },
+    "envEditor.value" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Value"
+          }
+        }
+      }
+    },
     "harbor.errorAlert" : {
       "localizations" : {
         "en" : {
@@ -797,6 +819,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Install DXVK"
+          }
+        }
+      }
+    },
+    "sheet.edit.envVars" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Environment Variables"
           }
         }
       }
