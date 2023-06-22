@@ -241,6 +241,11 @@ struct BottleCardDetailedView: View {
                 HStack {
                     Spacer()
                     Button {
+                        bottle.directLaunchApplication("wineboot", arguments: ["-u"])
+                    } label: {
+                        Label("sheet.advConf.update", systemImage: "arrow.clockwise")
+                    }
+                    Button {
                         // ALARM
                         let alert = NSAlert()
                         alert.messageText = String(localized: "home.alert.deleteTitle")

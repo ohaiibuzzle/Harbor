@@ -196,28 +196,6 @@
         }
       }
     },
-    "envEditor.key" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Key"
-          }
-        }
-      }
-    },
-    "envEditor.value" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Value"
-          }
-        }
-      }
-    },
     "harbor.errorAlert" : {
       "localizations" : {
         "en" : {
@@ -773,6 +751,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Konfigurowanie %@"
+          }
+        }
+      }
+    },
+    "sheet.advConf.update" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
           }
         }
       }
