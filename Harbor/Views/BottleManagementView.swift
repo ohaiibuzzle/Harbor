@@ -32,6 +32,9 @@ struct BottleManagementView: View {
     }
 }
 
-#Preview {
-    BottleManagementView(menuUIStates: MenuUIStates())
+struct BottleManagementView_Previews: PreviewProvider {
+    static var previews: some View {
+        BottleManagementView(menuUIStates: MenuUIStates())
+            .environment(\.brewUtils, .init())
+    }
 }
