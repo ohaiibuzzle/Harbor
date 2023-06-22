@@ -35,7 +35,6 @@ struct SetupView: View {
                         .font(.title)
                     Text("setup.saferSetup.subtitle")
                         .multilineTextAlignment(.center)
-
                     Group {
                         Button {
                             isXcliInstallerDropdownShown.toggle()
@@ -57,7 +56,8 @@ struct SetupView: View {
                                 .frame(minWidth: 150)
                         }
                         .disabled(!brewUtils.installed)
-                    }                }
+                    }
+                }
                 .padding()
                 Spacer()
                 VStack {
@@ -108,8 +108,10 @@ struct SetupView: View {
     }
 }
 
-#Preview {
-    SetupView()
-        .environment(\.brewUtils, .init())
-        .environment(\.xcliUtils, .init())
+struct SetupView_Previews: PreviewProvider {
+    static var previews: some View {
+        SetupView()
+            .environment(\.brewUtils, .init())
+            .environment(\.xcliUtils, .init())
+    }
 }
