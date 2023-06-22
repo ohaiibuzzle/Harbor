@@ -454,6 +454,12 @@
             "state" : "translated",
             "value" : "Install DXVK"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zainstaluj DXVK"
+          }
         }
       }
     },
@@ -656,6 +662,12 @@
             "state" : "translated",
             "value" : "DXVK"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DXVK"
+          }
         }
       }
     },
@@ -762,6 +774,12 @@
             "state" : "translated",
             "value" : "Update"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualizuj"
+          }
         }
       }
     },
@@ -788,6 +806,12 @@
             "state" : "translated",
             "value" : "DXVK can be used in Harbor to supplement GPTK if Vulkan is available"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DXVK może być użyte w Harbor aby uzupełnić GPTK, jeśli dostępny jest Vulkan"
+          }
         }
       }
     },
@@ -797,6 +821,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "DXVK binaries selected"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybrano pliki wykonywalne DXVK"
           }
         }
       }
@@ -808,6 +838,12 @@
             "state" : "translated",
             "value" : "Install DXVK"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zainstaluj DXVK"
+          }
         }
       }
     },
@@ -817,6 +853,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Environment Variables"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zmienne środowiskowe"
           }
         }
       }
