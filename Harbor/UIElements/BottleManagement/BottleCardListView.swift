@@ -241,6 +241,11 @@ struct BottleCardDetailedView: View {
                 HStack {
                     Spacer()
                     Button {
+                        URIHandler.shared.createDesktopShortcut(for: bottle)
+                    } label: {
+                        Label("sheet.advConf.desktopShortcut", systemImage: "desktopcomputer")
+                    }
+                    Button {
                         bottle.directLaunchApplication("wineboot", arguments: ["-u"])
                     } label: {
                         Label("sheet.advConf.update", systemImage: "arrow.clockwise")

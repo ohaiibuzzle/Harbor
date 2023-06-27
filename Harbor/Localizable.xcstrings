@@ -196,6 +196,26 @@
         }
       }
     },
+    "desktopShortcutCreated.message %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A shortcut for \"%@\" has been created on your desktop. \nNote: During first run, there will be a prompt for \"applet\" to access your bottle path. This is normal as the shortcut is independent from Harbor."
+          }
+        }
+      }
+    },
+    "desktopShortcutCreated.title %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"%@\" shortcut created"
+          }
+        }
+      }
+    },
     "harbor.errorAlert" : {
       "localizations" : {
         "en" : {
@@ -651,6 +671,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Instalacja Harbor"
+          }
+        }
+      }
+    },
+    "sheet.advConf.desktopShortcut" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Shortcut"
           }
         }
       }
