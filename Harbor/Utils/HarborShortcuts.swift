@@ -48,8 +48,7 @@ struct HarborShortcuts {
         shellScript = shellScript.replacingOccurrences(of: "\"", with: "\\\"")
 
         let aaplScript = """
-        property shellScript : "\(shellScript)"
-        do shell script shellScript
+        do shell script "\(shellScript)"
         """
 
         return aaplScript
