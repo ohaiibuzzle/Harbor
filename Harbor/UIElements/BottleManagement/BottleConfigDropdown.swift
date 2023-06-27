@@ -53,6 +53,7 @@ struct BottleConfigDropdown: View {
                 }
                 Section {
                     HStack {
+                        Spacer()
                         Button("sheet.advConf.winecfgBtn") {
                             bottle.launchApplication("winecfg")
                         }
@@ -63,9 +64,18 @@ struct BottleConfigDropdown: View {
                             bottle.launchApplication("regedit")
                         }
                         Spacer()
+                    }
+                }
+                Section {
+                    HStack {
+                        Spacer()
+                        Button("sheet.advConf.desktopShortcut") {
+                            URIHandler.shared.createDesktopShortcut(for: bottle)
+                        }
                         Button("sheet.advConf.update") {
                             bottle.directLaunchApplication("wineboot", arguments: ["-b"])
                         }
+                        Spacer()
                     }
                 }
             }
