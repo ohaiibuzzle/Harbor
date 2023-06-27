@@ -8,8 +8,8 @@
 import Foundation
 import AppKit
 
-struct URIHandler {
-    static let shared = URIHandler()
+struct HarborShortcuts {
+    static let shared = HarborShortcuts()
 
     func generateAppleScriptLauncher(bottle: HarborBottle) -> String {
         let wine64Path = "/usr/local/opt/game-porting-toolkit/bin/wine64"
