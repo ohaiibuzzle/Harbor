@@ -30,10 +30,10 @@ struct HarborShortcuts {
             }
         }
 
-        shellScript += " \(wine64Path) start "
+        shellScript += " '\(wine64Path)' start"
 
         if !bottle.primaryApplicationWorkDir.isEmpty {
-            shellScript += "/d '\(bottle.primaryApplicationWorkDir)'"
+            shellScript += " /d '\(bottle.primaryApplicationWorkDir)'"
         }
 
         if !bottle.primaryApplicationPath.isEmpty {
@@ -62,7 +62,6 @@ struct HarborShortcuts {
         guard let desktopPath = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first else {
             return
         }
-        debugPrint(tempDir)
         let scriptFile = tempDir.appendingPathComponent("launch.scpt")
         let appFile = desktopPath.appendingPathComponent("\(bottle.name).app")
 
@@ -80,13 +79,10 @@ struct HarborShortcuts {
             }
 
             // Replace the applet.icns with BottleIcon.icns from the assets
-            let iconFile = Bundle.main.url(forResource: "BottleIcon", withExtension: "icns")
-            let iconDestination = appFile.appendingPathComponent("Contents/Resources/applet.icns")
-            if let iconFile = iconFile {
-                let cpProcess = Process()
-                cpProcess.launchPath = "/bin/cp"
-                cpProcess.arguments = [iconFile.path, iconDestination.path]
-                try cpProcess.run()
+            if let iconFile = Bundle.main.url(forResource: "BottleIcon", withExtension: "icns") {
+                let iconDestination = appFile.appendingPathComponent("Contents/Resources/applet.icns")
+                try FileManager.default.removeItem(at: iconDestination)
+                try FileManager.default.copyItem(at: iconFile, to: iconDestination)
             }
 
             // Remove the temporary files
@@ -99,8 +95,7 @@ struct HarborShortcuts {
             alert.addButton(withTitle: "OK")
             alert.runModal()
         } catch {
-            NSLog("Failed to create desktop shortcut")
-            NSLog(error.localizedDescription)
+            HarborUtils.shared.quickError(error.localizedDescription)
         }
     }
 }
