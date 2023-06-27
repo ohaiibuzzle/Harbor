@@ -70,7 +70,7 @@ struct BottleConfigDropdown: View {
                     HStack {
                         Spacer()
                         Button("sheet.advConf.desktopShortcut") {
-                            URIHandler.shared.createDesktopShortcut(for: bottle)
+                            HarborShortcuts.shared.createDesktopShortcut(for: bottle)
                         }
                         Button("sheet.advConf.update") {
                             bottle.directLaunchApplication("wineboot", arguments: ["-b"])

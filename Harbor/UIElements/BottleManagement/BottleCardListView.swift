@@ -241,7 +241,7 @@ struct BottleCardDetailedView: View {
                 HStack {
                     Spacer()
                     Button {
-                        URIHandler.shared.createDesktopShortcut(for: bottle)
+                        HarborShortcuts.shared.createDesktopShortcut(for: bottle)
                     } label: {
                         Label("sheet.advConf.desktopShortcut", systemImage: "desktopcomputer")
                     }
