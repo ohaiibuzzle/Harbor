@@ -196,6 +196,16 @@
         }
       }
     },
+    "desktopShortcutCreated.message %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A shortcut for %@ has been created on your desktop"
+          }
+        }
+      }
+    },
     "harbor.errorAlert" : {
       "localizations" : {
         "en" : {
@@ -645,6 +655,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Instalacja Harbor"
+          }
+        }
+      }
+    },
+    "sheet.advConf.desktopShortcut" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Shortcut"
           }
         }
       }
