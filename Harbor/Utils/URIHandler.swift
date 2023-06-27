@@ -11,57 +11,59 @@ import AppKit
 struct URIHandler {
     static let shared = URIHandler()
 
-    func processUri(uri: URL) {
-        let uriHost = uri.host(percentEncoded: false)
-        debugPrint(uri)
-        switch uriHost {
-        case "open":
-            handleOpenUri(uri: uri)
-        default:
-            return
-        }
-    }
+    func generateAppleScriptLauncher(bottle: HarborBottle) -> String {
+        let wine64Path = "/usr/local/opt/game-porting-toolkit/bin/wine64"
 
-    func handleOpenUri(uri: URL) {
-        let bottles = BottleLoader.shared.bottles
-        guard let urlComponents = URLComponents(url: uri, resolvingAgainstBaseURL: true) else {
-            return
-        }
-        guard let bottleUUID = urlComponents.queryItems?.first(where: { $0.name == "bottle" })?.value else {
-            return
-        }
-        guard let targetBottle = bottles.first(where: { $0.id.uuidString == bottleUUID }) else {
-            return
-        }
-        debugPrint("Found bottle \(targetBottle.name)")
-        targetBottle.launchPrimaryApplication()
-    }
+        var shellScript = ""
 
-    func generateOpenUri(bottle: HarborBottle) -> URL? {
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "harborapp"
-        urlComponents.host = "open"
-        urlComponents.queryItems = [URLQueryItem(name: "bottle", value: bottle.id.uuidString)]
-        return urlComponents.url
+        shellScript += "WINEPREFIX='\(bottle.path.path)'"
+        if bottle.enableHUD {
+            shellScript += " MTL_HUD_ENABLED=1"
+        }
+        if bottle.enableESync {
+            shellScript += " WINEESYNC=1"
+        }
+
+        if !bottle.envVars.isEmpty {
+            for (key, value) in bottle.envVars {
+                shellScript += " \(key)='\(value)'"
+            }
+        }
+
+        shellScript += " \(wine64Path) start "
+
+        if !bottle.primaryApplicationWorkDir.isEmpty {
+            shellScript += "/d '\(bottle.primaryApplicationWorkDir)'"
+        }
+
+        if !bottle.primaryApplicationPath.isEmpty {
+            shellScript += " '\(bottle.primaryApplicationPath)'"
+        }
+
+        if !bottle.primaryApplicationArgument.isEmpty {
+            shellScript += " \(bottle.primaryApplicationArgument)"
+        }
+
+        shellScript = shellScript.replacingOccurrences(of: "\\", with: "\\\\")
+        shellScript = shellScript.replacingOccurrences(of: "\"", with: "\\\"")
+
+        let aaplScript = """
+        property shellScript : "\(shellScript)"
+        do shell script shellScript
+        """
+
+        return aaplScript
     }
 
     func createDesktopShortcut(for bottle: HarborBottle) {
-        guard let openUri = generateOpenUri(bottle: bottle) else {
-            return
-        }
+        let aaplScript = generateAppleScriptLauncher(bottle: bottle)
+
+        let tempDir = FileManager.default.temporaryDirectory
         guard let desktopPath = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first else {
             return
         }
-        // Create an AppleScript script to launch the bottle
-        // and save it as .app on the desktop
-        let aaplScript = """
-        do shell script "open \(openUri.absoluteString)"
-        """
-
-        let tempDir = FileManager.default.temporaryDirectory
         debugPrint(tempDir)
         let scriptFile = tempDir.appendingPathComponent("launch.scpt")
-        let tmpIcon = tempDir.appendingPathComponent("BottleIcon.icns")
         let appFile = desktopPath.appendingPathComponent("\(bottle.name).app")
 
         do {
@@ -72,19 +74,26 @@ struct URIHandler {
             try compileProcess.run()
             compileProcess.waitUntilExit()
 
+            if compileProcess.terminationStatus != 0 {
+                NSLog("Failed to compile AppleScript")
+                return
+            }
+
             // Replace the applet.icns with BottleIcon.icns from the assets
             let iconFile = Bundle.main.url(forResource: "BottleIcon", withExtension: "icns")
             let iconDestination = appFile.appendingPathComponent("Contents/Resources/applet.icns")
             if let iconFile = iconFile {
-                try FileManager.default.copyItem(at: iconFile, to: tmpIcon)
-                _ = try FileManager.default.replaceItemAt(iconDestination, withItemAt: tmpIcon)
+                let cpProcess = Process()
+                cpProcess.launchPath = "/bin/cp"
+                cpProcess.arguments = [iconFile.path, iconDestination.path]
+                try cpProcess.run()
             }
 
             // Remove the temporary files
             try FileManager.default.removeItem(at: scriptFile)
 
             let alert = NSAlert()
-            alert.messageText = bottle.name
+            alert.messageText = String(localized: "desktopShortcutCreated.title \(bottle.name)")
             alert.informativeText = String(localized: "desktopShortcutCreated.message \(bottle.name)")
             alert.alertStyle = .informational
             alert.addButton(withTitle: "OK")

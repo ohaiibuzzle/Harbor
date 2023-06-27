@@ -29,10 +29,6 @@ struct BottleManagementView: View {
         .sheet(isPresented: $menuUIStates.shouldShowDXVKSheet) {
             DXVKInstallView(isPresented: $menuUIStates.shouldShowDXVKSheet)
         }
-        .onOpenURL(perform: { url in
-            URIHandler.shared.processUri(uri: url)
-        })
-        .handlesExternalEvents(preferring: [], allowing: ["harborapp://open"])
     }
 }
 

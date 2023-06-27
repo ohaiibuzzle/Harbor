@@ -19,19 +19,6 @@
 			<string>NSDocument</string>
 		</dict>
 	</array>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>dev.ohaiibuzzle.harbor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>harborapp</string>
-			</array>
-		</dict>
-	</array>
 	<key>UTImportedTypeDeclarations</key>
 	<array>
 		<dict>
