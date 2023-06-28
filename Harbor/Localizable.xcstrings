@@ -203,6 +203,12 @@
             "state" : "translated",
             "value" : "A shortcut for \"%@\" has been created on your desktop. \nNote: During first run, there will be a prompt for \"applet\" to access your bottle path. This is normal as the shortcut is independent from Harbor."
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utworzono skrót \"%@\" na biurku.\nUwaga: Podczas pierwszego uruchomienia pojawi się prośba \"applet\" na zgodę o dostęp do ścieżki butelki. To normalne, ponieważ skrót jest oddzielny od Harbor."
+          }
         }
       }
     },
@@ -212,6 +218,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "\"%@\" shortcut created"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utworzono skrót \"%@\""
           }
         }
       }
@@ -681,6 +693,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Create Shortcut"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stwórz skrót"
           }
         }
       }
