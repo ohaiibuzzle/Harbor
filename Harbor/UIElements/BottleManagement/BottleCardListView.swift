@@ -234,6 +234,10 @@ struct BottleCardDetailedView: View {
                             Button("sheet.advConf.regeditBtn") {
                                 bottle.launchApplication("regedit")
                             }
+                            Spacer()
+                            Button("sheet.advConf.Winetricks") {
+                                WinetricksUtils.shared.launchWinetricksShell(for: bottle)
+                            }
                         }
                     }
                 }
