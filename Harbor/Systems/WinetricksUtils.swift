@@ -26,7 +26,7 @@ struct WinetricksUtils {
         tell application "Terminal"
             activate
             delay 1
-            do script "\(shellScript)" in front window
+            do script "\(shellScript)"
         end tell
         """
 
