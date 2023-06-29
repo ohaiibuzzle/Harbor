@@ -847,6 +847,22 @@
         }
       }
     },
+    "sheet.advConf.Winetricks" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Winetricks"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Winetricks"
+          }
+        }
+      }
+    },
     "sheet.dxvk.descriptions" : {
       "localizations" : {
         "en" : {
