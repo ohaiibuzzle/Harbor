@@ -106,9 +106,8 @@ final class GPKUtils {
         let aaplScript = """
         property shellScript : "clear && \(brewUtils.x64BrewPrefix)/bin/brew install gstreamer pkg-config zlib \
         freetype sdl2 libgphoto2 faudio jpeg libpng mpg123 libtiff libgsm glib gnutls libusb gettext molten-vk && \
+        /usr/bin/xattr -r -d com.apple.quarantine \(gpkBottle.path) && \
         \(brewUtils.x64BrewPrefix)/bin/brew install --ignore-dependencies \(gpkBottle.path) && \
-        clear && echo '\(String(localized: "setup.message.enterPassword"))' && \
-        sudo /usr/bin/xattr -r -d com.apple.quarantine /usr/local/opt/game-porting-toolkit/; \
         clear && echo '\(String(localized: "setup.message.complete"))' && exit"
 
         tell application "Terminal"
@@ -219,6 +218,50 @@ final class GPKUtils {
         } else {
             // User clicked Cancel
             return false
+        }
+    }
+
+    func reinstallGPKLibraries() {
+        // Remove the GPK libraries
+        let gpkLib = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib/external")
+        if FileManager.default.fileExists(atPath: gpkLib.path) {
+            do {
+                try FileManager.default.removeItem(at: gpkLib)
+            } catch {
+                HarborUtils.shared.quickError(error.localizedDescription)
+                return
+            }
+        }
+        // Copy the GPK libraries
+        copyGPKLibraries()
+    }
+
+    func completelyRemoveGPK() {
+        // Remove the GPK bottle from Brew
+        let aaplScript = """
+        property shellScript : "/usr/local/Homebrew/bin/brew uninstall game-porting-toolkit && \
+        echo '\(String(localized: "setup.message.removalComplete"))' && exit"
+
+        tell application "Terminal"
+            activate
+            -- Enter x86_64 shell
+            do script "arch -x86_64 /bin/sh"
+            delay 2
+            -- Run removal
+            do script shellScript in front window
+        end tell
+        """
+
+        if let script = NSAppleScript(source: aaplScript) {
+            var error: NSDictionary?
+            script.executeAndReturnError(&error)
+            if let error = error {
+                NSLog("Harbor: Failed to execute AppleScript: \(error)")
+            } else {
+                status = .notInstalled
+            }
+        } else {
+            return
         }
     }
 }

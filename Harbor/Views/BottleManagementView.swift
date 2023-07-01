@@ -29,6 +29,9 @@ struct BottleManagementView: View {
         .sheet(isPresented: $menuUIStates.shouldShowDXVKSheet) {
             DXVKInstallView(isPresented: $menuUIStates.shouldShowDXVKSheet)
         }
+        .sheet(isPresented: $menuUIStates.shouldShowGPTKReinstallSheet) {
+            GPTKConfigView(isPresented: $menuUIStates.shouldShowGPTKReinstallSheet)
+        }
     }
 }
 
