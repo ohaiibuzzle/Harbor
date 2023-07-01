@@ -511,17 +511,6 @@
         }
       }
     },
-    "menu.harbor.reinstallGPTK" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reinstall GPTK"
-          }
-        }
-      }
-    },
     "setup.btn.installGPK" : {
       "localizations" : {
         "en" : {
@@ -602,19 +591,12 @@
         }
       }
     },
-    "setup.message.enterPassword" : {
-      "extractionState" : "stale",
+    "setup.message.removalComplete" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please enter your admin password in order to un-quarantine the newly installed bottle"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wpisz hasło Administratora, aby usunąć kwarantannę z nowo zainstalowanej butelki"
+            "value" : "Game Porting Toolkit removal complete. You can now close this window"
           }
         }
       }
