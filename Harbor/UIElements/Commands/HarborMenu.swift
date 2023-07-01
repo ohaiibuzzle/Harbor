@@ -11,6 +11,7 @@ struct HarborMenu: Commands {
     @Bindable var menuUIStates: MenuUIStates
     var body: some Commands {
         CommandGroup(after: .appVisibility) {
+            Divider()
             Button("menu.harbor.installDXVK") {
                 menuUIStates.shouldShowDXVKSheet = true
             }
@@ -18,6 +19,10 @@ struct HarborMenu: Commands {
                 HarborUtils.shared.dropNukeOnWine()
             }
             .keyboardShortcut("k", modifiers: [.command, .option, .shift])
+            Button("sheet.GPTKConfig.title") {
+                menuUIStates.shouldShowGPTKReinstallSheet = true
+            }
+            // Divider()
         }
     }
 }

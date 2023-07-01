@@ -511,6 +511,17 @@
         }
       }
     },
+    "menu.harbor.reinstallGPTK" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reinstall GPTK"
+          }
+        }
+      }
+    },
     "setup.btn.installGPK" : {
       "localizations" : {
         "en" : {
@@ -592,6 +603,7 @@
       }
     },
     "setup.message.enterPassword" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1012,12 +1024,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You can install GPTK quicker by obtaining a pre-built brew bottle of GPTK. \nThis saves your Mac from compiling Wine at the cost of potential compatibility issues.\nPlease note that this installation method excludes the shader compiler from Apple"
+            "value" : "You can install GPTK quicker by obtaining a pre-built brew bottle of GPTK. \nThis saves your Mac from compiling Wine at the cost of potential compatibility issues.\nPlease note that this installation method excludes the compiler from Apple"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Możesz zainstalować GPK szybciej wybierając wcześniej skompilowaną butelkę Homebrew z GPTK.\nTo oszczędza twojego Maca od kompilowania Wine kosztem potencjalnych problemów z kompatybilnością\nTa metoda instalacji nie zawiera kompilatora shaderów od Apple"
           }
         }
@@ -1131,6 +1143,66 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zainstaluj Game Porting Toolkit od Apple"
+          }
+        }
+      }
+    },
+    "sheet.GPTKConfig.removeGPTK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completely remove GPTK"
+          }
+        }
+      }
+    },
+    "sheet.GPTKConfig.removeGPTK.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harbor is about to completely remove GPTK from your device. You will need to reinstall it again if you want to use Harbor."
+          }
+        }
+      }
+    },
+    "sheet.GPTKConfig.removeGPTK.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPTK Removal"
+          }
+        }
+      }
+    },
+    "sheet.GPTKConfig.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can update the GPTK DirectX libraries \nor completely remove GPTK for reinstallation when a newer release is available"
+          }
+        }
+      }
+    },
+    "sheet.GPTKConfig.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configure GPTK"
+          }
+        }
+      }
+    },
+    "sheet.GPTKConfig.updateGPTKLibs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update GPTK Libraries"
           }
         }
       }
