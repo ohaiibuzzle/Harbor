@@ -598,6 +598,12 @@
             "state" : "translated",
             "value" : "Game Porting Toolkit removal complete. You can now close this window"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuwanie Game Porting Toolkit zakończone. Możesz teraz zamknąć to okno"
+          }
         }
       }
     },
@@ -1011,8 +1017,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Możesz zainstalować GPK szybciej wybierając wcześniej skompilowaną butelkę Homebrew z GPTK.\nTo oszczędza twojego Maca od kompilowania Wine kosztem potencjalnych problemów z kompatybilnością\nTa metoda instalacji nie zawiera kompilatora shaderów od Apple"
+            "state" : "translated",
+            "value" : "Możesz zainstalować GPTK szybciej wybierając wcześniej skompilowaną butelkę Homebrew z GPTK.\nTo oszczędza twojego Maca od kompilowania Wine kosztem potencjalnych problemów z kompatybilnością\nTa metoda instalacji nie zawiera kompilatora shaderów od Apple"
           }
         }
       }
@@ -1136,6 +1142,12 @@
             "state" : "translated",
             "value" : "Completely remove GPTK"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Całkowicie usuń GPTK"
+          }
         }
       }
     },
@@ -1145,6 +1157,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Harbor is about to completely remove GPTK from your device. You will need to reinstall it again if you want to use Harbor."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harbor jest o krok od całkowitego usunięcia GPTK z urządzenia. Aby korzystać z Harbor, konieczna będzie ponowna instalacja GPTK."
           }
         }
       }
@@ -1156,6 +1174,12 @@
             "state" : "translated",
             "value" : "GPTK Removal"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuwanie GPTK"
+          }
         }
       }
     },
@@ -1165,6 +1189,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You can update the GPTK DirectX libraries \nor completely remove GPTK for reinstallation when a newer release is available"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Możesz zaktualizować biblioteki DirectX GPTK\nlub całkowicie usunąć GPTK w celu reinstalacji gdy dostępna jest nowsza wersja"
           }
         }
       }
@@ -1176,6 +1206,12 @@
             "state" : "translated",
             "value" : "Configure GPTK"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skonfiguruj GPTK"
+          }
         }
       }
     },
@@ -1185,6 +1221,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Update GPTK Libraries"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualizowanie bibliotek GPTK"
           }
         }
       }
