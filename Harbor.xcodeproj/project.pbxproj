@@ -15,6 +15,7 @@
 		AB0F6E242A4AEDDA00F642C7 /* BottleIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AB0F6E232A4AEDDA00F642C7 /* BottleIcon.icns */; };
 		AB19DA972A358FE400967784 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AB19DA962A358FE400967784 /* Localizable.xcstrings */; };
 		AB3BE5EE2A32248D00358BBC /* LaunchExtDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */; };
+		AB4D1D532A572DCA0056461F /* VaporwareSetupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D1D522A572DCA0056461F /* VaporwareSetupUI.swift */; };
 		AB5CC6C02A308BBB00AEBB2B /* HarborApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6BF2A308BBB00AEBB2B /* HarborApp.swift */; };
 		AB5CC6C22A308BBB00AEBB2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6C12A308BBB00AEBB2B /* ContentView.swift */; };
 		AB5CC6C42A308BBC00AEBB2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5CC6C32A308BBC00AEBB2B /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		ABC0BFCE2A31627400382A42 /* BottleManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFCD2A31627400382A42 /* BottleManagementView.swift */; };
 		ABC0BFD12A31629300382A42 /* HarborBottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFD02A31629300382A42 /* HarborBottle.swift */; };
 		ABC0BFD42A31691500382A42 /* BottleOpsDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0BFD32A31691500382A42 /* BottleOpsDropdown.swift */; };
+		ABC33B232A601571007CFE0E /* VaporwareSetupInfoPanels.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC33B222A601571007CFE0E /* VaporwareSetupInfoPanels.swift */; };
 		ABD56AB32A36E419002A439C /* GPKSafeInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD56AB12A36E419002A439C /* GPKSafeInstallView.swift */; };
 		ABD56AB42A36E419002A439C /* GPKFastInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD56AB22A36E419002A439C /* GPKFastInstallView.swift */; };
 		ABF5340A2A3F606A0030677A /* ViewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF534092A3F606A0030677A /* ViewMenu.swift */; };
@@ -56,6 +58,7 @@
 		AB19DA962A358FE400967784 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchExtDropdown.swift; sourceTree = "<group>"; };
 		AB4707BF2A30C2C60019DC5F /* Harbor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Harbor.entitlements; sourceTree = "<group>"; };
+		AB4D1D522A572DCA0056461F /* VaporwareSetupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaporwareSetupUI.swift; sourceTree = "<group>"; };
 		AB5CC6BC2A308BBB00AEBB2B /* Harbor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Harbor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5CC6BF2A308BBB00AEBB2B /* HarborApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborApp.swift; sourceTree = "<group>"; };
 		AB5CC6C12A308BBB00AEBB2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 		ABC0BFCD2A31627400382A42 /* BottleManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleManagementView.swift; sourceTree = "<group>"; };
 		ABC0BFD02A31629300382A42 /* HarborBottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborBottle.swift; sourceTree = "<group>"; };
 		ABC0BFD32A31691500382A42 /* BottleOpsDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleOpsDropdown.swift; sourceTree = "<group>"; };
+		ABC33B222A601571007CFE0E /* VaporwareSetupInfoPanels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaporwareSetupInfoPanels.swift; sourceTree = "<group>"; };
 		ABD56AB12A36E419002A439C /* GPKSafeInstallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKSafeInstallView.swift; sourceTree = "<group>"; };
 		ABD56AB22A36E419002A439C /* GPKFastInstallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKFastInstallView.swift; sourceTree = "<group>"; };
 		ABF534092A3F606A0030677A /* ViewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMenu.swift; sourceTree = "<group>"; };
@@ -105,6 +109,15 @@
 				AB0F6E232A4AEDDA00F642C7 /* BottleIcon.icns */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		AB4D1D512A572D9F0056461F /* VaporwareSetup */ = {
+			isa = PBXGroup;
+			children = (
+				AB4D1D522A572DCA0056461F /* VaporwareSetupUI.swift */,
+				ABC33B222A601571007CFE0E /* VaporwareSetupInfoPanels.swift */,
+			);
+			path = VaporwareSetup;
 			sourceTree = "<group>";
 		};
 		AB5CC6B32A308BBB00AEBB2B = {
@@ -155,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				ABD06FDD2A74D07E00605AC9 /* MenuCommands */,
+				AB4D1D512A572D9F0056461F /* VaporwareSetup */,
 				AB6652C72A33499700F3FC5D /* Commands */,
 				ABC0BFD22A31690500382A42 /* BottleManagement */,
 				AB5CC6CF2A308CFF00AEBB2B /* GPKInstall */,
@@ -359,6 +373,7 @@
 				AB0D00442A40A3630019D62F /* BottleDXVK.swift in Sources */,
 				AB0D004C2A40B8900019D62F /* DXVKInstallView.swift in Sources */,
 				AB0D004E2A40E3D30019D62F /* EnvironmentVarsEditor.swift in Sources */,
+				ABC33B232A601571007CFE0E /* VaporwareSetupInfoPanels.swift in Sources */,
 				AB7A81002A30CC7100AA71A6 /* BrewUtils.swift in Sources */,
 				AB6652CD2A3350EC00F3FC5D /* BottleConfigDropdown.swift in Sources */,
 				AB5CC6D62A30910300AEBB2B /* GPKUtils.swift in Sources */,
@@ -383,6 +398,7 @@
 				ABF5340A2A3F606A0030677A /* ViewMenu.swift in Sources */,
 				AB6652C92A3349A400F3FC5D /* HarborMenu.swift in Sources */,
 				AB0D00462A40B27F0019D62F /* DXVKUtils.swift in Sources */,
+				AB4D1D532A572DCA0056461F /* VaporwareSetupUI.swift in Sources */,
 				FC682EDF2A3604B4000C53D6 /* Environment+XCLIUtils.swift in Sources */,
 				ABC0BFD42A31691500382A42 /* BottleOpsDropdown.swift in Sources */,
 			);

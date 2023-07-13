@@ -26,6 +26,7 @@ struct BrewInstallView: View {
                     .font(.title)
                 Text("sheet.HBInstall.subtitle")
                 .multilineTextAlignment(.center)
+                .font(.subheadline)
             }
             Spacer()
             Group {
@@ -59,10 +60,14 @@ struct BrewInstallView: View {
                 Button("btn.cancel") {
                     isPresented = false
                 }
+                .padding()
+                .keyboardShortcut(.cancelAction)
                 if brewUtils.installed {
                     Button("btn.OK") {
                         isPresented = false
                     }
+                    .padding()
+                    .keyboardShortcut(.defaultAction)
                 } else {
                     Button("btn.install") {
                         Task.detached(priority: .userInitiated) {
@@ -71,6 +76,8 @@ struct BrewInstallView: View {
                             isInstallingBrew = false
                         }
                     }
+                    .padding()
+                    .keyboardShortcut(.defaultAction)
                 }
             }
         }

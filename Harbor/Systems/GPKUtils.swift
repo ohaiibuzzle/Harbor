@@ -239,7 +239,7 @@ final class GPKUtils {
     func completelyRemoveGPK() {
         // Remove the GPK bottle from Brew
         let aaplScript = """
-        property shellScript : "/usr/local/Homebrew/bin/brew uninstall game-porting-toolkit && \
+        property shellScript : "clear && /usr/local/Homebrew/bin/brew uninstall game-porting-toolkit && \
         echo '\(String(localized: "setup.message.removalComplete"))' && exit"
 
         tell application "Terminal"

@@ -24,8 +24,9 @@ struct XCLIInstallView: View {
                     .font(.title)
                 Text("sheet.XCLIInstall.subtitle")
                 .multilineTextAlignment(.center)
+                .font(.subheadline)
             }
-
+            Spacer()
             Group {
                 if !xcliUtils.installed {
                     ProgressView()
@@ -56,7 +57,7 @@ struct XCLIInstallView: View {
             }
             }
             .padding()
-
+            Spacer()
             HStack {
                 Spacer()
                 Button("btn.cancel") {
@@ -75,6 +76,7 @@ struct XCLIInstallView: View {
                 Spacer()
             }
         }
+        .padding()
         .frame(minHeight: 300)
     }
 }

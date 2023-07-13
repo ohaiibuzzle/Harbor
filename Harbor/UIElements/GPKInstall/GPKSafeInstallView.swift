@@ -25,7 +25,9 @@ struct GPKSafeInstallView: View {
                 .padding()
             Text("sheet.GPKInstall.subTitle")
             .multilineTextAlignment(.center)
+            .font(.subheadline)
             .padding()
+            Spacer()
             if gpkUtils.status == .installed {
                 Text("sheet.GPKInstall.status.installed")
                     .foregroundColor(.green)
@@ -76,7 +78,7 @@ struct GPKSafeInstallView: View {
                 }
                 .padding()
             }
-
+            Spacer()
             HStack {
                 Button("btn.cancel") {
                     isPresented = false

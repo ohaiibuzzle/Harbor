@@ -4,6 +4,9 @@
     "" : {
 
     },
+    " Harbor is a simple, stupid prefix manager\n for Apple's Game Porting Toolkit" : {
+
+    },
     "alert.GPKInstall.informativeText" : {
       "localizations" : {
         "en" : {
@@ -227,6 +230,15 @@
           }
         }
       }
+    },
+    "Fast Install" : {
+
+    },
+    "GPTK requires macOS 14 or above to run.\nIt just does. Please do not question" : {
+
+    },
+    "Harbor Setup" : {
+
     },
     "harbor.errorAlert" : {
       "localizations" : {
@@ -479,6 +491,15 @@
         }
       }
     },
+    "installed" : {
+
+    },
+    "Let's go!" : {
+
+    },
+    "macOS 14+" : {
+
+    },
     "menu.harbor.installDXVK" : {
       "localizations" : {
         "en" : {
@@ -521,7 +542,17 @@
         }
       }
     },
+    "not installed" : {
+
+    },
+    "Open Software Update" : {
+
+    },
+    "Safe Install" : {
+
+    },
     "setup.btn.installGPK" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -538,6 +569,7 @@
       }
     },
     "setup.btn.installHB" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -554,6 +586,7 @@
       }
     },
     "setup.btn.installXCLI15" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -570,6 +603,7 @@
       }
     },
     "setup.fasterSetup.subtitle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -618,6 +652,7 @@
       }
     },
     "setup.saferSetup" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -634,6 +669,7 @@
       }
     },
     "setup.saferSetup.subtitle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -650,6 +686,7 @@
       }
     },
     "setup.soIWouldLikeToLiveDangerously" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -666,6 +703,7 @@
       }
     },
     "setup.subtitle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -682,6 +720,7 @@
       }
     },
     "setup.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1570,6 +1609,15 @@
           }
         }
       }
+    },
+    "Welcome to Harbor!" : {
+
+    },
+    "You are not running macOS 14 or above. Please upgrade your macOS to use Harbor." : {
+
+    },
+    "You are running macOS 14 or above. You're good to go!" : {
+
     }
   },
   "version" : "1.0"
