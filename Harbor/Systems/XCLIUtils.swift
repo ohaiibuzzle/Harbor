@@ -36,9 +36,6 @@ final class XCLIUtils {
             return
         }
         task.waitUntilExit()
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        if let output = String(data: data, encoding: .utf8) {
-            installed = output.contains("version: 15.")
-        }
+        installed = task.terminationStatus == 0
     }
 }
