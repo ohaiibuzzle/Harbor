@@ -154,14 +154,15 @@
 		AB5CC6CE2A308CE200AEBB2B /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
+				ABD06FDD2A74D07E00605AC9 /* MenuCommands */,
 				AB6652C72A33499700F3FC5D /* Commands */,
 				ABC0BFD22A31690500382A42 /* BottleManagement */,
-				AB5CC6CF2A308CFF00AEBB2B /* GPKDownload */,
+				AB5CC6CF2A308CFF00AEBB2B /* GPKInstall */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
 		};
-		AB5CC6CF2A308CFF00AEBB2B /* GPKDownload */ = {
+		AB5CC6CF2A308CFF00AEBB2B /* GPKInstall */ = {
 			isa = PBXGroup;
 			children = (
 				ABD56AB22A36E419002A439C /* GPKFastInstallView.swift */,
@@ -169,7 +170,7 @@
 				AB5CC6D72A30938A00AEBB2B /* BrewInstallView.swift */,
 				AB6652C12A33342B00F3FC5D /* XCLIInstallView.swift */,
 			);
-			path = GPKDownload;
+			path = GPKInstall;
 			sourceTree = "<group>";
 		};
 		AB5CC6D42A3090E800AEBB2B /* Utils */ = {
@@ -228,11 +229,18 @@
 				AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */,
 				AB6652CC2A3350EC00F3FC5D /* BottleConfigDropdown.swift */,
 				AB6254332A3CE30D002A6206 /* BottleCardListView.swift */,
-				AB0D004B2A40B8900019D62F /* DXVKInstallView.swift */,
 				AB0D004D2A40E3D30019D62F /* EnvironmentVarsEditor.swift */,
-				AB95D9FC2A5011C5003402D2 /* GPTKConfigView.swift */,
 			);
 			path = BottleManagement;
+			sourceTree = "<group>";
+		};
+		ABD06FDD2A74D07E00605AC9 /* MenuCommands */ = {
+			isa = PBXGroup;
+			children = (
+				AB0D004B2A40B8900019D62F /* DXVKInstallView.swift */,
+				AB95D9FC2A5011C5003402D2 /* GPTKConfigView.swift */,
+			);
+			path = MenuCommands;
 			sourceTree = "<group>";
 		};
 		FC682EDD2A360480000C53D6 /* Systems */ = {
