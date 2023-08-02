@@ -167,6 +167,17 @@ struct NewBottleDropdown: View {
                             // Create the bottle
                             isWorking = true
                             Task.detached {
+                                // We quickly check the dir. If it contains Wine file structure (eg. drive_c)
+                                // create the bottle WITH it.
+                                // Otherwise, create the bottle with the name as the new directory.
+                                let isWineDir = FileManager.default
+                                    .fileExists(atPath: bottle.path.appendingPathComponent("drive_c").path)
+                                if !isWineDir {
+                                    let newDir = bottle.path.appendingPathComponent(bottle.name)
+                                    try? FileManager.default
+                                        .createDirectory(at: newDir, withIntermediateDirectories: true, attributes: nil)
+                                    bottle.path = newDir
+                                }
                                 bottle.initializeBottle()
                                 Task { @MainActor in
                                     BottleLoader.shared.bottles.append(bottle)
