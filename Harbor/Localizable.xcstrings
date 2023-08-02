@@ -793,6 +793,16 @@
         }
       }
     },
+    "sheet.advConf.retinaToggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Retina Scaling"
+          }
+        }
+      }
+    },
     "sheet.advConf.stdOutToggle" : {
       "localizations" : {
         "en" : {
