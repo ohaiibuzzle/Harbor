@@ -350,7 +350,7 @@ struct RetinaModeToggle: View {
         }
         .onAppear {
             Task.detached(priority: .background) {
-                let retinaTestResult = queryRetinaMode()
+                bottleRetinaMode = queryRetinaMode()
                 Task { @MainActor in
                     canSetRetinaMode = true
                 }
