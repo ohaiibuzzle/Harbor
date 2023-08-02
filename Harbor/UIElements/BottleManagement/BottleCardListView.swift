@@ -97,6 +97,8 @@ struct BottleCardDetailedView: View {
     @State var bottlePath = ""
     @State var bottleDXVKStatus: Bool = false
     @State var canSetDXVK = false
+    @State var bottleRetinaMode: Bool = false
+    @State var canSetRetinaMode = false
 
     let monospaceFont = Font.body.monospaced()
 
@@ -222,6 +224,27 @@ struct BottleCardDetailedView: View {
                                     .controlSize(.small)
                             }
                         }
+                        if canSetRetinaMode {
+                            Toggle("sheet.advConf.retinaToggle", isOn: $bottleRetinaMode)
+                                .disabled(!canSetRetinaMode)
+                                .onChange(of: bottleRetinaMode) { _, newValue in
+                                    canSetRetinaMode = false
+                                    Task.detached {
+                                        setRetinaMode(newValue)
+                                        Task { @MainActor in
+                                            canSetRetinaMode = true
+                                        }
+                                    }
+                                }
+                        } else {
+                            HStack {
+                                Text("sheet.advConf.retinaToggle")
+                                Spacer()
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                                    .controlSize(.small)
+                            }
+                        }
                     }
                     Section {
                         HStack {
@@ -293,12 +316,42 @@ struct BottleCardDetailedView: View {
                     canSetDXVK = true
                 }
             }
+            Task.detached(priority: .background) {
+                let retinaTestResult = queryRetinaMode()
+                Task { @MainActor in
+                    canSetRetinaMode = true
+                }
+            }
         }
         .onDisappear {
             if let bottleIndex = BottleLoader.shared.bottles.firstIndex(where: { $0.id == bottle.id }) {
                 BottleLoader.shared.bottles[bottleIndex] = bottle
             }
             isShowingDetail = false
+        }
+    }
+
+    func queryRetinaMode() -> Bool {
+        let result = bottle.directLaunchApplication("reg.exe", arguments: ["query", #"HKCU\Software\Wine\Mac Driver"#,
+                                                                            "-v", "RetinaMode"])
+        if let result = result.trimmingCharacters(in: .whitespacesAndNewlines).split(separator: " ").last {
+            return result == "y"
+        } else {
+            return false
+        }
+    }
+
+    func setRetinaMode(_ value: Bool) {
+        if value {
+            bottle.directLaunchApplication("reg.exe", arguments:
+                                            ["add", #"HKCU\Software\Wine\Mac Driver"#,
+                                             "/v", "RetinaMode",
+                                             "/d", "y", "/f"])
+        } else {
+            bottle.directLaunchApplication("reg.exe", arguments:
+                                            ["delete",
+                                             #"HKCU\Software\Wine\Mac Driver"#,
+                                             "/v", "RetinaMode", "/f"])
         }
     }
 }
