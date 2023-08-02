@@ -58,4 +58,32 @@ struct HarborUtils {
         }
         task.waitUntilExit()
     }
+
+    func wipeShaderCache() {
+        // cd $(getconf DARWIN_USER_CACHE_DIR)/d3dm
+        let getconf = Process()
+        getconf.executableURL = URL(fileURLWithPath: "/usr/bin/getconf")
+        getconf.arguments = ["DARWIN_USER_CACHE_DIR"]
+        let pipe = Pipe()
+        getconf.standardOutput = pipe
+        do {
+            try getconf.run()
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
+        getconf.waitUntilExit()
+
+        let getconfOutput = pipe.fileHandleForReading.readDataToEndOfFile()
+        guard let getconfOutputString = String(data: getconfOutput, encoding: .utf8) else {
+            return
+        }
+
+        let d3dmPath = URL(fileURLWithPath: getconfOutputString.trimmingCharacters(in: .whitespacesAndNewlines))
+            .appendingPathComponent("d3dm").path
+        do {
+            try FileManager.default.removeItem(atPath: d3dmPath)
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
+    }
 }

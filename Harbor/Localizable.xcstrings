@@ -511,6 +511,16 @@
         }
       }
     },
+    "menu.harbor.nukeShaders" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wipe Shader Cache"
+          }
+        }
+      }
+    },
     "setup.btn.installGPK" : {
       "localizations" : {
         "en" : {

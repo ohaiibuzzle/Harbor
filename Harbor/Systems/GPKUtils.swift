@@ -32,11 +32,11 @@ final class GPKUtils {
         let gpkD3DLib = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib/external/libd3dshared.dylib")
         let gpkWine64 = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/bin/wine64")
 
-        let gpkD3DLinInstalled = FileManager.default.fileExists(atPath: gpkD3DLib.path, isDirectory: isDir)
+        let gpkD3DLibInstalled = FileManager.default.fileExists(atPath: gpkD3DLib.path, isDirectory: isDir)
         let gpkWine64Installed = FileManager.default.fileExists(atPath: gpkWine64.path, isDirectory: isDir)
 
         self.status =
-        switch (gpkD3DLinInstalled, gpkWine64Installed) {
+        switch (gpkD3DLibInstalled, gpkWine64Installed) {
         case (true, true):
                 .installed
         case (false, false):
