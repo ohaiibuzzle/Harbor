@@ -82,10 +82,14 @@ struct HarborBottle: Identifiable, Equatable, Codable {
                             workDir: primaryApplicationWorkDir)
     }
 
-    func directLaunchApplication(_ application: String, arguments: [String] = [], shouldWait: Bool = false) {
+    @discardableResult
+    func directLaunchApplication(_ application: String, arguments: [String] = [], shouldWait: Bool = false) -> String {
         let task = Process()
+        let pipe = Pipe()
+
         task.launchPath = "/usr/local/opt/game-porting-toolkit/bin/wine64"
         task.arguments = [application]
+        task.standardOutput = pipe
 
         if !arguments.isEmpty {
             task.arguments?.append(contentsOf: arguments)
@@ -102,6 +106,8 @@ struct HarborBottle: Identifiable, Equatable, Codable {
         if shouldWait {
             task.waitUntilExit()
         }
+
+        return String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8) ?? ""
     }
 
     func pathFromUnixPath(_ unixPath: URL) -> String {

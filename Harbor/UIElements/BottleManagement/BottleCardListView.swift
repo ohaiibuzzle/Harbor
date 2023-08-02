@@ -199,52 +199,8 @@ struct BottleCardDetailedView: View {
                         Toggle("sheet.advConf.hudToggle", isOn: $bottle.enableHUD)
                         Toggle("sheet.advConf.eSyncToggle", isOn: $bottle.enableESync)
                         Toggle("sheet.advConf.stdOutToggle", isOn: $bottle.pleaseShutUp)
-                        if canSetDXVK {
-                            Toggle("sheet.advConf.dxvkToggle", isOn: $bottleDXVKStatus)
-                                .disabled(!DXVKUtils.shared.isDXVKAvailable() || !canSetDXVK)
-                                .onChange(of: bottleDXVKStatus) { _, newValue in
-                                    canSetDXVK = false
-                                    Task.detached {
-                                        if newValue {
-                                            BottleDXVK.shared.installDXVKToBottle(bottle: bottle)
-                                        } else {
-                                            BottleDXVK.shared.removeDXVKFromBottle(bottle: bottle)
-                                        }
-                                        Task { @MainActor in
-                                            canSetDXVK = true
-                                        }
-                                    }
-                                }
-                        } else {
-                            HStack {
-                                Text("sheet.advConf.dxvkToggle")
-                                Spacer()
-                                ProgressView()
-                                    .progressViewStyle(.circular)
-                                    .controlSize(.small)
-                            }
-                        }
-                        if canSetRetinaMode {
-                            Toggle("sheet.advConf.retinaToggle", isOn: $bottleRetinaMode)
-                                .disabled(!canSetRetinaMode)
-                                .onChange(of: bottleRetinaMode) { _, newValue in
-                                    canSetRetinaMode = false
-                                    Task.detached {
-                                        setRetinaMode(newValue)
-                                        Task { @MainActor in
-                                            canSetRetinaMode = true
-                                        }
-                                    }
-                                }
-                        } else {
-                            HStack {
-                                Text("sheet.advConf.retinaToggle")
-                                Spacer()
-                                ProgressView()
-                                    .progressViewStyle(.circular)
-                                    .controlSize(.small)
-                            }
-                        }
+                        DXVKToggle(bottle: $bottle)
+                        RetinaModeToggle(bottle: $bottle)
                     }
                     Section {
                         HStack {
@@ -310,18 +266,6 @@ struct BottleCardDetailedView: View {
         .navigationTitle(bottle.name)
         .onAppear {
             isShowingDetail = true
-            Task.detached {
-                bottleDXVKStatus = BottleDXVK.shared.checkBottleForDXVK(bottle: bottle)
-                Task { @MainActor in
-                    canSetDXVK = true
-                }
-            }
-            Task.detached(priority: .background) {
-                let retinaTestResult = queryRetinaMode()
-                Task { @MainActor in
-                    canSetRetinaMode = true
-                }
-            }
         }
         .onDisappear {
             if let bottleIndex = BottleLoader.shared.bottles.firstIndex(where: { $0.id == bottle.id }) {
@@ -330,7 +274,89 @@ struct BottleCardDetailedView: View {
             isShowingDetail = false
         }
     }
+}
 
+struct DXVKToggle: View {
+    @Binding var bottle: HarborBottle
+    @State var canSetDXVK = false
+    @State var bottleDXVKStatus = false
+    var body: some View {
+        Group {
+            if canSetDXVK {
+                Toggle("sheet.advConf.dxvkToggle", isOn: $bottleDXVKStatus)
+                    .disabled(!DXVKUtils.shared.isDXVKAvailable() || !canSetDXVK)
+                    .onChange(of: bottleDXVKStatus) { _, newValue in
+                        canSetDXVK = false
+                        Task.detached {
+                            if newValue {
+                                BottleDXVK.shared.installDXVKToBottle(bottle: bottle)
+                            } else {
+                                BottleDXVK.shared.removeDXVKFromBottle(bottle: bottle)
+                            }
+                            Task { @MainActor in
+                                canSetDXVK = true
+                            }
+                        }
+                    }
+            } else {
+                HStack {
+                    Text("sheet.advConf.dxvkToggle")
+                    Spacer()
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .controlSize(.small)
+                }
+            }
+        }
+        .onAppear {
+            Task.detached {
+                bottleDXVKStatus = BottleDXVK.shared.checkBottleForDXVK(bottle: bottle)
+                Task { @MainActor in
+                    canSetDXVK = true
+                }
+            }
+        }
+    }
+}
+
+struct RetinaModeToggle: View {
+    @Binding var bottle: HarborBottle
+    @State var canSetRetinaMode = false
+    @State var bottleRetinaMode = false
+
+    var body: some View {
+        Group {
+            if canSetRetinaMode {
+                Toggle("sheet.advConf.retinaToggle", isOn: $bottleRetinaMode)
+                    .disabled(!canSetRetinaMode)
+                    .onChange(of: bottleRetinaMode) { _, newValue in
+                        canSetRetinaMode = false
+                        Task.detached {
+                            setRetinaMode(newValue)
+                            Task { @MainActor in
+                                canSetRetinaMode = true
+                            }
+                        }
+                    }
+            } else {
+                HStack {
+                    Text("sheet.advConf.retinaToggle")
+                    Spacer()
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .controlSize(.small)
+                }
+            }
+        }
+        .onAppear {
+            Task.detached(priority: .background) {
+                let retinaTestResult = queryRetinaMode()
+                Task { @MainActor in
+                    canSetRetinaMode = true
+                }
+            }
+        }
+    }
     func queryRetinaMode() -> Bool {
         let result = bottle.directLaunchApplication("reg.exe", arguments: ["query", #"HKCU\Software\Wine\Mac Driver"#,
                                                                             "-v", "RetinaMode"])
@@ -340,7 +366,6 @@ struct BottleCardDetailedView: View {
             return false
         }
     }
-
     func setRetinaMode(_ value: Bool) {
         if value {
             bottle.directLaunchApplication("reg.exe", arguments:
