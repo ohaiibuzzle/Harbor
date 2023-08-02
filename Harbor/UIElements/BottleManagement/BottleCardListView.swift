@@ -95,10 +95,6 @@ struct BottleCardDetailedView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     @State var bottlePath = ""
-    @State var bottleDXVKStatus: Bool = false
-    @State var canSetDXVK = false
-    @State var bottleRetinaMode: Bool = false
-    @State var canSetRetinaMode = false
 
     let monospaceFont = Font.body.monospaced()
 
