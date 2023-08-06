@@ -518,6 +518,12 @@
             "state" : "translated",
             "value" : "Wipe Shader Cache"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czyść pamięć podręczną shaderów"
+          }
         }
       }
     },
@@ -799,6 +805,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Use Retina Scaling"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Używaj skalowania Retina"
           }
         }
       }
