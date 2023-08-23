@@ -164,15 +164,21 @@ final class GPKUtils {
                 return
             }
             let gpkVolume = URL(fileURLWithPath: "/Volumes/\(mountedVolume)")
-            let gpkLib = gpkVolume.appendingPathComponent("lib")
+
+            let gpkLib: URL
+            // Check if the directory `redist/` exist
+            if FileManager.default.fileExists(atPath: gpkVolume.appendingPathComponent("redist").path) {
+                gpkLib = gpkVolume.appendingPathComponent("redist").appendingPathComponent("lib")
+            } else {
+                gpkLib = gpkVolume.appendingPathComponent("lib")
+            }
+
             let gpkLibDest = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib")
 
             // Merge the content from /Volumes/Game Porting Toolkit*/lib to /usr/local/opt/game-porting-toolkit/lib
             let dittoProcess = Process()
             dittoProcess.executableURL = URL(fileURLWithPath: "/usr/bin/ditto")
             dittoProcess.arguments = ["-V", gpkLib.path, gpkLibDest.path]
-            dittoProcess.standardOutput = nil
-            dittoProcess.standardError = nil
             do {
                 try dittoProcess.run()
             } catch {
