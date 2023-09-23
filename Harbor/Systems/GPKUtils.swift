@@ -86,10 +86,10 @@ final class GPKUtils {
         } while self.status == .notInstalled
 
         // Copy the GPK libraries
-        copyGPKLibraries()
+        mountAndCopyGPKLibs()
     }
 
-    func fastInstallGPK(using brewUtils: BrewUtils, gpkBottle: URL) {
+    func fastInstallGPK(using brewUtils: BrewUtils, gpkBottle: URL, bundledGPK: Bool = false) {
         // Abort if Brew is not installed
         brewUtils.testX64Brew()
         if brewUtils.installed == false {
@@ -107,7 +107,7 @@ final class GPKUtils {
         property shellScript : "clear && \(brewUtils.x64BrewPrefix)/bin/brew install gstreamer pkg-config zlib \
         freetype sdl2 libgphoto2 faudio jpeg libpng mpg123 libtiff libgsm glib gnutls libusb gettext molten-vk && \
         /usr/bin/xattr -r -d com.apple.quarantine \(gpkBottle.path) && \
-        \(brewUtils.x64BrewPrefix)/bin/brew install --ignore-dependencies \(gpkBottle.path) && \
+        \(brewUtils.x64BrewPrefix)/bin/brew install --ignore-dependencies -- \(gpkBottle.path) && \
         clear && echo '\(String(localized: "setup.message.complete"))' && exit"
 
         tell application "Terminal"
@@ -139,10 +139,14 @@ final class GPKUtils {
         } while self.status == .notInstalled
 
         // Copy the GPK libraries
-        copyGPKLibraries()
+        if bundledGPK {
+            copyGPKFromArchive(from: gpkBottle)
+        } else {
+            mountAndCopyGPKLibs()
+        }
     }
 
-    func copyGPKLibraries() {
+    func mountAndCopyGPKLibs() {
         // Mounts the GPK disk image
         let harborContainer = HarborUtils.shared.getContainerHome()
         let gpkDMG = harborContainer.appendingPathComponent("GPK.dmg")
@@ -209,6 +213,32 @@ final class GPKUtils {
         }
     }
 
+    func copyGPKFromArchive(from gpkBottle: URL) {
+        let gpkLibs = gpkBottle.deletingLastPathComponent().appending(path: "gptk_libs")
+        // Unquaratine this folder
+        let xattr = Process()
+        xattr.executableURL = URL(fileURLWithPath: "/usr/bin/xattr")
+        xattr.arguments = ["-r", "-d", "com.apple.quarantine", gpkLibs.path]
+        do {
+            try xattr.run()
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
+        xattr.waitUntilExit()
+
+        // Copy the GPK libraries
+        let gpkLibDest = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib")
+        let dittoProcess = Process()
+        dittoProcess.executableURL = URL(fileURLWithPath: "/usr/bin/ditto")
+        dittoProcess.arguments = ["-V", gpkLibs.path, gpkLibDest.path]
+        do {
+            try dittoProcess.run()
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
+        dittoProcess.waitUntilExit()
+    }
+
     func showGPKInstallAlert() -> Bool {
         // Popup an alert warning the user about the GPK installation process
         let alert = NSAlert()
@@ -245,7 +275,7 @@ final class GPKUtils {
     func completelyRemoveGPK() {
         // Remove the GPK bottle from Brew
         let aaplScript = """
-        property shellScript : "/usr/local/Homebrew/bin/brew uninstall game-porting-toolkit && \
+        property shellScript : "clear && /usr/local/Homebrew/bin/brew uninstall game-porting-toolkit && \
         echo '\(String(localized: "setup.message.removalComplete"))' && exit"
 
         tell application "Terminal"
