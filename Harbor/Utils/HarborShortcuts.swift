@@ -20,8 +20,13 @@ struct HarborShortcuts {
         if bottle.enableHUD {
             shellScript += " MTL_HUD_ENABLED=1"
         }
-        if bottle.enableESync {
+        switch bottle.syncPrimitives {
+        case .none:
+            break
+        case .eSync:
             shellScript += " WINEESYNC=1"
+        case .mSync:
+            shellScript += " WINEMSYNC=1"
         }
 
         if !bottle.envVars.isEmpty {

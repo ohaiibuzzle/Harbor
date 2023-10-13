@@ -124,7 +124,7 @@ class BottleDX {
 
     func removeDXVKFromBottle(bottle: HarborBottle) {
         let bottlePath = bottle.path
-        
+
         for override in dxvkOverrides {
             let overridePath = bottlePath.appendingPathComponent("drive_c/windows/system32/\(override).dll")
             // remove the symlink

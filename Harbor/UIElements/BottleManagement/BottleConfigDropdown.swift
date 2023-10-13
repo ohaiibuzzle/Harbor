@@ -20,7 +20,7 @@ struct BottleConfigDropdown: View {
             Form {
                 Section {
                     Toggle("sheet.advConf.hudToggle", isOn: $bottle.enableHUD)
-                    Toggle("sheet.advConf.eSyncToggle", isOn: $bottle.enableESync)
+                    SyncPrimitivesSelector(bottle: $bottle)
                     Toggle("sheet.advConf.stdOutToggle", isOn: $bottle.pleaseShutUp)
                     DXVKToggle(bottle: $bottle)
                     RetinaModeToggle(bottle: $bottle)

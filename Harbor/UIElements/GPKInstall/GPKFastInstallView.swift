@@ -116,6 +116,8 @@ struct GPKFastInstallView: View {
                                     Text("")
                                 }
                             }
+                        } else {
+                            Text("sheet.fastGPKInstall.fastArchiveDetected")
                         }
                     }
                     .padding()
