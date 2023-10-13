@@ -86,10 +86,10 @@ final class GPKUtils {
         } while self.status == .notInstalled
 
         // Backup the original WineD3D libraries
-        saveWineD3Dlibs()
+        GPKInstallationInternal.shared.saveWineD3Dlibs()
 
         // Copy the GPK libraries
-        mountAndCopyGPKLibs()
+        GPKInstallationInternal.shared.mountAndCopyGPKLibs()
     }
 
     func fastInstallGPK(using brewUtils: BrewUtils, gpkBottle: URL, bundledGPK: Bool = false) {
@@ -142,13 +142,114 @@ final class GPKUtils {
         } while self.status == .notInstalled
 
         // Backup the original WineD3D libraries
-        saveWineD3Dlibs()
+        GPKInstallationInternal.shared.saveWineD3Dlibs()
 
         // Copy the GPK libraries
         if bundledGPK {
-            copyGPKFromArchive(from: gpkBottle)
+            GPKInstallationInternal.shared.copyGPKFromArchive(from: gpkBottle)
         } else {
-            mountAndCopyGPKLibs()
+            GPKInstallationInternal.shared.mountAndCopyGPKLibs()
+        }
+    }
+
+    func showGPKInstallAlert() -> Bool {
+        // Popup an alert warning the user about the GPK installation process
+        let alert = NSAlert()
+        alert.messageText = String(localized: "alert.GPKInstall.title")
+        alert.informativeText = String(localized: "alert.GPKInstall.informativeText")
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: String(localized: "btn.OK"))
+        alert.addButton(withTitle: String(localized: "btn.cancel"))
+
+        if alert.runModal() == .alertFirstButtonReturn {
+            // User clicked OK. Go time.
+            return true
+        } else {
+            // User clicked Cancel
+            return false
+        }
+    }
+
+    func reinstallGPKLibraries() {
+        // Remove the GPK libraries
+        let gpkLib = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib/external")
+        if FileManager.default.fileExists(atPath: gpkLib.path) {
+            do {
+                try FileManager.default.removeItem(at: gpkLib)
+            } catch {
+                HarborUtils.shared.quickError(error.localizedDescription)
+                return
+            }
+        }
+        // Copy the GPK libraries
+        GPKInstallationInternal.shared.mountAndCopyGPKLibs()
+    }
+
+    func completelyRemoveGPK() {
+        // Remove the GPK bottle from Brew
+        let aaplScript = """
+        property shellScript : "clear && /usr/local/Homebrew/bin/brew uninstall game-porting-toolkit && \
+        echo '\(String(localized: "setup.message.removalComplete"))' && exit"
+
+        tell application "Terminal"
+            activate
+            -- Enter x86_64 shell
+            do script "arch -x86_64 /bin/sh"
+            delay 2
+            -- Run removal
+            do script shellScript in front window
+        end tell
+        """
+
+        if let script = NSAppleScript(source: aaplScript) {
+            var error: NSDictionary?
+            script.executeAndReturnError(&error)
+            if let error = error {
+                NSLog("Harbor: Failed to execute AppleScript: \(error)")
+            } else {
+                status = .notInstalled
+            }
+        } else {
+            return
+        }
+    }
+}
+
+class GPKInstallationInternal {
+    static let shared = GPKInstallationInternal()
+    func saveWineD3Dlibs() {
+        // Save the original WineD3D libraries (d3d9.dll, d3d10.dll, d3d11.dll, d3d12.dll, dxgi.dll)
+        let harborContainer = HarborUtils.shared.getContainerHome().appendingPathComponent("wined3d")
+        // Clean the folder if needed
+        if FileManager.default.fileExists(atPath: harborContainer.path) {
+            do {
+                try FileManager.default.removeItem(at: harborContainer)
+            } catch {
+                HarborUtils.shared.quickError(error.localizedDescription)
+                return
+            }
+        }
+        do {
+            try FileManager.default.createDirectory(at: harborContainer,
+                                                    withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+            return
+        }
+
+        let gpkLib = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib/wine/x86_64-windows")
+        let wineD3Dlibs = ["d3d9.dll", "d3d10.dll", "d3d11.dll", "d3d12.dll", "dxgi.dll"]
+        for lib in wineD3Dlibs {
+            let libPath = gpkLib.appendingPathComponent(lib)
+            let libDest = harborContainer.appendingPathComponent(lib)
+            if FileManager.default.fileExists(atPath: libPath.path) {
+                do {
+                    try FileManager.default.copyItem(at: libPath, to: libDest)
+                } catch {
+                    HarborUtils.shared.quickError(error.localizedDescription)
+                    return
+                }
+            }
         }
     }
 
@@ -245,103 +346,4 @@ final class GPKUtils {
         dittoProcess.waitUntilExit()
     }
 
-    func showGPKInstallAlert() -> Bool {
-        // Popup an alert warning the user about the GPK installation process
-        let alert = NSAlert()
-        alert.messageText = String(localized: "alert.GPKInstall.title")
-        alert.informativeText = String(localized: "alert.GPKInstall.informativeText")
-        alert.alertStyle = .warning
-        alert.addButton(withTitle: String(localized: "btn.OK"))
-        alert.addButton(withTitle: String(localized: "btn.cancel"))
-
-        if alert.runModal() == .alertFirstButtonReturn {
-            // User clicked OK. Go time.
-            return true
-        } else {
-            // User clicked Cancel
-            return false
-        }
-    }
-
-    func reinstallGPKLibraries() {
-        // Remove the GPK libraries
-        let gpkLib = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib/external")
-        if FileManager.default.fileExists(atPath: gpkLib.path) {
-            do {
-                try FileManager.default.removeItem(at: gpkLib)
-            } catch {
-                HarborUtils.shared.quickError(error.localizedDescription)
-                return
-            }
-        }
-        // Copy the GPK libraries
-        mountAndCopyGPKLibs()
-    }
-
-    func saveWineD3Dlibs() {
-        // Save the original WineD3D libraries
-        // d3d9.dll, d3d10.dll, d3d11.dll, d3d12.dll, dxgi.dll
-        let harborContainer = HarborUtils.shared.getContainerHome().appendingPathComponent("wined3d")
-        // Clean the folder if needed
-
-        if FileManager.default.fileExists(atPath: harborContainer.path) {
-            do {
-                try FileManager.default.removeItem(at: harborContainer)
-            } catch {
-                HarborUtils.shared.quickError(error.localizedDescription)
-                return
-            }
-        }
-        do {
-            try FileManager.default.createDirectory(at: harborContainer,
-                                                    withIntermediateDirectories: true, attributes: nil)
-        } catch {
-            HarborUtils.shared.quickError(error.localizedDescription)
-            return
-        }
-
-        let gpkLib = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib/wine/x86_64-windows")
-        let wineD3Dlibs = ["d3d9.dll", "d3d10.dll", "d3d11.dll", "d3d12.dll", "dxgi.dll"]
-        for lib in wineD3Dlibs {
-            let libPath = gpkLib.appendingPathComponent(lib)
-            let libDest = harborContainer.appendingPathComponent(lib)
-            if FileManager.default.fileExists(atPath: libPath.path) {
-                do {
-                    try FileManager.default.copyItem(at: libPath, to: libDest)
-                } catch {
-                    HarborUtils.shared.quickError(error.localizedDescription)
-                    return
-                }
-            }
-        }
-    }
-
-    func completelyRemoveGPK() {
-        // Remove the GPK bottle from Brew
-        let aaplScript = """
-        property shellScript : "clear && /usr/local/Homebrew/bin/brew uninstall game-porting-toolkit && \
-        echo '\(String(localized: "setup.message.removalComplete"))' && exit"
-
-        tell application "Terminal"
-            activate
-            -- Enter x86_64 shell
-            do script "arch -x86_64 /bin/sh"
-            delay 2
-            -- Run removal
-            do script shellScript in front window
-        end tell
-        """
-
-        if let script = NSAppleScript(source: aaplScript) {
-            var error: NSDictionary?
-            script.executeAndReturnError(&error)
-            if let error = error {
-                NSLog("Harbor: Failed to execute AppleScript: \(error)")
-            } else {
-                status = .notInstalled
-            }
-        } else {
-            return
-        }
-    }
 }

@@ -719,6 +719,16 @@
         }
       }
     },
+    "sheet.advConf.DXBackend" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DirectX Backend"
+          }
+        }
+      }
+    },
     "sheet.advConf.dxvkToggle" : {
       "localizations" : {
         "en" : {
@@ -736,6 +746,7 @@
       }
     },
     "sheet.advConf.eSyncToggle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -827,6 +838,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nie loguj do stdout"
+          }
+        }
+      }
+    },
+    "sheet.advConf.SyncPrimitives" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronization Primitives"
+          }
+        }
+      }
+    },
+    "sheet.advConf.SyncPrimitives.none" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
           }
         }
       }
@@ -1035,6 +1066,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wybierz butelkę GPK"
+          }
+        }
+      }
+    },
+    "sheet.fastGPKInstall.fastArchiveDetected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detected HarborBuilder's bottle with bundled GPTK!"
           }
         }
       }
