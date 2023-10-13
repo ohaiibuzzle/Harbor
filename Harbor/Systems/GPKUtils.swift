@@ -85,6 +85,9 @@ final class GPKUtils {
             checkGPKInstallStatus()
         } while self.status == .notInstalled
 
+        // Backup the original WineD3D libraries
+        saveWineD3Dlibs()
+
         // Copy the GPK libraries
         mountAndCopyGPKLibs()
     }
@@ -137,6 +140,9 @@ final class GPKUtils {
             sleep(5)
             checkGPKInstallStatus()
         } while self.status == .notInstalled
+
+        // Backup the original WineD3D libraries
+        saveWineD3Dlibs()
 
         // Copy the GPK libraries
         if bundledGPK {
@@ -269,7 +275,45 @@ final class GPKUtils {
             }
         }
         // Copy the GPK libraries
-        copyGPKLibraries()
+        mountAndCopyGPKLibs()
+    }
+
+    func saveWineD3Dlibs() {
+        // Save the original WineD3D libraries
+        // d3d9.dll, d3d10.dll, d3d11.dll, d3d12.dll, dxgi.dll
+        let harborContainer = HarborUtils.shared.getContainerHome().appendingPathComponent("wined3d")
+        // Clean the folder if needed
+
+        if FileManager.default.fileExists(atPath: harborContainer.path) {
+            do {
+                try FileManager.default.removeItem(at: harborContainer)
+            } catch {
+                HarborUtils.shared.quickError(error.localizedDescription)
+                return
+            }
+        }
+        do {
+            try FileManager.default.createDirectory(at: harborContainer,
+                                                    withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+            return
+        }
+
+        let gpkLib = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib/wine/x86_64-windows")
+        let wineD3Dlibs = ["d3d9.dll", "d3d10.dll", "d3d11.dll", "d3d12.dll", "dxgi.dll"]
+        for lib in wineD3Dlibs {
+            let libPath = gpkLib.appendingPathComponent(lib)
+            let libDest = harborContainer.appendingPathComponent(lib)
+            if FileManager.default.fileExists(atPath: libPath.path) {
+                do {
+                    try FileManager.default.copyItem(at: libPath, to: libDest)
+                } catch {
+                    HarborUtils.shared.quickError(error.localizedDescription)
+                    return
+                }
+            }
+        }
     }
 
     func completelyRemoveGPK() {
