@@ -30,7 +30,7 @@ struct HarborBottle: Identifiable, Equatable, Codable {
     // swiftlint:disable cyclomatic_complexity
     // This function is a bit too complex right now
     func launchApplication(_ application: String, arguments: [String] = [], environmentVars: [String: String] = [:],
-                           workDir: String = "", isUnixPath: Bool = true) {
+                           workDir: String = "", isUnixPath: Bool = false) {
         let task = Process()
         task.launchPath = "/usr/local/opt/game-porting-toolkit/bin/wine64"
         task.arguments = ["start"]
