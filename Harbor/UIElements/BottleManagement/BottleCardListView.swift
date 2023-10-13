@@ -274,26 +274,50 @@ struct BottleCardDetailedView: View {
 
 struct DXVKToggle: View {
     @Binding var bottle: HarborBottle
-    @State var canSetDXVK = false
-    @State var bottleDXVKStatus = false
+    @State var canSetDX = false
+    @State var bottleDXBackend: DXBackend = .how
     var body: some View {
         Group {
-            if canSetDXVK {
-                Toggle("sheet.advConf.dxvkToggle", isOn: $bottleDXVKStatus)
-                    .disabled(!DXVKUtils.shared.isDXVKAvailable() || !canSetDXVK)
-                    .onChange(of: bottleDXVKStatus) { _, newValue in
-                        canSetDXVK = false
-                        Task.detached {
-                            if newValue {
-                                BottleDXVK.shared.installDXVKToBottle(bottle: bottle)
-                            } else {
-                                BottleDXVK.shared.removeDXVKFromBottle(bottle: bottle)
-                            }
-                            Task { @MainActor in
-                                canSetDXVK = true
-                            }
+            if canSetDX {
+                // Dropdown to select DX backend
+                // Picker("sheet.advConf.DXBackend", selection: $bottleDXBackend) {
+                //     Text(DXBackend.gptk.rawValue).tag(DXBackend.gptk)
+                //     Text(DXBackend.dxvk.rawValue).tag(DXBackend.dxvk)
+                //         .disabled(!DXUtils.shared.isDXVKAvailable())
+                //     Text(DXBackend.wined3d.rawValue).tag(DXBackend.wined3d)
+                //         .disabled(!DXUtils.shared.isWineD3DAvailable())
+                // }
+                HStack {
+                    Text("sheet.advConf.DXBackend")
+                    Spacer()
+                    Menu {
+                        Button(DXBackend.gptk.rawValue) {
+                            bottleDXBackend = .gptk
+                        }
+                        Button(DXBackend.dxvk.rawValue) {
+                            bottleDXBackend = .dxvk
+                        }
+                        .disabled(!DXUtils.shared.isDXVKAvailable())
+                        Button(DXBackend.wined3d.rawValue) {
+                            bottleDXBackend = .wined3d
+                        }
+                        .disabled(!DXUtils.shared.isWineD3DAvailable())
+                    } label: {
+                        Text(bottleDXBackend.rawValue)
+                    }
+                    .disabled(!canSetDX)
+                    // Limit the length (else it looks stupid)
+                    .frame(maxWidth: 100)
+                }
+                .onChange(of: bottleDXBackend) { _, newValue in
+                    canSetDX = false
+                    Task.detached {
+                        BottleDX.shared.updateDXBackend(for: bottle, using: newValue)
+                        Task { @MainActor in
+                            canSetDX = true
                         }
                     }
+                }
             } else {
                 HStack {
                     Text("sheet.advConf.dxvkToggle")
@@ -306,9 +330,9 @@ struct DXVKToggle: View {
         }
         .onAppear {
             Task.detached {
-                bottleDXVKStatus = BottleDXVK.shared.checkBottleForDXVK(bottle: bottle)
+                bottleDXBackend = BottleDX.shared.checkBottleBackend(for: bottle)
                 Task { @MainActor in
-                    canSetDXVK = true
+                    canSetDX = true
                 }
             }
         }
