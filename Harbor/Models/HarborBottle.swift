@@ -7,6 +7,13 @@
 
 import Foundation
 import AppKit
+import Observation
+
+enum WineSyncronizationPrimatives: String, Codable {
+    case none = "None"
+    case eSync = "ESync"
+    case mSync = "MSync"
+}
 
 struct HarborBottle: Identifiable, Equatable, Codable {
     var id: UUID
@@ -16,10 +23,13 @@ struct HarborBottle: Identifiable, Equatable, Codable {
     var primaryApplicationArgument: String = ""
     var primaryApplicationWorkDir: String = ""
     var enableHUD: Bool = false
-    var enableESync: Bool = false
+    var syncPrimitives: WineSyncronizationPrimatives = .none
     var pleaseShutUp: Bool = true
+    var envVars: [String: String] = .init()
 
-    func launchApplication(_ application: String, arguments: [String] = [],
+    // swiftlint:disable cyclomatic_complexity
+    // This function is a bit too complex right now
+    func launchApplication(_ application: String, arguments: [String] = [], environmentVars: [String: String] = [:],
                            workDir: String = "", isUnixPath: Bool = false) {
         let task = Process()
         let logger = Logger()
@@ -47,8 +57,20 @@ struct HarborBottle: Identifiable, Equatable, Codable {
         if enableHUD {
             task.environment?["MTL_HUD_ENABLED"] = "1"
         }
-        if enableESync {
+
+        switch syncPrimitives {
+        case .none:
+            break
+        case .eSync:
             task.environment?["WINEESYNC"] = "1"
+        case .mSync:
+            task.environment?["WINEMSYNC"] = "1"
+        }
+
+        if !envVars.isEmpty {
+            for (key, value) in envVars {
+                task.environment?[key] = value
+            }
         }
 
         if pleaseShutUp {
@@ -75,15 +97,47 @@ struct HarborBottle: Identifiable, Equatable, Codable {
             HarborUtils.shared.quickError(error.localizedDescription)
         }
     }
+    // swiftlint:enable cyclomatic_complexity
 
-    func launchExtApplication(_ application: String, arguments: [String] = [], workDir: String = "") {
-        launchApplication(application, arguments: arguments, workDir: workDir, isUnixPath: true)
+    func launchExtApplication(_ application: String, arguments: [String] = [], environmentVars: [String: String] = [:],
+                              workDir: String = "") {
+        launchApplication(application, arguments: arguments, environmentVars: environmentVars,
+                          workDir: workDir, isUnixPath: true)
     }
 
     func launchPrimaryApplication() {
         launchApplication(primaryApplicationPath,
                           arguments: primaryApplicationArgument.split(separator: " ").map(String.init),
+                            environmentVars: envVars,
                             workDir: primaryApplicationWorkDir)
+    }
+
+    @discardableResult
+    func directLaunchApplication(_ application: String, arguments: [String] = [], shouldWait: Bool = false) -> String {
+        let task = Process()
+        let pipe = Pipe()
+
+        task.launchPath = "/usr/local/opt/game-porting-toolkit/bin/wine64"
+        task.arguments = [application]
+        task.standardOutput = pipe
+
+        if !arguments.isEmpty {
+            task.arguments?.append(contentsOf: arguments)
+        }
+
+        task.environment = ["WINEPREFIX": path.path]
+
+        do {
+            try task.run()
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
+
+        if shouldWait {
+            task.waitUntilExit()
+        }
+
+        return String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8) ?? ""
     }
 
     func pathFromUnixPath(_ unixPath: URL) -> String {
@@ -117,6 +171,21 @@ struct HarborBottle: Identifiable, Equatable, Codable {
         task.waitUntilExit()
     }
 
+    func killBottle() {
+        // Run wineserver -k to kill the bottle
+        let task = Process()
+        task.launchPath = "/usr/local/opt/game-porting-toolkit/bin/wineserver"
+        // Launch with WINE_PREFIX set to the bottle path
+        task.environment = ["WINEPREFIX": path.path]
+        task.arguments = ["-k"]
+
+        do {
+            try task.run()
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
+    }
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decodeIfPresent(UUID.self, forKey: .id) ?? UUID()
@@ -127,14 +196,29 @@ struct HarborBottle: Identifiable, Equatable, Codable {
             .decodeIfPresent(String.self, forKey: .primaryApplicationArgument) ?? ""
         primaryApplicationWorkDir = try container.decodeIfPresent(String.self, forKey: .primaryApplicationWorkDir) ?? ""
         enableHUD = try container.decodeIfPresent(Bool.self, forKey: .enableHUD) ?? false
-        enableESync = try container.decodeIfPresent(Bool.self, forKey: .enableESync) ?? false
+        syncPrimitives = try container
+            .decodeIfPresent(WineSyncronizationPrimatives.self, forKey: .syncPrimitives) ?? .none
         pleaseShutUp = try container.decodeIfPresent(Bool.self, forKey: .pleaseShutUp) ?? true
+        envVars = try container.decodeIfPresent([String: String].self, forKey: .envVars) ?? [:]
     }
 
     init (id: UUID, name: String, path: URL) {
         self.id = id
         self.name = name
         self.path = path
+    }
+}
+
+@Observable
+class BottleList {
+    var bottles: [HarborBottle] = BottleLoader.shared.load()
+
+    func reload() {
+        bottles = BottleLoader.shared.load()
+    }
+
+    func flush() {
+        BottleLoader.shared.save(bottles)
     }
 }
 

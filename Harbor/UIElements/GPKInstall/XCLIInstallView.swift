@@ -75,9 +75,13 @@ struct XCLIInstallView: View {
                 Spacer()
             }
         }
+        .frame(minHeight: 300)
     }
 }
 
-#Preview {
-    XCLIInstallView(isPresented: Binding.constant(true))
+struct XCLIInstallView_Previews: PreviewProvider {
+    static var previews: some View {
+        XCLIInstallView(isPresented: Binding.constant(true))
+            .environment(\.xcliUtils, .init())
+    }
 }

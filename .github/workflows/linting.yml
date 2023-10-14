@@ -7,6 +7,8 @@ on:
       - '.swiftlint.yml'
       - '**/*.swift'
   push:
+    branches:
+      - senpai
     paths:
       - '.github/workflows/linting.yml'
       - '.swiftlint.yml'

@@ -10,7 +10,7 @@ import SwiftUI
 struct BrewInstallView: View {
     @Binding var isPresented: Bool
 
-    @Environment(\.brewUitls)
+    @Environment(\.brewUtils)
     var brewUtils
 
     @State var isInstallingBrew = false
@@ -75,11 +75,13 @@ struct BrewInstallView: View {
             }
         }
         .padding()
+        .frame(minHeight: 300)
     }
 }
 
 struct BrewInstallView_Previews: PreviewProvider {
     static var previews: some View {
         BrewInstallView(isPresented: Binding.constant(true))
+            .environment(\.brewUtils, .init())
     }
 }

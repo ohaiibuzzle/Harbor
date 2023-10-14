@@ -43,6 +43,12 @@
             "state" : "translated",
             "value" : "Auto"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto"
+          }
         }
       }
     },
@@ -190,6 +196,38 @@
         }
       }
     },
+    "desktopShortcutCreated.message %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A shortcut for \"%@\" has been created on your desktop. \nNote: During first run, there will be a prompt for \"applet\" to access your bottle path. This is normal as the shortcut is independent from Harbor."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utworzono skrót \"%@\" na biurku.\nUwaga: Podczas pierwszego uruchomienia pojawi się prośba \"applet\" na zgodę o dostęp do ścieżki butelki. To normalne, ponieważ skrót jest oddzielny od Harbor."
+          }
+        }
+      }
+    },
+    "desktopShortcutCreated.title %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"%@\" shortcut created"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utworzono skrót \"%@\""
+          }
+        }
+      }
+    },
     "harbor.errorAlert" : {
       "localizations" : {
         "en" : {
@@ -254,7 +292,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wine bottles are separate enplronments that you can use to install Windows applications. \nYou can create as many bottles as you want, and each bottle can have its own Windows version and configuration."
+            "value" : "Wine bottles are separate environments that you can use to install Windows applications. \nYou can create as many bottles as you want, and each bottle can have its own Windows version and configuration."
           }
         },
         "pl" : {
@@ -309,6 +347,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edycja"
+          }
+        }
+      }
+    },
+    "home.btn.kill" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zatrzymaj"
           }
         }
       }
@@ -425,6 +479,22 @@
         }
       }
     },
+    "menu.harbor.installDXVK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install DXVK"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zainstaluj DXVK"
+          }
+        }
+      }
+    },
     "menu.harbor.killAll" : {
       "localizations" : {
         "en" : {
@@ -441,22 +511,18 @@
         }
       }
     },
-    "My Bottle" : {
+    "menu.harbor.nukeShaders" : {
       "localizations" : {
-        "pl" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Moja Butelka"
+            "value" : "Wipe Shader Cache"
           }
-        }
-      }
-    },
-    "MyApp.exe" : {
-      "localizations" : {
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "MojaAplikacja.exe"
+            "value" : "Czyść pamięć podręczną shaderów"
           }
         }
       }
@@ -541,18 +607,18 @@
         }
       }
     },
-    "setup.message.enterPassword" : {
+    "setup.message.removalComplete" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please enter your admin password in order to un-quarantine the newly installed bottle"
+            "value" : "Game Porting Toolkit removal complete. You can now close this window"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wpisz hasło Administratora, aby usunąć kwarantannę z nowo zainstalowanej butelki"
+            "value" : "Usuwanie Game Porting Toolkit zakończone. Możesz teraz zamknąć to okno"
           }
         }
       }
@@ -637,7 +703,50 @@
         }
       }
     },
+    "sheet.advConf.desktopShortcut" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Shortcut"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stwórz skrót"
+          }
+        }
+      }
+    },
+    "sheet.advConf.DXBackend" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DirectX Backend"
+          }
+        }
+      }
+    },
+    "sheet.advConf.dxvkToggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DXVK"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DXVK"
+          }
+        }
+      }
+    },
     "sheet.advConf.eSyncToggle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -701,6 +810,22 @@
         }
       }
     },
+    "sheet.advConf.retinaToggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Retina Scaling"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Używaj skalowania Retina"
+          }
+        }
+      }
+    },
     "sheet.advConf.stdOutToggle" : {
       "localizations" : {
         "en" : {
@@ -713,6 +838,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nie loguj do stdout"
+          }
+        }
+      }
+    },
+    "sheet.advConf.SyncPrimitives" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronization Primitives"
+          }
+        }
+      }
+    },
+    "sheet.advConf.SyncPrimitives.none" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
           }
         }
       }
@@ -733,6 +878,22 @@
         }
       }
     },
+    "sheet.advConf.update" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualizuj"
+          }
+        }
+      }
+    },
     "sheet.advConf.winecfgBtn" : {
       "localizations" : {
         "en" : {
@@ -745,6 +906,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uruchom winecfg"
+          }
+        }
+      }
+    },
+    "sheet.advConf.Winetricks" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Winetricks"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Winetricks"
+          }
+        }
+      }
+    },
+    "sheet.dxvk.descriptions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DXVK can be used in Harbor to supplement GPTK if Vulkan is available"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DXVK może być użyte w Harbor aby uzupełnić GPTK, jeśli dostępny jest Vulkan"
+          }
+        }
+      }
+    },
+    "sheet.dxvk.dxvkSelected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DXVK binaries selected"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybrano pliki wykonywalne DXVK"
+          }
+        }
+      }
+    },
+    "sheet.dxvk.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install DXVK"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zainstaluj DXVK"
+          }
+        }
+      }
+    },
+    "sheet.edit.envVars" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Environment Variables"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zmienne środowiskowe"
           }
         }
       }
@@ -788,6 +1029,12 @@
             "state" : "translated",
             "value" : "Primary Working Directory"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Główny katalog roboczy"
+          }
         }
       }
     },
@@ -823,18 +1070,28 @@
         }
       }
     },
+    "sheet.fastGPKInstall.fastArchiveDetected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detected HarborBuilder's bottle with bundled GPTK!"
+          }
+        }
+      }
+    },
     "sheet.fastGPKInstall.subtitle" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You can install GPTK quicker by obtaining a pre-built brew bottle of GPTK. \nThis saves your Mac from compiling Wine at the cost of potential compatibility issues.\nPlease note that this installation method excludes the shader compiler from Apple"
+            "value" : "You can install GPTK quicker by obtaining a pre-built brew bottle of GPTK. \nThis saves your Mac from compiling Wine at the cost of potential compatibility issues.\nPlease note that this installation method excludes the compiler from Apple"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Możesz zainstalować GPK szybciej wybierając wcześniej skompilowaną butelkę Homebrew z GPTK.\nTo oszczędza twojego Maca od kompilowania Wine kosztem potencjalnych problemów z kompatybilnością\nTa metoda instalacji nie zawiera kompilatora shaderów od Apple"
+            "value" : "Możesz zainstalować GPTK szybciej wybierając wcześniej skompilowaną butelkę Homebrew z GPTK.\nTo oszczędza twojego Maca od kompilowania Wine kosztem potencjalnych problemów z kompatybilnością\nTa metoda instalacji nie zawiera kompilatora shaderów od Apple"
           }
         }
       }
@@ -951,6 +1208,102 @@
         }
       }
     },
+    "sheet.GPTKConfig.removeGPTK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completely remove GPTK"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Całkowicie usuń GPTK"
+          }
+        }
+      }
+    },
+    "sheet.GPTKConfig.removeGPTK.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harbor is about to completely remove GPTK from your device. You will need to reinstall it again if you want to use Harbor."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harbor jest o krok od całkowitego usunięcia GPTK z urządzenia. Aby korzystać z Harbor, konieczna będzie ponowna instalacja GPTK."
+          }
+        }
+      }
+    },
+    "sheet.GPTKConfig.removeGPTK.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPTK Removal"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuwanie GPTK"
+          }
+        }
+      }
+    },
+    "sheet.GPTKConfig.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can update the GPTK DirectX libraries \nor completely remove GPTK for reinstallation when a newer release is available"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Możesz zaktualizować biblioteki DirectX GPTK\nlub całkowicie usunąć GPTK w celu reinstalacji gdy dostępna jest nowsza wersja"
+          }
+        }
+      }
+    },
+    "sheet.GPTKConfig.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configure GPTK"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skonfiguruj GPTK"
+          }
+        }
+      }
+    },
+    "sheet.GPTKConfig.updateGPTKLibs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update GPTK Libraries"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualizowanie bibliotek GPTK"
+          }
+        }
+      }
+    },
     "sheet.HBInstall.status.installed" : {
       "localizations" : {
         "en" : {
@@ -1053,6 +1406,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Working Directory"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katalog roboczy"
           }
         }
       }
@@ -1213,6 +1572,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Instalacja narzędzi wiersza poleceń Xcode"
+          }
+        }
+      }
+    },
+    "view.mode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bottle View Mode"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryb wyświetlania butelek"
+          }
+        }
+      }
+    },
+    "view.mode.card" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karty"
+          }
+        }
+      }
+    },
+    "view.mode.table" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Table"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tabela"
           }
         }
       }

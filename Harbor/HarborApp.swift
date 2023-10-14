@@ -9,15 +9,18 @@ import SwiftUI
 
 @main
 struct HarborApp: App {
+    @State var menuUIStates = MenuUIStates()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(menuUIStates: menuUIStates)
                 .environment(\.gpkUtils, .init())
-                .environment(\.brewUitls, .init())
+                .environment(\.brewUtils, .init())
                 .environment(\.xcliUtils, .init())
         }
         .commands {
-            HarborMenu()
+            HarborMenu(menuUIStates: menuUIStates)
+            ViewMenu()
         }
     }
 }

@@ -14,7 +14,7 @@ struct GPKSafeInstallView: View {
 
     @Environment(\.gpkUtils)
     var gpkUtils
-    @Environment(\.brewUitls)
+    @Environment(\.brewUtils)
     var brewUtils
 
     var body: some View {
@@ -47,7 +47,7 @@ struct GPKSafeInstallView: View {
                             panel.canChooseFiles = true
                             panel.canChooseDirectories = false
                             panel.allowsMultipleSelection = false
-                            panel.allowedFileTypes = ["dmg"]
+                            panel.allowedContentTypes = [.diskImage]
                             panel.begin { response in
                                 if response == .OK {
                                     let result = panel.url
@@ -108,11 +108,14 @@ struct GPKSafeInstallView: View {
             }
         }
         .padding()
+        .frame(minHeight: 300)
     }
 }
 
 struct GPKSafeInstallView_Previews: PreviewProvider {
     static var previews: some View {
         GPKSafeInstallView(isPresented: Binding.constant(true))
+            .environment(\.gpkUtils, .init())
+            .environment(\.brewUtils, .init())
     }
 }

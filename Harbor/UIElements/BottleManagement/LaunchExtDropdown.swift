@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct LaunchExtDropdown: View {
     @Binding var isPresented: Bool
@@ -14,6 +15,9 @@ struct LaunchExtDropdown: View {
     @State var applicationPath = ""
     @State var applicationArgument = ""
     @State var applicationWorkDir = ""
+    @State var applicationEnvVars = [String: String]()
+
+    let monospaceFont = Font.body.monospaced()
 
     var body: some View {
         VStack {
@@ -23,11 +27,12 @@ struct LaunchExtDropdown: View {
 
             Text("sheet.launchExt.subtitle \(bottle.name)")
                 .padding()
-            Grid(alignment: .leading) {
-                GridRow {
-                    Text("sheet.launchExt.applicationLabel")
+            Form {
+                Section {
                     HStack {
-                        TextField("MyApp.exe", text: $applicationPath)
+                        Text("sheet.launchExt.applicationLabel")
+                        TextField("", text: $applicationPath)
+                            .font(monospaceFont)
                         Button("btn.browse") {
                             let dialog = NSOpenPanel()
                             dialog.title = "sheet.launchExt.title"
@@ -37,7 +42,7 @@ struct LaunchExtDropdown: View {
                             dialog.canChooseFiles = true
                             dialog.canCreateDirectories = false
                             dialog.allowsMultipleSelection = false
-                            dialog.allowedFileTypes = ["exe", "msi"]
+                            dialog.allowedContentTypes = [.exe, UTType(importedAs: "harbor.msi-package")]
                             dialog.directoryURL = bottle.path
                             if dialog.runModal() == NSApplication.ModalResponse.OK {
                                 if let result = dialog.url {
@@ -51,14 +56,17 @@ struct LaunchExtDropdown: View {
                     }
                 }
 
-                GridRow {
-                    Text("sheet.launchExt.argsLabel")
-                    TextField("", text: $applicationArgument)
+                Section {
+                    HStack {
+                        Text("sheet.launchExt.argsLabel")
+                        TextField("", text: $applicationArgument)
+                            .font(monospaceFont)
+                    }
                 }
 
-                GridRow {
-                    Text("sheet.launchExt.appWorkDirLabel")
+                Section {
                     HStack {
+                        Text("sheet.launchExt.appWorkDirLabel")
                         TextField("", text: $applicationWorkDir)
                         Button("btn.browse") {
                             let dialog = NSOpenPanel()
@@ -81,8 +89,13 @@ struct LaunchExtDropdown: View {
                         }
                     }
                 }
+                Section {
+                    Text("sheet.edit.envVars")
+                    EnvironmentVarsEditor(environmentVars: $applicationEnvVars)
+                }
             }
             .padding()
+            .formStyle(.grouped)
 
             HStack {
                 Spacer()
@@ -96,6 +109,8 @@ struct LaunchExtDropdown: View {
                     isPresented = false
                 }
                 .disabled(applicationPath.isEmpty)
+                .buttonStyle(.borderedProminent)
+                .tint(.accentColor)
                 Spacer()
             }
         }
@@ -103,7 +118,10 @@ struct LaunchExtDropdown: View {
     }
 }
 
-#Preview {
-    LaunchExtDropdown(isPresented: Binding.constant(true),
-                      bottle: HarborBottle(id: UUID(), name: "Demo", path: URL(fileURLWithPath: "")))
+struct LaunchExtDropdown_Previews: PreviewProvider {
+    static var previews: some View {
+        LaunchExtDropdown(isPresented: Binding.constant(true),
+                          bottle: HarborBottle(id: UUID(), name: "Demo", path: URL(fileURLWithPath: "")))
+        .environment(\.brewUtils, .init())
+    }
 }

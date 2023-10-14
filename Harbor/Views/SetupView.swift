@@ -13,7 +13,7 @@ struct SetupView: View {
     @State var isGPKSafeInstallerDropdownShown = false
     @State var isGPKFastInstallerDropdownShown = false
 
-    @Environment(\.brewUitls)
+    @Environment(\.brewUtils)
     var brewUtils
 
     @Environment(\.xcliUtils)
@@ -35,7 +35,6 @@ struct SetupView: View {
                         .font(.title)
                     Text("setup.saferSetup.subtitle")
                         .multilineTextAlignment(.center)
-
                     Group {
                         Button {
                             isXcliInstallerDropdownShown.toggle()
@@ -57,7 +56,8 @@ struct SetupView: View {
                                 .frame(minWidth: 150)
                         }
                         .disabled(!brewUtils.installed)
-                    }                }
+                    }
+                }
                 .padding()
                 Spacer()
                 VStack {
@@ -108,6 +108,10 @@ struct SetupView: View {
     }
 }
 
-#Preview {
-    SetupView()
+struct SetupView_Previews: PreviewProvider {
+    static var previews: some View {
+        SetupView()
+            .environment(\.brewUtils, .init())
+            .environment(\.xcliUtils, .init())
+    }
 }

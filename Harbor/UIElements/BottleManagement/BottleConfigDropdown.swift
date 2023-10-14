@@ -17,23 +17,45 @@ struct BottleConfigDropdown: View {
                 .font(.title)
                 .padding()
             Spacer()
-            VStack(alignment: .leading) {
-                Toggle("sheet.advConf.hudToggle", isOn: $bottle.enableHUD)
-                Toggle("sheet.advConf.eSyncToggle", isOn: $bottle.enableESync)
-                Toggle("sheet.advConf.stdOutToggle", isOn: $bottle.pleaseShutUp)
+            Form {
+                Section {
+                    Toggle("sheet.advConf.hudToggle", isOn: $bottle.enableHUD)
+                    SyncPrimitivesSelector(bottle: $bottle)
+                    Toggle("sheet.advConf.stdOutToggle", isOn: $bottle.pleaseShutUp)
+                    DXVKToggle(bottle: $bottle)
+                    RetinaModeToggle(bottle: $bottle)
+                }
+                Section {
+                    HStack {
+                        Button("sheet.advConf.winecfgBtn") {
+                            bottle.launchApplication("winecfg")
+                        }
+                        Button("sheet.advConf.explorerBtn") {
+                            bottle.launchApplication("explorer")
+                        }
+                        Button("sheet.advConf.regeditBtn") {
+                            bottle.launchApplication("regedit")
+                        }
+                        Spacer()
+                        Button("sheet.advConf.Winetricks") {
+                            WinetricksUtils.shared.launchWinetricksShell(for: bottle)
+                        }
+                    }
+                }
+                Section {
+                    HStack {
+                        Spacer()
+                        Button("sheet.advConf.desktopShortcut") {
+                            HarborShortcuts.shared.createDesktopShortcut(for: bottle)
+                        }
+                        Button("sheet.advConf.update") {
+                            bottle.directLaunchApplication("wineboot", arguments: ["-b"])
+                        }
+                        Spacer()
+                    }
+                }
             }
-            Spacer()
-            HStack {
-                Button("sheet.advConf.winecfgBtn") {
-                    bottle.launchApplication("winecfg")
-                }
-                Button("sheet.advConf.explorerBtn") {
-                    bottle.launchApplication("explorer")
-                }
-                Button("sheet.advConf.regeditBtn") {
-                    bottle.launchApplication("regedit")
-                }
-            }
+            .formStyle(.grouped)
             Spacer()
             Button("btn.OK") {
                 if let bottleIndex = BottleLoader.shared.bottles.firstIndex(where: { $0.id == bottle.id }) {
@@ -41,14 +63,19 @@ struct BottleConfigDropdown: View {
                 }
                 isPresented = false
             }
+            .buttonStyle(.borderedProminent)
+            .tint(.accentColor)
         }
         .frame(minWidth: 300, minHeight: 300)
         .padding()
     }
 }
 
-#Preview {
-    BottleConfigDropdown(isPresented: Binding.constant(true),
-                         bottle: Binding.constant(HarborBottle(
-                            id: UUID(), name: "Bottle", path: URL(fileURLWithPath: ""))))
+struct BottleConfigDropdown_Previews: PreviewProvider {
+    static var previews: some View {
+        BottleConfigDropdown(isPresented: Binding.constant(true),
+                             bottle: Binding.constant(HarborBottle(
+                                id: UUID(), name: "Bottle", path: URL(fileURLWithPath: ""))))
+        .environment(\.brewUtils, .init())
+    }
 }
