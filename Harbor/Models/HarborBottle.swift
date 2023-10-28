@@ -9,6 +9,12 @@ import Foundation
 import AppKit
 import Observation
 
+enum WineSyncronizationPrimatives: String, Codable {
+    case none = "None"
+    case eSync = "ESync"
+    case mSync = "MSync"
+}
+
 struct HarborBottle: Identifiable, Equatable, Codable {
     var id: UUID
     var name: String = "New Bottle"
@@ -17,10 +23,12 @@ struct HarborBottle: Identifiable, Equatable, Codable {
     var primaryApplicationArgument: String = ""
     var primaryApplicationWorkDir: String = ""
     var enableHUD: Bool = false
-    var enableESync: Bool = false
+    var syncPrimitives: WineSyncronizationPrimatives = .none
     var pleaseShutUp: Bool = true
     var envVars: [String: String] = .init()
 
+    // swiftlint:disable cyclomatic_complexity
+    // This function is a bit too complex right now
     func launchApplication(_ application: String, arguments: [String] = [], environmentVars: [String: String] = [:],
                            workDir: String = "", isUnixPath: Bool = false) {
         let task = Process()
@@ -47,8 +55,14 @@ struct HarborBottle: Identifiable, Equatable, Codable {
         if enableHUD {
             task.environment?["MTL_HUD_ENABLED"] = "1"
         }
-        if enableESync {
+
+        switch syncPrimitives {
+        case .none:
+            break
+        case .eSync:
             task.environment?["WINEESYNC"] = "1"
+        case .mSync:
+            task.environment?["WINEMSYNC"] = "1"
         }
 
         if !envVars.isEmpty {
@@ -68,6 +82,7 @@ struct HarborBottle: Identifiable, Equatable, Codable {
             HarborUtils.shared.quickError(error.localizedDescription)
         }
     }
+    // swiftlint:enable cyclomatic_complexity
 
     func launchExtApplication(_ application: String, arguments: [String] = [], environmentVars: [String: String] = [:],
                               workDir: String = "") {
@@ -166,7 +181,8 @@ struct HarborBottle: Identifiable, Equatable, Codable {
             .decodeIfPresent(String.self, forKey: .primaryApplicationArgument) ?? ""
         primaryApplicationWorkDir = try container.decodeIfPresent(String.self, forKey: .primaryApplicationWorkDir) ?? ""
         enableHUD = try container.decodeIfPresent(Bool.self, forKey: .enableHUD) ?? false
-        enableESync = try container.decodeIfPresent(Bool.self, forKey: .enableESync) ?? false
+        syncPrimitives = try container
+            .decodeIfPresent(WineSyncronizationPrimatives.self, forKey: .syncPrimitives) ?? .none
         pleaseShutUp = try container.decodeIfPresent(Bool.self, forKey: .pleaseShutUp) ?? true
         envVars = try container.decodeIfPresent([String: String].self, forKey: .envVars) ?? [:]
     }

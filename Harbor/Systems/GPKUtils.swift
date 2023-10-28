@@ -85,11 +85,14 @@ final class GPKUtils {
             checkGPKInstallStatus()
         } while self.status == .notInstalled
 
+        // Backup the original WineD3D libraries
+        GPKInstallationInternal.shared.saveWineD3Dlibs()
+
         // Copy the GPK libraries
-        copyGPKLibraries()
+        GPKInstallationInternal.shared.mountAndCopyGPKLibs()
     }
 
-    func fastInstallGPK(using brewUtils: BrewUtils, gpkBottle: URL) {
+    func fastInstallGPK(using brewUtils: BrewUtils, gpkBottle: URL, bundledGPK: Bool = false) {
         // Abort if Brew is not installed
         brewUtils.testX64Brew()
         if brewUtils.installed == false {
@@ -107,7 +110,7 @@ final class GPKUtils {
         property shellScript : "clear && \(brewUtils.x64BrewPrefix)/bin/brew install gstreamer pkg-config zlib \
         freetype sdl2 libgphoto2 faudio jpeg libpng mpg123 libtiff libgsm glib gnutls libusb gettext molten-vk && \
         /usr/bin/xattr -r -d com.apple.quarantine \(gpkBottle.path) && \
-        \(brewUtils.x64BrewPrefix)/bin/brew install --ignore-dependencies \(gpkBottle.path) && \
+        \(brewUtils.x64BrewPrefix)/bin/brew install --ignore-dependencies -- \(gpkBottle.path) && \
         clear && echo '\(String(localized: "setup.message.complete"))' && exit"
 
         tell application "Terminal"
@@ -138,68 +141,14 @@ final class GPKUtils {
             checkGPKInstallStatus()
         } while self.status == .notInstalled
 
+        // Backup the original WineD3D libraries
+        GPKInstallationInternal.shared.saveWineD3Dlibs()
+
         // Copy the GPK libraries
-        copyGPKLibraries()
-    }
-
-    func copyGPKLibraries() {
-        // Mounts the GPK disk image
-        let harborContainer = HarborUtils.shared.getContainerHome()
-        let gpkDMG = harborContainer.appendingPathComponent("GPK.dmg")
-        // final sanity check, and then copy everything from /lib inside the image
-        // to /usr/local/opt/game-porting-toolkit/lib
-        if FileManager.default.fileExists(atPath: gpkDMG.path) {
-            // launch hdiutil to mount the image
-            let hdiutil = Process()
-            hdiutil.executableURL = URL(fileURLWithPath: "/usr/bin/hdiutil")
-            hdiutil.arguments = ["attach", gpkDMG.path]
-            hdiutil.launch()
-            hdiutil.waitUntilExit()
-
-            // Get the mounted volume name (starts with Game Porting Toolkit)
-            guard let mountedVolume = try? FileManager.default.contentsOfDirectory(atPath: "/Volumes")
-                .first(where: { $0.starts(with: "Game Porting Toolkit") })
-            else {
-                NSLog("Harbor: Failed to find mounted GPK disk image")
-                return
-            }
-            let gpkVolume = URL(fileURLWithPath: "/Volumes/\(mountedVolume)")
-            let gpkLib = gpkVolume.appendingPathComponent("lib")
-            let gpkLibDest = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib")
-
-            // Merge the content from /Volumes/Game Porting Toolkit*/lib to /usr/local/opt/game-porting-toolkit/lib
-            let dittoProcess = Process()
-            dittoProcess.executableURL = URL(fileURLWithPath: "/usr/bin/ditto")
-            dittoProcess.arguments = ["-V", gpkLib.path, gpkLibDest.path]
-            dittoProcess.standardOutput = nil
-            dittoProcess.standardError = nil
-            do {
-                try dittoProcess.run()
-            } catch {
-                HarborUtils.shared.quickError(error.localizedDescription)
-            }
-            dittoProcess.waitUntilExit()
-
-            // Copy all the gameportingtoolkit* binaries to Harbor's container (for later use)
-            let harborContainer = HarborUtils.shared.getContainerHome()
-            let gpkBinDest = harborContainer.appendingPathComponent("bin")
-            if FileManager.default.fileExists(atPath: gpkBinDest.path) == false {
-                try? FileManager.default.createDirectory(at: gpkBinDest,
-                                                         withIntermediateDirectories: true, attributes: nil)
-            }
-
-            // Unmount the image
-            let hdiutil2 = Process()
-            hdiutil2.executableURL = URL(fileURLWithPath: "/usr/bin/hdiutil")
-            hdiutil2.arguments = ["detach", gpkVolume.path]
-            do {
-                try hdiutil2.run()
-            } catch {
-                HarborUtils.shared.quickError(error.localizedDescription)
-            }
-            hdiutil2.waitUntilExit()
+        if bundledGPK {
+            GPKInstallationInternal.shared.copyGPKFromArchive(from: gpkBottle)
         } else {
-            NSLog("Harbor: GPK disk image not found. Aborting")
+            GPKInstallationInternal.shared.mountAndCopyGPKLibs()
         }
     }
 
@@ -233,7 +182,7 @@ final class GPKUtils {
             }
         }
         // Copy the GPK libraries
-        copyGPKLibraries()
+        GPKInstallationInternal.shared.mountAndCopyGPKLibs()
     }
 
     func completelyRemoveGPK() {
@@ -264,4 +213,137 @@ final class GPKUtils {
             return
         }
     }
+}
+
+class GPKInstallationInternal {
+    static let shared = GPKInstallationInternal()
+    func saveWineD3Dlibs() {
+        // Save the original WineD3D libraries (d3d9.dll, d3d10.dll, d3d11.dll, d3d12.dll, dxgi.dll)
+        let harborContainer = HarborUtils.shared.getContainerHome().appendingPathComponent("wined3d")
+        // Clean the folder if needed
+        if FileManager.default.fileExists(atPath: harborContainer.path) {
+            do {
+                try FileManager.default.removeItem(at: harborContainer)
+            } catch {
+                HarborUtils.shared.quickError(error.localizedDescription)
+                return
+            }
+        }
+        do {
+            try FileManager.default.createDirectory(at: harborContainer,
+                                                    withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+            return
+        }
+
+        let gpkLib = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib/wine/x86_64-windows")
+        let wineD3Dlibs = ["d3d9.dll", "d3d10.dll", "d3d11.dll", "d3d12.dll", "dxgi.dll"]
+        for lib in wineD3Dlibs {
+            let libPath = gpkLib.appendingPathComponent(lib)
+            let libDest = harborContainer.appendingPathComponent(lib)
+            if FileManager.default.fileExists(atPath: libPath.path) {
+                do {
+                    try FileManager.default.copyItem(at: libPath, to: libDest)
+                } catch {
+                    HarborUtils.shared.quickError(error.localizedDescription)
+                    return
+                }
+            }
+        }
+    }
+
+    func mountAndCopyGPKLibs() {
+        // Mounts the GPK disk image
+        let harborContainer = HarborUtils.shared.getContainerHome()
+        let gpkDMG = harborContainer.appendingPathComponent("GPK.dmg")
+        // final sanity check, and then copy everything from /lib inside the image
+        // to /usr/local/opt/game-porting-toolkit/lib
+        if FileManager.default.fileExists(atPath: gpkDMG.path) {
+            // launch hdiutil to mount the image
+            let hdiutil = Process()
+            hdiutil.executableURL = URL(fileURLWithPath: "/usr/bin/hdiutil")
+            hdiutil.arguments = ["attach", gpkDMG.path]
+            hdiutil.launch()
+            hdiutil.waitUntilExit()
+
+            // Get the mounted volume name (starts with Game Porting Toolkit)
+            guard let mountedVolume = try? FileManager.default.contentsOfDirectory(atPath: "/Volumes")
+                .first(where: { $0.starts(with: "Game Porting Toolkit") })
+            else {
+                NSLog("Harbor: Failed to find mounted GPK disk image")
+                return
+            }
+            let gpkVolume = URL(fileURLWithPath: "/Volumes/\(mountedVolume)")
+
+            let gpkLib: URL
+            // Check if the directory `redist/` exist
+            if FileManager.default.fileExists(atPath: gpkVolume.appendingPathComponent("redist").path) {
+                gpkLib = gpkVolume.appendingPathComponent("redist").appendingPathComponent("lib")
+            } else {
+                gpkLib = gpkVolume.appendingPathComponent("lib")
+            }
+
+            let gpkLibDest = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib")
+
+            // Merge the content from /Volumes/Game Porting Toolkit*/lib to /usr/local/opt/game-porting-toolkit/lib
+            let dittoProcess = Process()
+            dittoProcess.executableURL = URL(fileURLWithPath: "/usr/bin/ditto")
+            dittoProcess.arguments = ["-V", gpkLib.path, gpkLibDest.path]
+            do {
+                try dittoProcess.run()
+            } catch {
+                HarborUtils.shared.quickError(error.localizedDescription)
+            }
+            dittoProcess.waitUntilExit()
+
+            // Copy all the gameportingtoolkit* binaries to Harbor's container (for later use)
+            let harborContainer = HarborUtils.shared.getContainerHome()
+            let gpkBinDest = harborContainer.appendingPathComponent("bin")
+            if FileManager.default.fileExists(atPath: gpkBinDest.path) == false {
+                try? FileManager.default.createDirectory(at: gpkBinDest,
+                                                         withIntermediateDirectories: true, attributes: nil)
+            }
+
+            // Unmount the image
+            let hdiutil2 = Process()
+            hdiutil2.executableURL = URL(fileURLWithPath: "/usr/bin/hdiutil")
+            hdiutil2.arguments = ["detach", gpkVolume.path]
+            do {
+                try hdiutil2.run()
+            } catch {
+                HarborUtils.shared.quickError(error.localizedDescription)
+            }
+            hdiutil2.waitUntilExit()
+        } else {
+            NSLog("Harbor: GPK disk image not found. Aborting")
+        }
+    }
+
+    func copyGPKFromArchive(from gpkBottle: URL) {
+        let gpkLibs = gpkBottle.deletingLastPathComponent().appending(path: "gptk_libs")
+        // Unquaratine this folder
+        let xattr = Process()
+        xattr.executableURL = URL(fileURLWithPath: "/usr/bin/xattr")
+        xattr.arguments = ["-r", "-d", "com.apple.quarantine", gpkLibs.path]
+        do {
+            try xattr.run()
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
+        xattr.waitUntilExit()
+
+        // Copy the GPK libraries
+        let gpkLibDest = URL(fileURLWithPath: "/usr/local/opt/game-porting-toolkit/lib")
+        let dittoProcess = Process()
+        dittoProcess.executableURL = URL(fileURLWithPath: "/usr/bin/ditto")
+        dittoProcess.arguments = ["-V", gpkLibs.path, gpkLibDest.path]
+        do {
+            try dittoProcess.run()
+        } catch {
+            HarborUtils.shared.quickError(error.localizedDescription)
+        }
+        dittoProcess.waitUntilExit()
+    }
+
 }

@@ -19,6 +19,8 @@ struct GPKFastInstallView: View {
     @Environment(\.brewUtils)
     var brewUtils
 
+    @State var isUsingNewArchive = false
+
     var body: some View {
         VStack {
             Text("sheet.GPKInstall.title")
@@ -61,6 +63,9 @@ struct GPKFastInstallView: View {
                                         let result = panel.url
                                         if let result = result {
                                             gpkPath = result
+                                            if checkForNewBuilderFormat(for: result) {
+                                                isUsingNewArchive = true
+                                            }
                                         }
                                     }
                                 }
@@ -74,42 +79,46 @@ struct GPKFastInstallView: View {
                                 Text("")
                             }
                         }
-                        GridRow {
-                            Button {
-                                let panel = NSOpenPanel()
-                                panel.canChooseFiles = true
-                                panel.canChooseDirectories = false
-                                panel.allowsMultipleSelection = false
-                                panel.allowedContentTypes = [.diskImage]
-                                panel.begin { response in
-                                    if response == .OK {
-                                        let result = panel.url
-                                        if let result = result {
-                                            let destination = HarborUtils.shared.getContainerHome()
-                                                .appendingPathComponent("GPK.dmg")
-                                            do {
-                                                // Remove any existing GPK.dmg
-                                                if FileManager.default.fileExists(atPath: destination.path) {
-                                                    try FileManager.default.removeItem(at: destination)
+                        if !isUsingNewArchive {
+                            GridRow {
+                                Button {
+                                    let panel = NSOpenPanel()
+                                    panel.canChooseFiles = true
+                                    panel.canChooseDirectories = false
+                                    panel.allowsMultipleSelection = false
+                                    panel.allowedContentTypes = [.diskImage]
+                                    panel.begin { response in
+                                        if response == .OK {
+                                            let result = panel.url
+                                            if let result = result {
+                                                let destination = HarborUtils.shared.getContainerHome()
+                                                    .appendingPathComponent("GPK.dmg")
+                                                do {
+                                                    // Remove any existing GPK.dmg
+                                                    if FileManager.default.fileExists(atPath: destination.path) {
+                                                        try FileManager.default.removeItem(at: destination)
+                                                    }
+                                                    try FileManager.default.copyItem(at: result, to: destination)
+                                                    gpkSelected = true
+                                                } catch {
+                                                    NSLog("sheet.GPKInstall.status.failedCopy \(destination)")
                                                 }
-                                                try FileManager.default.copyItem(at: result, to: destination)
-                                                gpkSelected = true
-                                            } catch {
-                                                NSLog("sheet.GPKInstall.status.failedCopy \(destination)")
                                             }
                                         }
                                     }
+                                } label: {
+                                    Text("sheet.GPKInstall.btn.selectGPK")
+                                        .frame(minWidth: 200)
                                 }
-                            } label: {
-                                Text("sheet.GPKInstall.btn.selectGPK")
-                                    .frame(minWidth: 200)
+                                if gpkSelected {
+                                    Text("sheet.GPKInstall.status.selected")
+                                        .foregroundColor(.green)
+                                } else {
+                                    Text("")
+                                }
                             }
-                            if gpkSelected {
-                                Text("sheet.GPKInstall.status.selected")
-                                    .foregroundColor(.green)
-                            } else {
-                                Text("")
-                            }
+                        } else {
+                            Text("sheet.fastGPKInstall.fastArchiveDetected")
                         }
                     }
                     .padding()
@@ -124,7 +133,9 @@ struct GPKFastInstallView: View {
                                 if let gpkConcretePath = gpkPath {
                                     gpkInstalling = true
                                     Task.detached(priority: .userInitiated) {
-                                        gpkUtils.fastInstallGPK(using: brewUtils, gpkBottle: gpkConcretePath)
+                                        gpkUtils.fastInstallGPK(using: brewUtils,
+                                                                gpkBottle: gpkConcretePath,
+                                                                bundledGPK: isUsingNewArchive)
                                         Task { @MainActor in
                                             gpkInstalling = false
                                             gpkUtils.checkGPKInstallStatus()
@@ -134,7 +145,7 @@ struct GPKFastInstallView: View {
                             }, label: {
                                 Text("sheet.GPKInstall.btn.install")
                             })
-                            .disabled(gpkSelected == false)
+                            .disabled(!gpkSelected && !isUsingNewArchive)
                         } else {
                             Button(action: {
                                 isPresented = false
@@ -148,6 +159,18 @@ struct GPKFastInstallView: View {
         }
         .padding()
         .frame(minHeight: 300)
+    }
+
+    // Function to check if the new Builder format (incl. gptk) is being used
+    // Input would be a file url
+    func checkForNewBuilderFormat(for path: URL) -> Bool {
+        let upperDir = path.deletingLastPathComponent()
+        // Look for gptk_libs
+        let gptkLibs = upperDir.appendingPathComponent("gptk_libs")
+        if FileManager.default.fileExists(atPath: gptkLibs.path) {
+            return true
+        }
+        return false
     }
 }
 

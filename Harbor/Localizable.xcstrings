@@ -539,6 +539,12 @@
             "state" : "translated",
             "value" : "Wipe Shader Cache"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czyść pamięć podręczną shaderów"
+          }
         }
       }
     },
@@ -752,6 +758,16 @@
         }
       }
     },
+    "sheet.advConf.DXBackend" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DirectX Backend"
+          }
+        }
+      }
+    },
     "sheet.advConf.dxvkToggle" : {
       "localizations" : {
         "en" : {
@@ -769,6 +785,7 @@
       }
     },
     "sheet.advConf.eSyncToggle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -839,6 +856,12 @@
             "state" : "translated",
             "value" : "Use Retina Scaling"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Używaj skalowania Retina"
+          }
         }
       }
     },
@@ -854,6 +877,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nie loguj do stdout"
+          }
+        }
+      }
+    },
+    "sheet.advConf.SyncPrimitives" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronization Primitives"
+          }
+        }
+      }
+    },
+    "sheet.advConf.SyncPrimitives.none" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
           }
         }
       }
@@ -1062,6 +1105,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wybierz butelkę GPK"
+          }
+        }
+      }
+    },
+    "sheet.fastGPKInstall.fastArchiveDetected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detected HarborBuilder's bottle with bundled GPTK!"
           }
         }
       }

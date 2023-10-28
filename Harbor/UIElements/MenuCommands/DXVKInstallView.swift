@@ -38,7 +38,7 @@ struct DXVKInstallView: View {
                         }
                     }
                 }
-                .disabled(!DXVKUtils.shared.vulkanAvailable)
+                .disabled(!DXUtils.shared.vulkanAvailable)
                 if dxvkPath != nil {
                     Text("sheet.dxvk.dxvkSelected")
                         .foregroundColor(.green)
@@ -56,7 +56,7 @@ struct DXVKInstallView: View {
                     if let dxvkPath = dxvkPath {
                         isWorking = true
                         Task.detached {
-                            DXVKUtils.shared.untarDXVKLibs(dxvkZip: dxvkPath)
+                            DXUtils.shared.untarDXVKLibs(dxvkZip: dxvkPath)
                             Task { @MainActor in
                                 isWorking = false
                                 isPresented = false
@@ -64,7 +64,7 @@ struct DXVKInstallView: View {
                         }
                     }
                 }
-                .disabled(dxvkPath == nil || !DXVKUtils.shared.vulkanAvailable)
+                .disabled(dxvkPath == nil || !DXUtils.shared.vulkanAvailable)
                 .buttonStyle(.borderedProminent)
             }
             .disabled(isWorking)

@@ -8,8 +8,8 @@
 import Foundation
 import Observation
 
-struct DXVKUtils {
-    static let shared = DXVKUtils()
+struct DXUtils {
+    static let shared = DXUtils()
 
     var DXVKLibsAvailable: Bool {
         let harborContainer = HarborUtils.shared.getContainerHome()
@@ -48,5 +48,11 @@ struct DXVKUtils {
             HarborUtils.shared.quickError(error.localizedDescription)
         }
         task.waitUntilExit()
+    }
+
+    func isWineD3DAvailable() -> Bool { // Unfortunately have to exist because previously we didn't save it
+        let harborContainer = HarborUtils.shared.getContainerHome()
+        let wined3dDirPath = harborContainer.appendingPathComponent("wined3d").appendingPathComponent("d3d11.dll")
+        return FileManager.default.fileExists(atPath: wined3dDirPath.path)
     }
 }

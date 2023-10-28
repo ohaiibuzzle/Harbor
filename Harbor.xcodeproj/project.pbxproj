@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB0D00442A40A3630019D62F /* BottleDXVK.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D00432A40A3630019D62F /* BottleDXVK.swift */; };
-		AB0D00462A40B27F0019D62F /* DXVKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D00452A40B27F0019D62F /* DXVKUtils.swift */; };
+		AB0D00442A40A3630019D62F /* BottleDX.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D00432A40A3630019D62F /* BottleDX.swift */; };
+		AB0D00462A40B27F0019D62F /* DXUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D00452A40B27F0019D62F /* DXUtils.swift */; };
 		AB0D004A2A40B7670019D62F /* MenuUIStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D00492A40B7670019D62F /* MenuUIStates.swift */; };
 		AB0D004C2A40B8900019D62F /* DXVKInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D004B2A40B8900019D62F /* DXVKInstallView.swift */; };
 		AB0D004E2A40E3D30019D62F /* EnvironmentVarsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D004D2A40E3D30019D62F /* EnvironmentVarsEditor.swift */; };
@@ -40,6 +40,7 @@
 		ABC33B232A601571007CFE0E /* VaporwareSetupInfoPanels.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC33B222A601571007CFE0E /* VaporwareSetupInfoPanels.swift */; };
 		ABD56AB32A36E419002A439C /* GPKSafeInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD56AB12A36E419002A439C /* GPKSafeInstallView.swift */; };
 		ABD56AB42A36E419002A439C /* GPKFastInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD56AB22A36E419002A439C /* GPKFastInstallView.swift */; };
+		ABDA74592AD904E700802792 /* BottleDetailsCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDA74582AD904E700802792 /* BottleDetailsCommonView.swift */; };
 		ABF5340A2A3F606A0030677A /* ViewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF534092A3F606A0030677A /* ViewMenu.swift */; };
 		ABF5340C2A3F63BE0030677A /* BottleManagementCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF5340B2A3F63BE0030677A /* BottleManagementCardView.swift */; };
 		ABF5340E2A3F63FE0030677A /* BottleManagementTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF5340D2A3F63FE0030677A /* BottleManagementTableView.swift */; };
@@ -49,8 +50,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AB0D00432A40A3630019D62F /* BottleDXVK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleDXVK.swift; sourceTree = "<group>"; };
-		AB0D00452A40B27F0019D62F /* DXVKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXVKUtils.swift; sourceTree = "<group>"; };
+		AB0D00432A40A3630019D62F /* BottleDX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleDX.swift; sourceTree = "<group>"; };
+		AB0D00452A40B27F0019D62F /* DXUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXUtils.swift; sourceTree = "<group>"; };
 		AB0D00492A40B7670019D62F /* MenuUIStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuUIStates.swift; sourceTree = "<group>"; };
 		AB0D004B2A40B8900019D62F /* DXVKInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXVKInstallView.swift; sourceTree = "<group>"; };
 		AB0D004D2A40E3D30019D62F /* EnvironmentVarsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVarsEditor.swift; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		ABC33B222A601571007CFE0E /* VaporwareSetupInfoPanels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaporwareSetupInfoPanels.swift; sourceTree = "<group>"; };
 		ABD56AB12A36E419002A439C /* GPKSafeInstallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKSafeInstallView.swift; sourceTree = "<group>"; };
 		ABD56AB22A36E419002A439C /* GPKFastInstallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPKFastInstallView.swift; sourceTree = "<group>"; };
+		ABDA74582AD904E700802792 /* BottleDetailsCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleDetailsCommonView.swift; sourceTree = "<group>"; };
 		ABF534092A3F606A0030677A /* ViewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMenu.swift; sourceTree = "<group>"; };
 		ABF5340B2A3F63BE0030677A /* BottleManagementCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleManagementCardView.swift; sourceTree = "<group>"; };
 		ABF5340D2A3F63FE0030677A /* BottleManagementTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleManagementTableView.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				AB6652CC2A3350EC00F3FC5D /* BottleConfigDropdown.swift */,
 				AB6254332A3CE30D002A6206 /* BottleCardListView.swift */,
 				AB0D004D2A40E3D30019D62F /* EnvironmentVarsEditor.swift */,
+				ABDA74582AD904E700802792 /* BottleDetailsCommonView.swift */,
 			);
 			path = BottleManagement;
 			sourceTree = "<group>";
@@ -263,8 +266,8 @@
 				AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */,
 				AB5CC6D52A30910300AEBB2B /* GPKUtils.swift */,
 				AB6652C32A3334E600F3FC5D /* XCLIUtils.swift */,
-				AB0D00452A40B27F0019D62F /* DXVKUtils.swift */,
-				AB0D00432A40A3630019D62F /* BottleDXVK.swift */,
+				AB0D00452A40B27F0019D62F /* DXUtils.swift */,
+				AB0D00432A40A3630019D62F /* BottleDX.swift */,
 				AB7D8E322A4DDE3400B55527 /* WinetricksUtils.swift */,
 			);
 			path = Systems;
@@ -370,13 +373,14 @@
 				AB5CC6D82A30938A00AEBB2B /* BrewInstallView.swift in Sources */,
 				ABD56AB42A36E419002A439C /* GPKFastInstallView.swift in Sources */,
 				FC682EDA2A35FD57000C53D6 /* Environment+GPKUtils.swift in Sources */,
-				AB0D00442A40A3630019D62F /* BottleDXVK.swift in Sources */,
+				AB0D00442A40A3630019D62F /* BottleDX.swift in Sources */,
 				AB0D004C2A40B8900019D62F /* DXVKInstallView.swift in Sources */,
 				AB0D004E2A40E3D30019D62F /* EnvironmentVarsEditor.swift in Sources */,
 				ABC33B232A601571007CFE0E /* VaporwareSetupInfoPanels.swift in Sources */,
 				AB7A81002A30CC7100AA71A6 /* BrewUtils.swift in Sources */,
 				AB6652CD2A3350EC00F3FC5D /* BottleConfigDropdown.swift in Sources */,
 				AB5CC6D62A30910300AEBB2B /* GPKUtils.swift in Sources */,
+				ABDA74592AD904E700802792 /* BottleDetailsCommonView.swift in Sources */,
 				AB3BE5EE2A32248D00358BBC /* LaunchExtDropdown.swift in Sources */,
 				AB5D49C62A3B5B0B008245A6 /* URLExtensions.swift in Sources */,
 				AB5CC6C22A308BBB00AEBB2B /* ContentView.swift in Sources */,
@@ -397,7 +401,7 @@
 				AB6652C22A33342B00F3FC5D /* XCLIInstallView.swift in Sources */,
 				ABF5340A2A3F606A0030677A /* ViewMenu.swift in Sources */,
 				AB6652C92A3349A400F3FC5D /* HarborMenu.swift in Sources */,
-				AB0D00462A40B27F0019D62F /* DXVKUtils.swift in Sources */,
+				AB0D00462A40B27F0019D62F /* DXUtils.swift in Sources */,
 				AB4D1D532A572DCA0056461F /* VaporwareSetupUI.swift in Sources */,
 				FC682EDF2A3604B4000C53D6 /* Environment+XCLIUtils.swift in Sources */,
 				ABC0BFD42A31691500382A42 /* BottleOpsDropdown.swift in Sources */,
@@ -534,7 +538,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Harbor/Preview Content\"";
 				DEVELOPMENT_TEAM = PSAZVTU7XU;
@@ -553,7 +557,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 0.3;
+				MARKETING_VERSION = 0.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.ohaiibuzzle.Harbor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -571,7 +575,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Harbor/Preview Content\"";
 				DEVELOPMENT_TEAM = PSAZVTU7XU;
@@ -590,7 +594,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 0.3;
+				MARKETING_VERSION = 0.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.ohaiibuzzle.Harbor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
