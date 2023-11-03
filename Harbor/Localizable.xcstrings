@@ -479,6 +479,9 @@
         }
       }
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
     "menu.harbor.installDXVK" : {
       "localizations" : {
         "en" : {
@@ -741,23 +744,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "DXVK"
-          }
-        }
-      }
-    },
-    "sheet.advConf.eSyncToggle" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enable ESync"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Włącz ESync"
           }
         }
       }
@@ -1508,6 +1494,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nowa butelka"
+          }
+        }
+      }
+    },
+    "sheet.XCLIInstall.attemptAutomaticInstall" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attempt Automatic Installation"
+          }
+        }
+      }
+    },
+    "sheet.XCLIInstall.automaticFailed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If automated installation doesn't work, you can download the archive and install manually"
+          }
+        }
+      }
+    },
+    "sheet.XCLIInstall.shellFinished" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installation complete. You can now close this window"
           }
         }
       }
