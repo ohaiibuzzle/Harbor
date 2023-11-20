@@ -1508,12 +1508,12 @@
         }
       }
     },
-    "sheet.winetricks.subtitle" : {
+    "sheet.winetricks.subtitle %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose a Winetricks verb from below to install"
+            "value" : "Choose a Winetricks verb from below to install to %@"
           }
         }
       }

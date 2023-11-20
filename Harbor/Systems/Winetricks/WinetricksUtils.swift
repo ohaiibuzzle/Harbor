@@ -100,7 +100,7 @@ struct WinetricksUtils {
                 let verbName = line.components(separatedBy: " ")[0]
                 let verbDescription = line.replacingOccurrences(of: "\(verbName) ", with: "")
                     .trimmingCharacters(in: .whitespaces)
-                currentCategory!.verbs.append(WinetricksVerb(name: verbName, description: verbDescription))
+                currentCategory?.verbs.append(WinetricksVerb(name: verbName, description: verbDescription))
             }
         }
 
