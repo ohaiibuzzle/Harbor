@@ -84,6 +84,16 @@
         }
       }
     },
+    "btn.close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
+    },
     "btn.create" : {
       "localizations" : {
         "en" : {
@@ -1494,6 +1504,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nowa butelka"
+          }
+        }
+      }
+    },
+    "sheet.winetricks.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a Winetricks verb from below to install"
+          }
+        }
+      }
+    },
+    "sheet.winetricks.table.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        }
+      }
+    },
+    "sheet.winetricks.table.name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "sheet.winetricks.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Winetricks"
           }
         }
       }

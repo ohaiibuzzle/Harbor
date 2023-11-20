@@ -38,7 +38,7 @@ struct BottleConfigDropdown: View {
                         }
                         Spacer()
                         Button("sheet.advConf.Winetricks") {
-                            WinetricksUtils.shared.launchWinetricksShell(for: bottle)
+                            WinetricksUI.openWindow(for: bottle)
                         }
                     }
                 }

@@ -13,22 +13,11 @@ struct SyncPrimitivesSelector: View {
     var body: some View {
         Group {
             HStack {
-                Text("sheet.advConf.SyncPrimitives")
-                Spacer()
-                Menu {
-                    Button("sheet.advConf.SyncPrimitives.none") {
-                        bottle.syncPrimitives = .none
-                    }
-                    Button(WineSyncronizationPrimatives.eSync.rawValue) {
-                        bottle.syncPrimitives = .eSync
-                    }
-                    Button(WineSyncronizationPrimatives.mSync.rawValue) {
-                        bottle.syncPrimitives = .mSync
-                    }
-                } label: {
-                    Text(bottle.syncPrimitives.rawValue)
+                Picker("sheet.advConf.SyncPrimitives", selection: $bottle.syncPrimitives) {
+                    Text("sheet.advConf.SyncPrimitives.none").tag(WineSyncronizationPrimatives.none)
+                    Text(WineSyncronizationPrimatives.eSync.rawValue).tag(WineSyncronizationPrimatives.eSync)
+                    Text(WineSyncronizationPrimatives.mSync.rawValue).tag(WineSyncronizationPrimatives.mSync)
                 }
-                .frame(maxWidth: 100)
             }
         }
     }
@@ -41,35 +30,15 @@ struct DXVKToggle: View {
     var body: some View {
         Group {
             if canSetDX {
-                // Dropdown to select DX backend
-                // Picker("sheet.advConf.DXBackend", selection: $bottleDXBackend) {
-                //     Text(DXBackend.gptk.rawValue).tag(DXBackend.gptk)
-                //     Text(DXBackend.dxvk.rawValue).tag(DXBackend.dxvk)
-                //         .disabled(!DXUtils.shared.isDXVKAvailable())
-                //     Text(DXBackend.wined3d.rawValue).tag(DXBackend.wined3d)
-                //         .disabled(!DXUtils.shared.isWineD3DAvailable())
-                // }
                 HStack {
-                    Text("sheet.advConf.DXBackend")
-                    Spacer()
-                    Menu {
-                        Button(DXBackend.gptk.rawValue) {
-                            bottleDXBackend = .gptk
-                        }
-                        Button(DXBackend.dxvk.rawValue) {
-                            bottleDXBackend = .dxvk
-                        }
-                        .disabled(!DXUtils.shared.isDXVKAvailable())
-                        Button(DXBackend.wined3d.rawValue) {
-                            bottleDXBackend = .wined3d
-                        }
-                        .disabled(!DXUtils.shared.isWineD3DAvailable())
-                    } label: {
-                        Text(bottleDXBackend.rawValue)
+                    Picker("sheet.advConf.DXBackend", selection: $bottleDXBackend) {
+                        Text(DXBackend.gptk.rawValue).tag(DXBackend.gptk)
+                        Text(DXBackend.dxvk.rawValue).tag(DXBackend.dxvk)
+                            .disabled(!DXUtils.shared.isDXVKAvailable())
+                        Text(DXBackend.wined3d.rawValue).tag(DXBackend.wined3d)
+                            .disabled(!DXUtils.shared.isWineD3DAvailable())
                     }
                     .disabled(!canSetDX)
-                    // Limit the length (else it looks stupid)
-                    .frame(maxWidth: 100)
                 }
                 .onChange(of: bottleDXBackend) { _, newValue in
                     canSetDX = false
