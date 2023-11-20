@@ -20,7 +20,7 @@ struct WinetricksUI: View {
             VStack {
                 Text("sheet.winetricks.title")
                     .font(.title)
-                Text("sheet.winetricks.subtitle")
+                Text("sheet.winetricks.subtitle \(bottle.name)")
                     .multilineTextAlignment(.center)
             }
             .padding(.bottom)
