@@ -88,7 +88,7 @@ struct BottleCardView: View {
                 .background(overlayColor)
                 .font(.title)
                 .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
-                .transition(.slide)
+                .transition(.push(from: .leading))
             }
         }
         .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
