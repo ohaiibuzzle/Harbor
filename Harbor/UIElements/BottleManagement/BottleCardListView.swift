@@ -29,50 +29,72 @@ struct BottleCardView: View {
 
     @State var isBeingHoveredUpon = false
     @State var showLaunchExtDropdown = false
+    @State var isShowingStatusOverlay = false
+
+    @State var overlayText = "Nothing"
+    @State var overlayColor = Color.accentColor
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(bottle.name)
-                    .font(.headline)
-                Text(bottle.path.prettyFileUrl)
-                    .font(.subheadline)
-                if let primaryApp = bottle.primaryApplicationPath.components(separatedBy: "\\").last {
-                    Text(primaryApp)
+        ZStack {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(bottle.name)
+                        .font(.headline)
+                    Text(bottle.path.prettyFileUrl)
                         .font(.subheadline)
+                    if let primaryApp = bottle.primaryApplicationPath.components(separatedBy: "\\").last {
+                        Text(primaryApp)
+                            .font(.subheadline)
+                    }
+                }
+                Spacer()
+                Group {
+                    Group {
+                        Button {
+                            bottle.launchPrimaryApplication()
+                            displayOverlay(with: String(localized: "strings.bottleStarted"), for: 3)
+                        } label: {
+                            Image(systemName: "play")
+                        }
+                        .buttonStyle(.borderless)
+                        Button {
+                            showLaunchExtDropdown.toggle()
+                        } label: {
+                            Image(systemName: "tray.and.arrow.down")
+                        }
+                        .buttonStyle(.borderless)
+                        Button {
+                            bottle.killBottle()
+                        } label: {
+                            Image(systemName: "stop")
+                        }
+                        .buttonStyle(.borderless)
+                    }
+                    .opacity(isBeingHoveredUpon ? 100 : 0)
+                    NavigationLink {
+                        BottleCardDetailedView(bottle: $bottle, isShowingDetail: $isShowingDetails)
+                    } label: {
+                        Image(systemName: "chevron.forward.circle.fill")
+                    }
+                    .buttonStyle(.borderless)
                 }
             }
-            Spacer()
-            Group {
-                Group {
-                    Button {
-                        bottle.launchPrimaryApplication()
-                    } label: {
-                        Image(systemName: "play")
-                    }
-                    .buttonStyle(.borderless)
-                    Button {
-                        showLaunchExtDropdown.toggle()
-                    } label: {
-                        Image(systemName: "tray.and.arrow.down")
-                    }
-                    .buttonStyle(.borderless)
-                    Button {
-                        bottle.killBottle()
-                    } label: {
-                        Image(systemName: "stop")
-                    }
-                    .buttonStyle(.borderless)
+            .padding()
+            .onTapGesture(count: 2, perform: {
+                bottle.launchPrimaryApplication()
+                displayOverlay(with: String(localized: "strings.bottleStarted"), for: 3)
+            })
+            // An overlay covering the entire card
+            if isShowingStatusOverlay {
+                VStack {
+                    Text(overlayText)
                 }
-                .opacity(isBeingHoveredUpon ? 100 : 0)
-                NavigationLink {
-                    BottleCardDetailedView(bottle: $bottle, isShowingDetail: $isShowingDetails)
-                } label: {
-                    Image(systemName: "chevron.forward.circle.fill")
-                }
-                .buttonStyle(.borderless)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(overlayColor)
+                .font(.title)
+                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
+                .transition(.slide)
             }
         }
-        .padding()
         .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
         .background(in: RoundedRectangle(cornerSize:
                                             CGSize(width: 20, height: 10)),
@@ -83,9 +105,21 @@ struct BottleCardView: View {
         .onHover(perform: { hovering in
             isBeingHoveredUpon = hovering
         })
-        .onTapGesture(count: 2, perform: {
-            bottle.launchPrimaryApplication()
-        })
+    }
+
+    func displayOverlay(with text: String, for time: UInt32) {
+        overlayText = text
+        withAnimation {
+            isShowingStatusOverlay = true
+        }
+        Task.detached {
+            sleep(time)
+            Task { @MainActor in
+                withAnimation {
+                    isShowingStatusOverlay = false
+                }
+            }
+        }
     }
 }
 
