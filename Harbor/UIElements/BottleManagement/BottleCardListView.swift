@@ -79,10 +79,6 @@ struct BottleCardView: View {
                 }
             }
             .padding()
-            .onTapGesture(count: 2, perform: {
-                bottle.launchPrimaryApplication()
-                displayOverlay(with: String(localized: "strings.bottleStarted"), for: 3)
-            })
             // An overlay covering the entire card
             if isShowingStatusOverlay {
                 VStack {
@@ -102,6 +98,10 @@ struct BottleCardView: View {
         .sheet(isPresented: $showLaunchExtDropdown) {
             LaunchExtDropdown(isPresented: $showLaunchExtDropdown, bottle: bottle)
         }
+        .onTapGesture(count: 2, perform: {
+            bottle.launchPrimaryApplication()
+            displayOverlay(with: String(localized: "strings.bottleStarted"), for: 3)
+        })
         .onHover(perform: { hovering in
             isBeingHoveredUpon = hovering
         })
