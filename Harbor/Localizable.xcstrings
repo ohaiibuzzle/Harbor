@@ -1642,6 +1642,16 @@
         }
       }
     },
+    "strings.bottleStarted" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bottle Started!"
+          }
+        }
+      }
+    },
     "view.mode" : {
       "localizations" : {
         "en" : {
