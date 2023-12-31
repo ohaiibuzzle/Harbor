@@ -540,6 +540,56 @@
         }
       }
     },
+    "process.table.executable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Process Executable"
+          }
+        }
+      }
+    },
+    "process.table.kill" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop Process"
+          }
+        }
+      }
+    },
+    "process.table.loading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Getting Processes..."
+          }
+        }
+      }
+    },
+    "process.table.pid" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Process ID"
+          }
+        }
+      }
+    },
+    "process.table.refresh" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh"
+          }
+        }
+      }
+    },
     "setup.btn.installGPK" : {
       "localizations" : {
         "en" : {

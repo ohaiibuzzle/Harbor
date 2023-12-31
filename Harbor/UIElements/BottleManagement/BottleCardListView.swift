@@ -226,6 +226,12 @@ struct BottleCardDetailedView: View {
                 .formStyle(.grouped)
                 Form {
                     Section {
+                        TaskControllerView(bottle: $bottle)
+                    }
+                }
+                .formStyle(.grouped)
+                Form {
+                    Section {
                         Toggle("sheet.advConf.hudToggle", isOn: $bottle.enableHUD)
                         SyncPrimitivesSelector(bottle: $bottle)
                         Toggle("sheet.advConf.stdOutToggle", isOn: $bottle.pleaseShutUp)

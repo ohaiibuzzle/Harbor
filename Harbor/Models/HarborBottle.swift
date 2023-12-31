@@ -112,6 +112,15 @@ struct HarborBottle: Identifiable, Equatable, Codable {
 
         task.environment = ["WINEPREFIX": path.path]
 
+        switch syncPrimitives {
+        case .none:
+            break
+        case .eSync:
+            task.environment?["WINEESYNC"] = "1"
+        case .mSync:
+            task.environment?["WINEMSYNC"] = "1"
+        }
+
         do {
             try task.run()
         } catch {

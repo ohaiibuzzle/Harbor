@@ -13,6 +13,7 @@
 		AB0D004C2A40B8900019D62F /* DXVKInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D004B2A40B8900019D62F /* DXVKInstallView.swift */; };
 		AB0D004E2A40E3D30019D62F /* EnvironmentVarsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D004D2A40E3D30019D62F /* EnvironmentVarsEditor.swift */; };
 		AB0F6E242A4AEDDA00F642C7 /* BottleIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AB0F6E232A4AEDDA00F642C7 /* BottleIcon.icns */; };
+		AB157BBE2B41289D00757AE0 /* TaskControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB157BBD2B41289C00757AE0 /* TaskControllerView.swift */; };
 		AB19DA972A358FE400967784 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AB19DA962A358FE400967784 /* Localizable.xcstrings */; };
 		AB3BE5EE2A32248D00358BBC /* LaunchExtDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */; };
 		AB5CC6C02A308BBB00AEBB2B /* HarborApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5CC6BF2A308BBB00AEBB2B /* HarborApp.swift */; };
@@ -55,6 +56,7 @@
 		AB0D004B2A40B8900019D62F /* DXVKInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXVKInstallView.swift; sourceTree = "<group>"; };
 		AB0D004D2A40E3D30019D62F /* EnvironmentVarsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVarsEditor.swift; sourceTree = "<group>"; };
 		AB0F6E232A4AEDDA00F642C7 /* BottleIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = BottleIcon.icns; sourceTree = "<group>"; };
+		AB157BBD2B41289C00757AE0 /* TaskControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskControllerView.swift; sourceTree = "<group>"; };
 		AB19DA962A358FE400967784 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		AB3BE5ED2A32248D00358BBC /* LaunchExtDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchExtDropdown.swift; sourceTree = "<group>"; };
 		AB4707BF2A30C2C60019DC5F /* Harbor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Harbor.entitlements; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				AB6254332A3CE30D002A6206 /* BottleCardListView.swift */,
 				AB0D004D2A40E3D30019D62F /* EnvironmentVarsEditor.swift */,
 				ABDA74582AD904E700802792 /* BottleDetailsCommonView.swift */,
+				AB157BBD2B41289C00757AE0 /* TaskControllerView.swift */,
 			);
 			path = BottleManagement;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				AB7A81022A30D2FE00AA71A6 /* HarborUtils.swift in Sources */,
 				AB95D9FD2A5011C5003402D2 /* GPTKConfigView.swift in Sources */,
 				ABF5340C2A3F63BE0030677A /* BottleManagementCardView.swift in Sources */,
+				AB157BBE2B41289D00757AE0 /* TaskControllerView.swift in Sources */,
 				AB6652C42A3334E600F3FC5D /* XCLIUtils.swift in Sources */,
 				AB6254342A3CE30D002A6206 /* BottleCardListView.swift in Sources */,
 				AB6A967F2A31045A003A019E /* SetupView.swift in Sources */,
