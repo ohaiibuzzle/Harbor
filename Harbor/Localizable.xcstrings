@@ -87,6 +87,16 @@
         }
       }
     },
+    "btn.close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
+    },
     "btn.create" : {
       "localizations" : {
         "en" : {
@@ -500,6 +510,27 @@
     "macOS 14+" : {
 
     },
+    "installed" : {
+
+    },
+    "Let's go!" : {
+
+    },
+    "macOS 14+" : {
+
+    },
+    "installed" : {
+
+    },
+    "Let's go!" : {
+
+    },
+    "macOS 14+" : {
+
+    },
+    "Key" : {
+      "extractionState" : "manual"
+    },
     "menu.harbor.installDXVK" : {
       "localizations" : {
         "en" : {
@@ -556,6 +587,74 @@
     },
     "Safe Install" : {
 
+    },
+    "not installed" : {
+
+    },
+    "Open Software Update" : {
+
+    },
+    "Safe Install" : {
+
+    },
+    "not installed" : {
+
+    },
+    "Open Software Update" : {
+
+    },
+    "Safe Install" : {
+
+    },
+    "process.table.executable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Process Executable"
+          }
+        }
+      }
+    },
+    "process.table.kill" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop Process"
+          }
+        }
+      }
+    },
+    "process.table.loading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Getting Processes..."
+          }
+        }
+      }
+    },
+    "process.table.pid" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Process ID"
+          }
+        }
+      }
+    },
+    "process.table.refresh" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh"
+          }
+        }
+      }
     },
     "setup.btn.installGPK" : {
       "extractionState" : "stale",
@@ -780,23 +879,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "DXVK"
-          }
-        }
-      }
-    },
-    "sheet.advConf.eSyncToggle" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enable ESync"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Włącz ESync"
           }
         }
       }
@@ -1551,6 +1633,76 @@
         }
       }
     },
+    "sheet.winetricks.subtitle %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a Winetricks verb from below to install to %@"
+          }
+        }
+      }
+    },
+    "sheet.winetricks.table.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        }
+      }
+    },
+    "sheet.winetricks.table.name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "sheet.winetricks.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Winetricks"
+          }
+        }
+      }
+    },
+    "sheet.XCLIInstall.attemptAutomaticInstall" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attempt Automatic Installation"
+          }
+        }
+      }
+    },
+    "sheet.XCLIInstall.automaticFailed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If automated installation doesn't work, you can download the archive and install manually"
+          }
+        }
+      }
+    },
+    "sheet.XCLIInstall.shellFinished" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installation complete. You can now close this window"
+          }
+        }
+      }
+    },
     "sheet.XCLIInstall.status.installed" : {
       "localizations" : {
         "en" : {
@@ -1611,6 +1763,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Instalacja narzędzi wiersza poleceń Xcode"
+          }
+        }
+      }
+    },
+    "strings.bottleStarted" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bottle Started!"
           }
         }
       }
