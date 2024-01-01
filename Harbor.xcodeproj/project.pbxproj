@@ -31,6 +31,7 @@
 		AB6A967F2A31045A003A019E /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6A967E2A31045A003A019E /* SetupView.swift */; };
 		AB7A81002A30CC7100AA71A6 /* BrewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */; };
 		AB7A81022A30D2FE00AA71A6 /* HarborUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A81012A30D2FE00AA71A6 /* HarborUtils.swift */; };
+		AB7F9D182A38AC58003014D8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F9D172A38AC58003014D8 /* Logger.swift */; };
 		AB7D8E332A4DDE3400B55527 /* WinetricksUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7D8E322A4DDE3400B55527 /* WinetricksUtils.swift */; };
 		AB87CAF42A4AC67C00C32025 /* HarborShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB87CAF32A4AC67C00C32025 /* HarborShortcuts.swift */; };
 		AB95D9FD2A5011C5003402D2 /* GPTKConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95D9FC2A5011C5003402D2 /* GPTKConfigView.swift */; };
@@ -76,6 +77,7 @@
 		AB6A967E2A31045A003A019E /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		AB7A80FF2A30CC7100AA71A6 /* BrewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewUtils.swift; sourceTree = "<group>"; };
 		AB7A81012A30D2FE00AA71A6 /* HarborUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborUtils.swift; sourceTree = "<group>"; };
+		AB7F9D172A38AC58003014D8 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		AB7D8E322A4DDE3400B55527 /* WinetricksUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinetricksUtils.swift; sourceTree = "<group>"; };
 		AB87CAF32A4AC67C00C32025 /* HarborShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarborShortcuts.swift; sourceTree = "<group>"; };
 		AB95D9FC2A5011C5003402D2 /* GPTKConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTKConfigView.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				ABC0BFD02A31629300382A42 /* HarborBottle.swift */,
+				AB7F9D172A38AC58003014D8 /* Logger.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				AB0D004C2A40B8900019D62F /* DXVKInstallView.swift in Sources */,
 				AB0D004E2A40E3D30019D62F /* EnvironmentVarsEditor.swift in Sources */,
 				AB7A81002A30CC7100AA71A6 /* BrewUtils.swift in Sources */,
+				AB7F9D182A38AC58003014D8 /* Logger.swift in Sources */,
 				AB6652CD2A3350EC00F3FC5D /* BottleConfigDropdown.swift in Sources */,
 				AB5CC6D62A30910300AEBB2B /* GPKUtils.swift in Sources */,
 				ABDA74592AD904E700802792 /* BottleDetailsCommonView.swift in Sources */,
